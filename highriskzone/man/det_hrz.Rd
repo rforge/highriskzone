@@ -1,0 +1,168 @@
+\name{det_hrz}
+\alias{det_hrz}
+\alias{highriskzone.object}
+\title{Determination of the high-risk zone.}
+\usage{
+  det_hrz(ppdata, type, criterion, cutoff,
+    distancemap = NULL, intens = NULL, nxprob = 0.1,
+    covmatrix = NULL)
+}
+\arguments{
+  \item{ppdata}{Observed spatial point process of class
+  ppp.}
+
+  \item{type}{Method to use, can be one of
+  \code{"dist"}(method of fixed radius or quantile-based
+  method), or \code{"intens"}(intensity-based method)}
+
+  \item{criterion}{criterion to limit the high-risk zone,
+  can be one of \code{"area"} (giving size of hrz),
+  \code{"indirect"} (giving quantile/alpha depending on
+  type), or \code{"direct"} (giving radius/threshold c
+  depending on type)}
+
+  \item{cutoff}{Value of criterion (area, radius, quantile,
+  alpha or threshold).  Depending on criterion and type: If
+  criterion = "direct" cutoff is the threshold. If
+  criterion = "indirect" cutoff is the quantile for the
+  quantile-based method and the failure probability alpha
+  for the intensity-base method. If criterion = "area"
+  cutoff is the area the high-risk zone should have.}
+
+  \item{distancemap}{(optional) distance map: distance of
+  every pixel to the nearest observation of the point
+  pattern; only needed for \code{type="dist"}. If not
+  given, it will be computed by
+  \code{\link[spatstat]{distmap}}.}
+
+  \item{intens}{(optional) estimated intensity of the
+  observed process (object of class "im"), only needed for
+  type="intens". If not given, it will be estimated using
+  \code{\link[spatstat]{density.ppp}}.}
+
+  \item{nxprob}{Probability of having unobserved events.
+  Default value is 0.1.}
+
+  \item{covmatrix}{(optional) Covariance matrix of the
+  kernel of a normal distribution, only needed for
+  \code{type="intens"} if no intensity is given. If not
+  given, it will be estimated using
+  \code{\link[ks]{Hscv}}.}
+}
+\value{
+  An object of class "\code{highriskzone}", which is a list
+  of \item{ typehrz, criterion, cutoff }{ see arguments}
+  \item{ zone }{ Determined high-risk zone: Object of class
+  "owin" based on a binary mask.  See
+  \code{\link[spatstat]{owin}}. } \item{ threshold }{
+  determined threshold. If criterion="area" it is the
+  distance if type="dist" and the threshold c for
+  type="intens". If criterion="indirect" it is the quantile
+  of the next-neighbour distance if type="dist" and the
+  threshold c for type="intens". If criterion="direct" it
+  equals the cutoff for both types.} \item{ calccutoff }{
+  determined cutoff-value. For type="dist" and
+  criterion="area" this is the quantile of the
+  next-neighbour distance. For type="intens" and
+  criterion="area" it is the failure probability alpha. For
+  all other criterions it is NA.} \item{ covmatrix }{ If
+  not given (and \code{type="intens"}), it is estimated.
+  See \code{\link[ks]{Hscv}}.}
+}
+\description{
+  \code{det_hrz} determines the high-risk zone through the
+  method of fixed radius (type = "dist" and criterion =
+  "direct"), the quantile-based method (type = "dist" and
+  criterion = "area"/"indirect") and the intensity-based
+  method (type = "intens").
+}
+\details{
+  There are different methods implemented to determine a
+  high-risk zone. \describe{ \item{ Method of fixed radius
+  }{ In this method the high-risk zone is determined by
+  drawing a circle around each observed event with a fixed
+  radius. This method will be used when \code{type =
+  "dist"} and \code{criterion = "direct"}. \code{cutoff}
+  then is the radius.  } \item{ Quantile-based method }{
+  This method is a development of the above. Here the
+  radius is not fixed. It uses the distance of every
+  observed event to the next, which is calculated by the
+  nearest-neighbour distance. The radius is assessed by the
+  p-quantile of the empirical distribution function of the
+  nearest neighbour distance. This method will be used when
+  \code{type = "dist"} and \code{criterion = "indirect"} or
+  \code{"area"}. If \code{criterion = "indirect"} then
+  \code{cutoff} is the quantile that should be use.  If
+  \code{criterion = "area"} then \code{cutoff} is the area
+  that the high-risk zone has to have at the end and from
+  that the quantile/the radii are determined. When the
+  calculation is done via the area, it can not really be
+  classified to the quantile-based method. It is rather a
+  third "distance-based" method.  } \item{ Intensity-based
+  method }{ For this method the point process is assumed to
+  be an inhomogeneous Poisson process.  The first step of
+  this method is to estimate the intensity of the observed
+  events.  The high-risk zone is then the field in which
+  the estimated intensity exceeds a certain value. This
+  value us called threshold c.  The method will be used
+  when \code{type = "intens"}. There are three different
+  ways to get to a high-risk zone: \enumerate{ \item Fixing
+  the threshold c: \code{criterion = "direct"} \item Fixing
+  the area of the high-risk zone: \code{criterion = "area"}
+  \item Fixing the failure probability alpha, which is the
+  probability of having unobserved events outside the
+  high-risk zone: \code{criterion = "indirect"} } For
+  further information see Mahling et al. (2012)
+  (References).  } }
+}
+\examples{
+data(craterA)
+ spatstat.options(npixel=400)
+## type: dist
+hrzd1 <- det_hrz(craterA, type = "dist", criterion = "area", cutoff = 1000000, nxprob = 0.1)
+hrzd2 <- det_hrz(craterA, type = "dist", criterion = "indirect", cutoff = 0.9, nxprob = 0.1)
+hrzd3 <- det_hrz(craterA, type = "dist", criterion = "direct", cutoff = 100, nxprob = 0.1)
+
+op <- par(mfrow = c(2, 2))
+ plot(craterA)
+ plot(hrzd1, zonecol = 2, win = craterA$window, plotwindow = TRUE)
+ plot(hrzd2, zonecol = 3,  win = craterA$window, plotwindow = TRUE)
+ plot(hrzd3, zonecol = 4,  win = craterA$window, plotwindow = TRUE)
+par(op)
+
+# or first calculate the distancemap and use it:
+distm <- distmap(craterA)
+hrzd <- det_hrz(craterA, type = "dist", criterion = "direct", cutoff = 100,
+                distancemap = distm, nxprob = 0.1)
+ plot(hrzd, zonecol = 4,  win = craterA$window, plotwindow = TRUE)
+
+## type: intens
+hrzi1 <- det_hrz(craterA, type = "intens", criterion = "area", cutoff = 1000000, nxprob = 0.1)
+hrzi2 <- det_hrz(craterA, type = "intens", criterion = "indirect", cutoff = 0.1, nxprob = 0.1)
+hrzi3 <- det_hrz(craterA, type = "intens", criterion = "direct", cutoff = 0.0001, nxprob = 0.1)
+
+op <- par(mfrow = c(2, 2))
+ plot(craterA)
+ plot(hrzi1, zonecol = 2, win = craterA$window, plotwindow = TRUE)
+ plot(hrzi2, zonecol = 3,  win = craterA$window, plotwindow = TRUE)
+ plot(hrzi3, zonecol = 4,  win = craterA$window, plotwindow = TRUE)
+par(op)
+
+# or first estimate the intensity and then use it:
+intensity <- est_intens(craterA)
+hrzii <- det_hrz(craterA, type = "intens", criterion = "area", cutoff = 1000000,
+                 intens = intensity$intensest, nxprob = 0.1)
+plot(hrzii, zonecol = 4,  win = craterA$window, plotwindow = TRUE)
+
+# or give covariance-matrix:
+covmatrix <- Hscv(cbind(craterA$x, craterA$y))
+hrzic <- det_hrz(craterA, type = "intens", criterion = "area", cutoff = 1000000,
+                 nxprob = 0.1, covmatrix = covmatrix)
+plot(hrzic, zonecol = 4,  win = craterA$window, plotwindow = TRUE)
+}
+\seealso{
+  \code{\link[spatstat]{distmap}},
+  \code{\link[spatstat]{eval.im}},
+  \code{\link[spatstat]{owin}}, \code{\link{eval_method}}
+}
+

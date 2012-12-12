@@ -1,0 +1,25 @@
+\name{print.hrzeval}
+\alias{print.hrzeval}
+\title{Print Brief Details of a the evaluation of a high-risk zone}
+\usage{
+  \method{print}{hrzeval} (x, ...)
+}
+\arguments{
+  \item{x}{evaluation of a high-risk zone (object of class
+  "\code{hrzeval}")}
+
+  \item{...}{ignored}
+}
+\description{
+  Prints a very brief description of the evaluation of a
+  high-risk zone.
+}
+\details{
+  A very brief description of the evaluation x of a
+  high-risk zone is printed. This is a method for the
+  generic function \code{\link[base]{print}}.
+}
+\seealso{
+  \code{\link[base]{print}}, \code{\link{summary.hrzeval}}
+}
+
