@@ -1,0 +1,28 @@
+\name{sim_intens}
+\alias{sim_intens}
+\title{Simulation on given intensity}
+\usage{
+  sim_intens(ppdata, intensSim, nxprob)
+}
+\arguments{
+  \item{ppdata}{Observed spatial point process of class
+  ppp}
+
+  \item{intensSim}{Intensity to use for the simulation}
+
+  \item{nxprob}{Probability of having unobserved events}
+}
+\value{
+  A list of of observed and unobserved point patterns (see
+  \code{\link{thin}})
+}
+\description{
+  Generation of a random point patter using the
+  inhomogeneous Poisson process (if lambda is not constant)
+  and thinning of this data, to get "observed" and
+  "unobserved" events.
+}
+\seealso{
+  \code{\link{thin}}, \code{\link[spatstat]{rpoispp}}
+}
+

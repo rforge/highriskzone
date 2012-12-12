@@ -1,0 +1,54 @@
+\name{eval_hrz}
+\alias{eval_hrz}
+\title{Evaluation of the high-risk zone.}
+\usage{
+  eval_hrz(hrz, unobspp, obspp = NULL)
+}
+\arguments{
+  \item{hrz}{High-risk zone of class owin based on a binary
+  mask (see \code{\link[spatstat]{area.owin}})}
+
+  \item{unobspp}{Unobserved spatial point process}
+
+  \item{obspp}{Observeved spatial point process}
+}
+\value{
+  An object of class "\code{hrzeval}", which is a list of
+  \item{ numbermiss }{ number of unobserved events outside
+  the high-risk zone } \item{ numberunobserved }{ number of
+  events in the unobserved point pattern } \item{
+  missingfrac }{ fraction of numbermiss/numberunobserved }
+  \item{ arearegion }{ area of the high-risk zone } \item{
+  numberobs }{ number of events in the observed point
+  pattern } \item{ out }{ subset of the unobserved events,
+  which are outside the high-risk zone } \item{ insd }{
+  subset of the unobserved events, which are inside the
+  high-risk zone }
+}
+\description{
+  Evaluation of the high-risk zone, which is only possible
+  with simulated or thinned data.
+}
+\examples{
+data(craterB)
+ # thin data
+ set.seed(100)
+ thdata <- thin(craterB, nxprob=0.1)
+
+ # determine hrz for the "observed events"
+ hrz <- det_hrz(thdata$observed, type = "dist", criterion = "area", cutoff = 1500000, nxprob = 0.1)
+
+ # evaluate the hrz
+ evaluation <- eval_hrz(hrz = hrz$zone, unobspp = thdata$unobserved, obspp = thdata$observed)
+ evaluation$missingfrac
+
+ op <- par(mar=c(1, 4, 1, 6) , xpd=TRUE)
+ plot(evaluation, hrz = hrz, obspp = thdata$observed, plothrz = TRUE, plotobs = TRUE, insidecol = "magenta", outsidecol = "magenta", obscol = "blue", insidepch = 1, outsidepch = 19, main = "Evaluation visualized")
+ legend(2400, 2456.4061, c("observed", "unobs inside", "unobs outside"), col = c("blue", "magenta", "magenta"), yjust=1, pch=c(1, 1, 19), cex=0.8)
+ par(op)
+}
+\seealso{
+  \code{\link[spatstat]{inside.owin}},
+  \code{\link[spatstat]{area.owin}}
+}
+
