@@ -23,7 +23,7 @@
 #' @import spatstat ks
 #' @title Determining high risk zones using point process methodology
 #' @keywords package
-#' @references Monia Mahling, Michael \enc{Höhle}{Hoehle}& Helmut \enc{Küchenhoff}{Kuechenhoff} (expected 2013), 
+#' @references Monia Mahling, Michael \enc{Höhle}{Hoehle}& Helmut \enc{Küchenhoff}{Kuechenhoff} (2012), 
 #' \emph{Determining high-risk zones for unexploded World War II bombs by using point process methodology.}
 #' expected in Journal of the Royal Statistical Society, Series C. \cr
 #' 
