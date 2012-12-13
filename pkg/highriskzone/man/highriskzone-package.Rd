@@ -26,9 +26,10 @@
   Monia Mahling, Michael \enc{Höhle}{Hoehle}& Helmut
   \enc{Küchenhoff}{Kuechenhoff} (expected 2013),
   \emph{Determining high-risk zones for unexploded World
-  War II bombs by using point process methodology.}
-  expected in Journal of the Royal Statistical Society,
-  Series C. \cr
+  War II bombs by using point process methodology.} in
+  Journal of the Royal Statistical Society, Series C.
+  \url{http://onlinelibrary.wiley.com/doi/10.1111/j.1467-9876.2012.01055.x/abstract}
+  \cr
 
   Heidi Seibold (2012), \emph{Determining high risk zones
   using point process methodology - Realization by building
