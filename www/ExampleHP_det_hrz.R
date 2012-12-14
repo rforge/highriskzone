@@ -35,9 +35,11 @@ par(op)
 
 # or first estimate the intensity and then use it:
 intensity <- est_intens(craterA)
+plot(intensity$intensest, main = "")
+
 hrzii <- det_hrz(craterA, type = "intens", criterion = "area", cutoff = 1000000, 
                  intens = intensity$intensest, nxprob = 0.1)
-plot(hrzii, zonecol = 4,  win = craterA$window, plotwindow = TRUE)
+plot(hrzii, zonecol = 4,  win = craterA$window, plotwindow = TRUE, main = "")
 
 # or give covariance-matrix:
 covmatrix <- Hscv(cbind(craterA$x, craterA$y))
