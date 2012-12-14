@@ -1,4 +1,3 @@
-install.packages("highriskzone", repos="http://R-Forge.R-project.org")
 library(highriskzone)
 
 data(craterA)
