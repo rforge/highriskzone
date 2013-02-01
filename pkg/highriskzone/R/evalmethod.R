@@ -168,7 +168,7 @@ eval_method <- function(ppdata, type, criterion, cutoff, numit = 100,
     
     if (is.null(intens) && "intens" %in% type){
       estim <- est_intens(observed, covmatrix=covmatrix)
-      intens <- estim$intensest
+      intensest <- estim$intensest
       covmatrix <- estim$covmatrix
     }
     
@@ -179,7 +179,7 @@ eval_method <- function(ppdata, type, criterion, cutoff, numit = 100,
       cutoffj <- cutoff[j]
       
       resultdetHRZ <- det_hrz(ppdata=observed, type=typej, criterion=criterionj, 
-                              cutoff=cutoffj, distancemap=distancemap, intens=intens, 
+                              cutoff=cutoffj, distancemap=distancemap, intens=intensest, 
                               nxprob=nxprob, covmatrix=covmatrix)
       resultevalHRZ <- eval_hrz(hrz=resultdetHRZ$zone, unobspp=unobserved, obspp=observed)
       
