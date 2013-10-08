@@ -2,7 +2,7 @@
 
 #' Thinning of the observations (for evaluating the method)
 #'
-#' The tinning is done by drawing independently from a Bernoulli distribution. Function is needed for functions eval_method, sim_clintens, sim_intens
+#' The thinning is done by drawing independently from a Bernoulli distribution. Function is needed for functions eval_method, sim_clintens, sim_intens
 #' 
 #' @export
 #' @param full  all observations of the point pattern
@@ -17,13 +17,10 @@
 thin <- function(full, nxprob){
   win <- full$window
   
-  thinning <- rbinom(n=full$n, size=1, prob=nxprob)
-  fullmark <- ppp(full$x, full$y, window=win, marks=thinning)
+  indicator <- rbinom(n=full$n, size=1, prob=nxprob)
   
-  observed <- subset(fullmark, marks(fullmark) == 0)
-  marks(observed) <- NULL
-  unobserved <- subset(fullmark, marks(fullmark) == 1)
-  marks(unobserved) <- NULL
+  observed <- full[indicator == 0]
+  unobserved <- full[indicator == 1]
   
   return(list(observed=observed, unobserved=unobserved))
 }

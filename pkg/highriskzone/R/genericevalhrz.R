@@ -12,7 +12,7 @@
 #' @seealso \code{\link[base]{print}}, \code{\link{summary.hrzeval}}
 
 print.hrzeval <- function(x, ...){
-  cat("evaluation of a hig-risk zone based on", x$numberobs, "observed events \n")
+  cat("evaluation of a high-risk zone based on", x$numberobs, "observed events \n")
   cat("number of unobserved events:", x$numberunobserved, " \n")
   cat("number of unobserved events located outside the high-risk zone:", x$numbermiss, " \n")
 }
@@ -32,7 +32,7 @@ print.hrzeval <- function(x, ...){
 #' @seealso \code{\link[base]{summary}}, \code{\link{print.hrzeval}}
 
 summary.hrzeval <- function(object, ...){
-  cat("evaluation of a hig-risk zone based on", object$numberobs, "observed events \n")
+  cat("evaluation of a high-risk zone based on", object$numberobs, "observed events \n")
   cat("number of unobserved events:", object$numberunobserved, " \n")
   cat("number of unobserved events located outside the high-risk zone:", object$numbermiss, " \n \n")
   
