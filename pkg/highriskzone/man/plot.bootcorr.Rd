@@ -1,0 +1,26 @@
+\name{plot.bootcorr}
+\alias{plot.bootcorr}
+\title{Visualize the bootstrap correction for a high-risk zone.}
+\usage{
+  plot.bootcorr(x, ...)
+}
+\arguments{
+  \item{x}{bootstrap correction for a high-risk zone
+  (object of class "\code{bootcorr}")}
+
+  \item{...}{extra arguments passed to the generic
+  \code{\link[graphics]{plot}} function.}
+}
+\description{
+  Plot a visualization of the bootstrap correction for a
+  high-risk zone. The different values tested for alpha are
+  plotted.
+}
+\details{
+  This is the plot method for the class \code{hrzeval}
+}
+\seealso{
+  \code{\link[graphics]{plot}}, \code{\link{bootcor}},
+  \code{\link{plot.bootcorr}}
+}
+

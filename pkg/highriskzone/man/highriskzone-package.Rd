@@ -24,12 +24,16 @@
 }
 \references{
   Monia Mahling, Michael \enc{Höhle}{Hoehle}& Helmut
-  \enc{Küchenhoff}{Kuechenhoff} (expected 2013),
-  \emph{Determining high-risk zones for unexploded World
-  War II bombs by using point process methodology.} in
-  Journal of the Royal Statistical Society, Series C.
-  \url{http://onlinelibrary.wiley.com/doi/10.1111/j.1467-9876.2012.01055.x/abstract}
-  \cr
+  \enc{Küchenhoff}{Kuechenhoff} (2013), \emph{Determining
+  high-risk zones for unexploded World War II bombs by
+  using point process methodology.} Journal of the Royal
+  Statistical Society, Series C 62(2), 181-199. \cr
+
+  Monia Mahling (2013), \emph{Determining high-risk zones
+  by using spatial point process methodology.} Ph.D.
+  thesis, Cuvillier Verlag \enc{Göttingen}{Goettingen},
+  available online:
+  http://edoc.ub.uni-muenchen.de/15886/\cr
 
   Heidi Seibold (2012), \emph{Determining high risk zones
   using point process methodology - Realization by building

@@ -1,0 +1,25 @@
+\name{print.bootcorr}
+\alias{print.bootcorr}
+\title{Print Brief Details of a the bootstrap correction for a high-risk zone}
+\usage{
+  print.bootcorr(x, ...)
+}
+\arguments{
+  \item{x}{bootstrap correction for of a high-risk zone
+  (object of class "\code{bootcorr}")}
+
+  \item{...}{ignored}
+}
+\description{
+  Prints a very brief description of the bootstrap
+  correction for a high-risk zone.
+}
+\details{
+  A very brief description of the bootstrap correction x
+  for a high-risk zone is printed. This is a method for the
+  generic function \code{\link[base]{print}}.
+}
+\seealso{
+  \code{\link[base]{print}}, \code{\link{summary.bootcorr}}
+}
+

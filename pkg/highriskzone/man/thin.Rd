@@ -14,7 +14,7 @@
   of class ppp.
 }
 \description{
-  The tinning is done by drawing independently from a
+  The thinning is done by drawing independently from a
   Bernoulli distribution. Function is needed for functions
   eval_method, sim_clintens, sim_intens
 }

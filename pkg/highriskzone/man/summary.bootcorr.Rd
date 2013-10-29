@@ -1,0 +1,25 @@
+\name{summary.bootcorr}
+\alias{summary.bootcorr}
+\title{Summary of a the bootstrap correction for a high-risk zone}
+\usage{
+  summary.bootcorr(object, ...)
+}
+\arguments{
+  \item{object}{bootstrap correction for of a high-risk
+  zone (object of class "\code{bootcorr}")}
+
+  \item{...}{ignored}
+}
+\description{
+  Prints a useful summary of the bootstrap correction for a
+  high-risk zone.
+}
+\details{
+  A useful summary of the bootstrap correction x for a
+  high-risk zone is printed. This is a method for the
+  generic function \code{\link[base]{summary}}.
+}
+\seealso{
+  \code{\link[base]{summary}}, \code{\link{print.bootcorr}}
+}
+
