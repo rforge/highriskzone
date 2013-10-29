@@ -23,7 +23,7 @@
 #'          this value; it also is the parameter of the Poisson distribution
 #'          for the number of points per cluster. Only used for \code{simulate = "clintens"}.
 #' @param verbose logical. Should information on tested values/progress be printed?
-#' @expor
+#' @export
 #' @return An object of class bootcorr, which consists of a list of the final value for alpha (alphastar)
 #'         and a data.frame course containing information on the simulation course, e.g. the tested values.
 #' @seealso \code{\link[highriskzone]{det_hrz}}, \code{\link[highriskzone]{eval_method}}
