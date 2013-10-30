@@ -1,4 +1,4 @@
-#' Print Brief Details of a the bootstrap correction for a high-risk zone
+#' Print Brief Details of a bootstrap correction for a high-risk zone
 #'
 #' Prints a very brief description of the bootstrap correction for a high-risk zone.
 #'
@@ -20,9 +20,9 @@ print.bootcorr <- function(x, ...){
 #' A useful summary of the bootstrap correction x for a high-risk zone is printed.
 #' This is a method for the generic function \code{\link[base]{summary}}.
 #'
-#' @param object bootstrap correction for of a high-risk zone (object of class "\code{bootcorr}")
+#' @param object bootstrap correction for a high-risk zone (object of class "\code{bootcorr}")
 #' @param ... ignored
-#' @seealso \code{\link[base]{summary}}, \code{\link{print.bootcorr}}
+#' @seealso \code{\link[base]{summary}}, \code{\link{print.bootcorr}}, \code{\link{plot.bootcorr}}
 
 summary.bootcorr <- function(object, ...){
   cat("resulting value for alpha (cutoff):", object$alphastar, " \n \n")
@@ -46,11 +46,11 @@ summary.bootcorr <- function(object, ...){
 #' Plot a visualization of the bootstrap correction for a high-risk zone.
 #' The different values tested for alpha are plotted.
 #'
-#' This is the plot method for the class \code{hrzeval}
+#' This is the plot method for the class \code{bootcorr}.
 #'
 #' @param x bootstrap correction for a high-risk zone (object of class "\code{bootcorr}")
 #' @param ... extra arguments passed to the generic \code{\link[graphics]{plot}} function.
-#' @seealso \code{\link[graphics]{plot}}, \code{\link{bootcor}}, \code{\link{plot.bootcorr}}
+#' @seealso \code{\link[graphics]{plot}}, \code{\link{print.bootcor}}, \code{\link{summary.bootcorr}}
 
 
 plot.bootcorr <- function(x, ...){

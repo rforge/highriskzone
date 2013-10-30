@@ -8,17 +8,17 @@
 #'    \item Quantile-based method
 #'    \item Intensity-based method
 #' }
-#' For further details on the metods, see \code{\link{det_hrz}} or the paper of Mahling et al. (2012)(References). \cr
+#' For further details on the methods, see \code{\link{det_hrz}} or the paper of Mahling et al. (2013)(References). \cr
 #' There are three ways to simulate data for the evaluation.
 #' 
 #' The three simulation types are:
 #' \describe{
 #' \item{ Data-based simulation }{
-#'        Here a given data set is used. The data set is being thinned as explaned below.
-#'        Note, that this method is very different to the others, since it is using the real data.
+#'        Here a given data set is used. The data set is thinned as explained below.
+#'        Note that this method is very different from the others, since it is using the real data.
 #'        }
 #' \item{ Simulation of an inhomogeneous Poisson process }{
-#'        Here an inhomogeneous Poisson process is simulated and then that data is thinned.
+#'        Here, an inhomogeneous Poisson process is simulated and then that data is thinned.
 #'        }
 #' \item{ Simulation of a Neyman-Scott process }{
 #'        Here a Neyman-Scott process is simulated (see \code{\link{sim_nsppp}}, \code{\link[spatstat]{rNeymanScott}})
@@ -48,25 +48,25 @@
 #'                    points are located. Only used for \code{simulate = "clintens"}. 
 #' @param clustering  a value >= 1 which describes the amount of clustering; the
 #'          adjusted estimated intensity of the observed pattern is divided by
-#'          this value; it also is the parameter of the Poisson distribution
+#'          this value; it is also the parameter of the Poisson distribution
 #'          for the number of points per cluster. Only used for \code{simulate = "clintens"}.
 #' @param pbar  logical. Should progress bar be printed?
 #' @export  
 #' @return A \code{data.frame} with variables 
 #'    \item{ Iteration }{ Iterationstep of the result }
 #'    \item{ Type, Criterion, Cutoff, nxprob }{ see arguments }
-#'    \item{ threshold }{ determined threshold. For criterion="area" it is the distance for type="dist" 
-#' and the threshold c for type="intens". For criterion="indirect" it is the quantile of the 
-#' next-neighbour distance for type="dist" and the threshold c for type="intens". For criterion="direct"
-#' it equals the cutoff for both types. }
-#'    \item{ calccutoff }{ determined cutoff-value. For type="dist" and criterion="area" this is the 
-#' quantile of the next-neighbour distance. For type="intens" and criterion="area" it is the failure
-#' probability alpha. For all other criterions it is NA. }
+#'    \item{ threshold }{ determined threshold. If criterion="area", it is either the distance (if type="dist")
+#' or the threshold c (for type="intens"). If criterion="indirect", it is either the quantile of the
+#' nearest-neighbour distance which is used as radius (if type="dist") or the threshold c (for type="intens"). If criterion="direct",
+#' it equals the cutoff for both types.}
+#'    \item{ calccutoff }{ determined cutoff-value. For type="dist" and criterion="area", this is the
+#' quantile of the nearest-neighbour distance. For type="intens" and criterion="area", it is the failure
+#' probability alpha. For all other criterions it is NA.}
 #'    \item{ covmatrix11, covmatrix12, covmatrix21, covmatrix22 }{ values in the covariance matrix. 
 #' covmatrix11 and covmatrix22 are the diagonal elements (variances). }
 #'    \item{ numbermiss }{ number of unobserved points outside the high-risk zone }
 #'    \item{ numberunobserved }{ number of observations in the unobserved point pattern \ifelse{latex}{\eqn{\tilde Z}}{Z'} }
-#'    \item{ missingfrac }{ fraction of numbermiss/numberunobserved }
+#'    \item{ missingfrac }{ fraction of unobserved events outside the high-risk zone (numbermiss/numberunobserved) }
 #'    \item{ arearegion }{ area of the high-risk zone }
 #'    \item{ numberobs }{ number of observations in the observed point pattern \ifelse{latex}{\eqn{\tilde Y}}{Y'} }
 #'    

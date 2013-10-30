@@ -1,15 +1,16 @@
 #' Evaluation of the high-risk zone.  
 #'
-#' Evaluation of the high-risk zone, which is only possible with simulated or thinned data. 
+#' Evaluation of the high-risk zone, which is only possible with simulated or thinned data or if the locations
+#' of the unobserved events have been revealed..
 #'
 #' @param hrz  High-risk zone of class owin based on a binary mask (see \code{\link[spatstat]{area.owin}})
 #' @param unobspp  Unobserved spatial point process 
-#' @param obspp  Observeved spatial point process 
+#' @param obspp  Observed spatial point process
 #' @export  
 #' @return An object of class "\code{hrzeval}", which is a list of
 #'    \item{ numbermiss }{ number of unobserved events outside the high-risk zone }
 #'    \item{ numberunobserved }{ number of events in the unobserved point pattern }
-#'    \item{ missingfrac }{ fraction of numbermiss/numberunobserved }
+#'    \item{ missingfrac }{ fraction of unobserved events outside the high-risk zone (numbermiss/numberunobserved) }
 #'    \item{ arearegion }{ area of the high-risk zone }
 #'    \item{ numberobs }{ number of events in the observed point pattern }
 #'    \item{ out }{ subset of the unobserved events, which are outside the high-risk zone }

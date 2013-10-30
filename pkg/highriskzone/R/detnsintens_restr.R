@@ -1,6 +1,6 @@
 #' Determination of the intensity for the Neyman-Scott simulation.
 #'
-#' Used in function sim_nsppp.
+#' Used in function bootcor_restr.
 #'
 #' @param ppdata  observed point pattern whose estimated intensity (adjusted for
 #'          thinning and divided by "clustering") is used for simulating the

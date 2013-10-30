@@ -1,38 +1,15 @@
 #' Bootstrap correction to obtain desired failure probability
 #'
-#' Description
+#' Simulation-based iterative procedure to correct for possible bias with respect to the
+#' failure probability alpha
 #'
-#' @param ppdata Observed spatial point process of class ppp.
-#' @param cutoff Desired failure probability alpha, which is the probability of having
-#'                 unobserved events outside the high-risk zone.
-#' @param numit Number of iteration to perform (per tested value for cutoff)
-#' @param tol Tolerance: acceptable difference between the desired failure probability and the fraction of
-#'             high-risk zones not covering all events
-#' @param nxprob Probability of having unobserved events.
-#'                Default value is 0.1.
-#' @param hole  (optional) an object of class \code{owin} representing a region inside the observation window of
-#'               the \code{ppdata} where no observations were possible.
-#' @param obsprobsimage  (optional) an object of class \code{im} giving the observation probabilities inside the
-#'                        observation window. Ranges of the coordinates must equal those of \code{ppdata}.
-#'                        Only used if \code{obsprobs} is not given.
-#' @param intens (optional) estimated intensity of the observed process (object of class "im",
-#'                see \code{\link[spatstat]{density.ppp}}), only needed for type="intens". If not given,
-#'                it will be estimated.
-#' @param covmatrix  (optional) Covariance matrix of the kernel of a normal distribution, only meaningful for
-#'                    \code{type="intens"} if no intensity is given. If not given, it will be estimated.
-#' @param simulate The type of simulation, can be one of \code{"thinning", "intens"} or \code{"clintens"}
-#' @param radiusClust (Optional) radius of the circles around the parent points in which the cluster
-#'                    points are located. Only used for \code{simulate = "clintens"}.
-#' @param clustering a value >= 1 which describes the amount of clustering; the
-#'          adjusted estimated intensity of the observed pattern is divided by
-#'          this value; it also is the parameter of the Poisson distribution
-#'          for the number of points per cluster. Only used for \code{simulate = "clintens"}.
-#' @param verbose logical. Should information on tested values/progress be printed?
-#' @export
-#' @return An object of class bootcorr, which consists of a list of the final value for alpha (alphastar)
-#'         and a data.frame course containing information on the simulation course, e.g. the tested values.
-#' @seealso \code{\link[highriskzone]{det_hrz}}, \code{\link[highriskzone]{eval_method}}
-#'
+#' For a desired failure probability alpha, the corresponding parameter which is to use
+#' when determining a high-risk zone is found in an iterative procedure. The simulation procedure
+#' is the same as in \code{\link[highriskzone]{eval_method}}. In every iteration,
+#' the number of high-risk zones with at least one unobserved event located outside is
+#' compared with the desired failure probability. If necessary, the value of \code{cutoff} is
+#' increased or decreased. The final value \code{alphastar} can than be used in
+#' \code{\link[highriskzone]{det_hrz}}.
 #'
 #' The function offers the possibility to take into account so-called restriction areas. This is relevant in
 #' situations where the observed point pattern \code{ppdata} is incomplete. If it is known that no observations
@@ -42,11 +19,88 @@
 #' part of the resulting high-risk zone.
 #' Another approach consists in weighting the observed events with their reciprocal observation probability when
 #' estimating the intensity. To do so, the observation probability can be specified by using
-#' \code{obsprobsimage} (image of the observation probability). Note that the
+#' \code{obsprobsimage} (an image of the observation probability). Note that the
 #' observation probability may vary in space.
 #'
 #' For further information, see Mahling (2013), Appendix A (References).
 #'
+#' If there are no restriction areas in the observation window, \code{\link[highriskzone]{bootcor}}
+#' can be used instead.
+#'
+#' @param ppdata Observed spatial point process of class ppp.
+#' @param cutoff Desired failure probability alpha, which is the probability of having
+#'                 unobserved events outside the high-risk zone.
+#' @param numit Number of iterations to perform (per tested value for cutoff). Default value is 1000.
+#' @param tol Tolerance: acceptable difference between the desired failure probability and the fraction of
+#'             high-risk zones not covering all events. Default value is 0.02.
+#' @param nxprob Probability of having unobserved events.
+#'                Default value is 0.1.
+#' @param hole  (optional) an object of class \code{owin} representing a region inside the observation window of
+#'               the \code{ppdata} where no observations were possible.
+#' @param obsprobsimage  (optional) an object of class \code{im} giving the observation probabilities inside the
+#'                        observation window. Ranges of the coordinates must equal those of \code{ppdata}.
+#'                        Only used if \code{obsprobs} is not given.
+#' @param intens (optional) estimated intensity of the observed process (object of class "im",
+#'                see \code{\link[spatstat]{density.ppp}}). If not given,
+#'                it will be estimated.
+#' @param covmatrix  (optional) Covariance matrix of the kernel of a normal distribution, only meaningful
+#'                    if no intensity is given. If not given, it will be estimated.
+#' @param simulate The type of simulation, can be one of \code{"thinning", "intens"} or \code{"clintens"}
+#' @param radiusClust (optional) radius of the circles around the parent points in which the cluster
+#'                    points are located. Only used for \code{simulate = "clintens"}.
+#' @param clustering a value >= 1 which describes the amount of clustering; the
+#'          adjusted estimated intensity of the observed pattern is divided by
+#'          this value; it also is the parameter of the Poisson distribution
+#'          for the number of points per cluster. Only used for \code{simulate = "clintens"}.
+#' @param verbose logical. Should information on tested values/progress be printed?
+#' @export
+#' @return An object of class bootcorr, which consists of a list of the final value for alpha (\code{alphastar})
+#'         and a data.frame \code{course} containing information on the simulation course, e.g. the tested values.
+#' @references Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut \enc{Küchenhoff}{Kuechenhoff} (2013),
+#' \emph{Determining high-risk zones for unexploded World War II bombs by using point process methodology.}
+#' Journal of the Royal Statistical Society, Series C 62(2), 181-199.
+#' @references Monia Mahling (2013),
+#' \emph{Determining high-risk zones by using spatial point process methodology.}
+#' Ph.D. thesis, Cuvillier Verlag \enc{Göttingen}{Goettingen},
+#' available online: http://edoc.ub.uni-muenchen.de/15886/
+#' Chapter 6 and Appendix A
+#' @seealso \code{\link[highriskzone]{det_hrz}}, \code{\link[highriskzone]{eval_method}}, \code{\link[highriskzone]{bootcor}}
+#' @examples
+#' data(craterB)
+#' set.seed(4321)
+
+#'# define restriction area
+#'restrwin <- owin(xrange=craterA$window$xrange, yrange=craterA$window$yrange,
+#'  poly=list(x=c(1500, 1500, 2000, 2000), y=c(2000, 1500, 1500, 2000)))
+#'
+#'# create image of observation probability (30% inside restriction area)
+#'wim <- as.im(craterA$window, value=1)
+#'rim <- as.im(restrwin, xy=list(x=wim$xcol, y=wim$yrow))
+#'rim$v[is.na(rim$v)] <- 0
+#'oim1 <- eval.im(wim - 0.7 * rim)
+#'
+#' \dontrun{
+#'# perform bootstrap correction
+#' bc1 <- bootcor(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, obsprobimage=oim1, nxprob=0.1)
+#' bc1
+#' summary(bc1)
+#' plot(bc1)
+#'
+#'# determine high-risk zone by weighting the observations
+#'hrzi1 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
+#'  cutoff = bc1$alphastar, hole=NULL, obsprobs=NULL, obsprobimage=oim1, nxprob = 0.1)
+#'
+#'# perform bootstrap correction
+#' bc2 <- bootcor(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, hole=restrwin, nxprob=0.1)
+#' bc2
+#' summary(bc2)
+#' plot(bc2)
+#'
+#'# determine high-risk zone by accounting for a hole
+#'hrzi2 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
+#'  cutoff = 0.4, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
+#' }
+
 
 
 bootcor_restr <- function(ppdata, cutoff, numit = 100, tol=0.001, nxprob = 0.1,
@@ -90,7 +144,7 @@ bootcor_restr <- function(ppdata, cutoff, numit = 100, tol=0.001, nxprob = 0.1,
   #here the intensity is being estimated
   if ( simulate == "intens" ) {
 
-    origintens <- est_intens_weight(ppdata, covmatrix=covmatrix, weights=1/invweight)
+    origintens <- est_intens(ppdata, covmatrix=covmatrix, weights=1/invweight)
     intensSim <- origintens$intensest
     intensSim$v <- (1/(1 - nxprob))*origintens$intensest$v
 
@@ -151,7 +205,7 @@ bootcor_restr <- function(ppdata, cutoff, numit = 100, tol=0.001, nxprob = 0.1,
         obsprobs <- obsprobimage[observed]
       }else{obsprobs <- rep(1, times=observed$n)}
       invweight <- obsprobs
-      estim <- est_intens_weight(observed, covmatrix=covmatrix, weights=1/invweight)
+      estim <- est_intens(observed, covmatrix=covmatrix, weights=1/invweight)
       intens <- estim$intensest
       covmatrix <- estim$covmatrix
     }

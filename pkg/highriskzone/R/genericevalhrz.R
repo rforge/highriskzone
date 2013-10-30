@@ -1,4 +1,4 @@
-#' Print Brief Details of a the evaluation of a high-risk zone
+#' Print Brief Details of an evaluation of a high-risk zone
 #' 
 #' Prints a very brief description of the evaluation of a high-risk zone.
 #'
@@ -46,7 +46,7 @@ summary.hrzeval <- function(object, ...){
 #' Plot a visualization of the evaluation of a high-risk zone. At least the observation window and the unobserved events 
 #' inside and outside the high-risk zone are plotted.
 #' 
-#' This is the plot method for the class \code{hrzeval}
+#' This is the plot method for the class \code{hrzeval}.
 #' 
 #' @param x evaluation of a high-risk zone (object of class "\code{hrzeval}")
 #' @param ... extra arguments passed to the generic \code{\link[graphics]{plot}} function.

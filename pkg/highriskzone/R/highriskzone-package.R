@@ -1,12 +1,12 @@
 
-#' The highriskzone-package provides tools to determine and evaluate high-risk zones of 
-#' unobserved events using point process methodology. 
+#' The package highriskzone provides tools to determine and evaluate high-risk zones of
+#' unobserved events by using point process methodology.
 #'
 #' \tabular{ll}{
 #' Package: \tab highriskzone\cr
 #' Type: \tab Package\cr
-#' Version: \tab 1.0\cr
-#' Date: \tab 2012-07-11\cr
+#' Version: \tab 1.1\cr
+#' Date: \tab 2013-10-31\cr
 #' License: \tab MIT\cr
 #' LazyLoad: \tab yes\cr
 #' }
@@ -21,9 +21,9 @@
 #' @docType package
 #' @aliases highriskzone package-highriskzone
 #' @import spatstat ks
-#' @title Determining high risk zones using point process methodology
+#' @title Determining high-risk zones by using spatial point process methodology
 #' @keywords package
-#' @references Monia Mahling, Michael \enc{Höhle}{Hoehle}& Helmut \enc{Küchenhoff}{Kuechenhoff} (2013),
+#' @references Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut \enc{Küchenhoff}{Kuechenhoff} (2013),
 #' \emph{Determining high-risk zones for unexploded World War II bombs by using point process methodology.}
 #' Journal of the Royal Statistical Society, Series C 62(2), 181-199. \cr
 #'

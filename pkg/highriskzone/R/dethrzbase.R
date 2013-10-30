@@ -2,11 +2,11 @@
 # Teilfunktionen Bestimmung HRZ                                                #
 ################################################################################
 
-#' Determination of the area of a high-risk zone using the next neighbour distance. 
+#' Determination of the area of a high-risk zone using the nearest-neighbour distance.
 #'
 #' Used in function det_radius.
 #'
-#' @param cutoffval  distance used ...?
+#' @param cutoffval  distance used as radius of the discs
 #' @param distancemap  distance map (object of class "im", see \code{\link[spatstat]{distmap}}): 
 #'                     distance of every location in the observation window to the nearest event
 #' @param win  observation window of class owin 
@@ -24,17 +24,17 @@ det_nnarea <- function(cutoffval, distancemap, win){
 }
 
 
-#' Determination of the next neighbour distance which results in a high-risk zone with desired area 
+#' Determination of the nearest-neighbour distance which results in a high-risk zone with desired area
 #'
-#' Used in function det_hrz
+#' Used in function det_hrz.
 #'
-#' @param ppdata  observed spacial point process of class ppp.
+#' @param ppdata  observed spatial point pattern of class ppp.
 #' @param distancemap  distance map (object of class "im", see \code{\link[spatstat]{distmap}}): 
-#'                     distance of every location in the observation window to the nearest other event
+#'                     distance of every location in the observation window to the nearest event
 #' @param areahrz  given area of the high-risk zone
 #' @param win  observation window of class owin 
 #' @return A list of 
-#'     \item{ cutoffdist }{ quantile of the next neighbour distance }
+#'     \item{ cutoffdist }{ quantile of the nearest-neighbour distance }
 #'     \item{ thresh }{ distance }
 #' @seealso \code{\link{det_nnarea}}, \code{\link[stats]{quantile}}, \code{\link[stats]{uniroot}}
 
@@ -83,14 +83,14 @@ det_radius <- function(ppdata, distancemap, areahrz, win){
 
 #' calculation of alpha (failure probability), when having the threshold c
 #'
-#' This function is for the intensity-based method. It determines the 
+#' This function is used for the intensity-based method. It determines the
 #' probability to have at least one unobserved event outside the high-risk zone. 
-#' Poisson distribution is used for the number of unobserved events in a certain area or field.
+#' A Poisson distribution is used for the number of unobserved events in a certain area or field.
 #' Used in functions det_threshold, det_thresholdfromarea.
 #'
 #' @param intens  estimated intensity of the observed process (object of class "im", see \code{\link[spatstat]{density.ppp}})
 #' @param threshold  threshold c: The high-risk zone is the field in which the estimated intensity 
-#'                   exceeds this value
+#'                   exceeds this value.
 #' @param nxprob  probability of having unobserved events   
 #' @return value of alpha
 
@@ -124,9 +124,9 @@ det_alpha <- function(intens, threshold, nxprob=0.1) {
 #' Calculation of the threshold c, when having failure probability alpha.
 #'
 #' The high-risk zone is the field in which the estimated intensity 
-#' exceeds the threshold c, which is determinded here, having the failure probability
+#' exceeds the threshold c, which is determined here, having the failure probability
 #' alpha.
-#' This function is for the intensity-method. Used in function det_hrz. 
+#' This function is for the intensity-based method. Used in function det_hrz.
 #'
 #' @param intens  estimated intensity of the observed process (object of class "im", see \code{\link[spatstat]{density.ppp}})
 #' @param alpha   failure probability: probability to have at least one unobserved event
@@ -155,8 +155,8 @@ det_threshold <- function(intens, alpha=1e-5, nxprob=0.1){
 
 #' Calculation of the area of the high-risk zone. 
 #'
-#' This function is for the intensity-based method. Calculation of the
-#' area of the high-risk zone having the observation window, 
+#' This function is used for the intensity-based method. Calculation of the
+#' area of the high-risk zone given the observation window,
 #' the intensity matrix and the threshold c. Used in function 
 #' det_thresholdfromarea.
 #'
@@ -185,7 +185,7 @@ det_area <- function(win, intensmatrix, threshold){
 #' Determination of alpha and the threshold c which results
 #' in a high-risk zone with desired area. 
 #'
-#' This function is for the intensity-based method. Used in function det_hrz. 
+#' This function is used for the intensity-based method. Used in function det_hrz.
 #'
 #' @param intens  estimated intensity of the observed process (object of class "im", see \code{\link[spatstat]{density.ppp}}) 
 #' @param areahrz  area of the high-risk zone 
@@ -194,7 +194,7 @@ det_area <- function(win, intensmatrix, threshold){
 #' @return A list of
 #'   \item{ threshold }{ Value of the threshold c. The high-risk zone is the field in which the estimated intensity 
 #'                   exceeds this value }
-#'   \item{ calccutoff }{ failure probability alpha; probability to have at least unobserved event outside the high-risk zone }
+#'   \item{ calccutoff }{ failure probability alpha for given area; probability to have at least unobserved event outside the high-risk zone }
 #' @seealso \code{\link{det_area}}, \code{\link{det_alpha}}
 
 #- früher: intens_area  

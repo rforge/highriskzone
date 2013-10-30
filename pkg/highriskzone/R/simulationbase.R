@@ -2,13 +2,14 @@
 
 #' Thinning of the observations (for evaluating the method)
 #'
-#' The thinning is done by drawing independently from a Bernoulli distribution. Function is needed for functions eval_method, sim_clintens, sim_intens
+#' The thinning is done by drawing independently from a Bernoulli distribution. This function is needed for functions eval_method, sim_clintens, sim_intens
 #' 
 #' @export
 #' @param full  all observations of the point pattern
 #' @param nxprob  probability of having unobserved events 
-#' @return A list of of observed and unobserved point patterns. Both of class ppp.
+#' @return A list of observed and unobserved point patterns. Both of class ppp.
 #' @seealso \code{\link[stats]{rbinom}}, \code{\link[spatstat]{ppp}}
+#' @examples
 #'  data(craterB)
 #'  thdata <- thin(craterB, nxprob=0.1)
 #'  thdata
@@ -31,8 +32,8 @@ thin <- function(full, nxprob){
 
 #' Simulation on given intensity
 #' 
-#' Generation of a random point patter using the inhomogeneous Poisson process (if lambda is not constant) 
-#' and thinning of this data, to get "observed" and "unobserved" events.
+#' Generation of a random point pattern using the inhomogeneous Poisson process (if lambda is not constant)
+#' and thinning of this data, to obtain "observed" and "unobserved" events.
 #'
 #' @param ppdata  Observed spatial point process of class ppp
 #' @param intensSim  Intensity to use for the simulation
@@ -120,7 +121,7 @@ det_nsintens <- function(ppdata, radius){
 #' Simulation of the Neyman-Scott process.  
 #'
 #' Simulation of the Neyman-Scott process. Only applicable if the intensity was estimated
-#' for an appropriatedly enlarged window.
+#' for an appropriately enlarged window.
 #' More details in \code{sim_nsppp}.
 #'
 #' @param ppdata  observed point pattern whose estimated intensity (adjusted for
@@ -131,10 +132,11 @@ det_nsintens <- function(ppdata, radius){
 #'          points are located (Maximum radius of a random cluster)
 #' @param clustering  a value larger or equal 1 which describes the amount of clustering; the
 #'          adjusted estimated intensity of the observed pattern is divided by
-#'          this value; it also is the parameter of the Poisson distribution
+#'          this value; it is also the parameter of the Poisson distribution
 #'          for the number of points per cluster
 #' @param thinning  constant thinning probability (in case the observed pattern is a
-#'          thinned version of a full pattern)
+#'          thinned version of a full pattern); usually equal to the probability of having
+#'          unobserved events
 #' @return The simulated point pattern (an object of class "ppp").
 #'        Additionally, some intermediate results of the simulation are returned as 
 #'        attributes of this point pattern: see \code{\link[spatstat]{rNeymanScott}}.
@@ -178,12 +180,12 @@ sim_nsprocess <- function(ppdata, intens, radius, clustering=5, thinning=0){
 #' by calling the function \code{\link[spatstat]{runifdisc}}. Each cluster consists of a Poisson
 #' distributed number of points (with \code{clustering} being the expected number of
 #' points in each cluster) which are located in a disc of a given \code{radius}.
-#' These clusters are combined together to yield a single point pattern which is
+#' These clusters are combined to yield a single point pattern which is
 #' then returned as the result.\cr
 #' The estimation of the intensity (on an adequate window) and the
 #' simulation of the Neyman-Scott process are performed seperately,
 #' so the intensity does not need to be reestimated in every iteration.\cr
-#' The resulting process is a Matern process whose parent process is an 
+#' The resulting process is a Matérn process whose parent process is an
 #' inhomogeneous Poisson point process.
 #'
 #' @param ppdata  observed point pattern, whose estimated intensity (adjusted for
@@ -193,10 +195,11 @@ sim_nsprocess <- function(ppdata, intens, radius, clustering=5, thinning=0){
 #'          points are located (Maximum radius of a random cluster)
 #' @param clustering  a value larger or equal 1 which describes the amount of clustering; the
 #'          adjusted estimated intensity of the observed pattern is divided by
-#'          this value; it also is the parameter of the Poisson distribution
+#'          this value; it is also the parameter of the Poisson distribution
 #'          for the number of points per cluster
 #' @param thinning  constant thinning probability (in case the observed pattern is a
-#'          thinned version of a full pattern)
+#'          thinned version of a full pattern); usually equal to the probability of having
+#'          unobserved events
 #' @export  
 #' @return The simulated point pattern (an object of class "ppp").
 #'        Additionally, some intermediate results of the simulation are returned as 
