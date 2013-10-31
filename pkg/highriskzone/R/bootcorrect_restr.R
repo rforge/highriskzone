@@ -91,6 +91,7 @@
 #'  cutoff = bc1$alphastar, hole=NULL, obsprobs=NULL, obsprobimage=oim1, nxprob = 0.1)
 #'
 #'# perform bootstrap correction
+#' set.seed(4321)
 #' bc2 <- bootcor_restr(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, hole=restrwin, nxprob=0.1)
 #' bc2
 #' summary(bc2)
@@ -98,7 +99,7 @@
 #'
 #'# determine high-risk zone by accounting for a hole
 #'hrzi2 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
-#'  cutoff = 0.4, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
+#'  cutoff = bc2$alphastar, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
 #' }
 
 
