@@ -66,7 +66,7 @@
 #' Chapter 6 and Appendix A
 #' @seealso \code{\link[highriskzone]{det_hrz}}, \code{\link[highriskzone]{eval_method}}, \code{\link[highriskzone]{bootcor}}
 #' @examples
-#' data(craterB)
+#' data(craterA)
 #' set.seed(4321)
 
 #'# define restriction area
@@ -81,7 +81,7 @@
 #'
 #' \dontrun{
 #'# perform bootstrap correction
-#' bc1 <- bootcor(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, obsprobimage=oim1, nxprob=0.1)
+#' bc1 <- bootcor_restr(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, obsprobimage=oim1, nxprob=0.1)
 #' bc1
 #' summary(bc1)
 #' plot(bc1)
@@ -91,7 +91,7 @@
 #'  cutoff = bc1$alphastar, hole=NULL, obsprobs=NULL, obsprobimage=oim1, nxprob = 0.1)
 #'
 #'# perform bootstrap correction
-#' bc2 <- bootcor(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, hole=restrwin, nxprob=0.1)
+#' bc2 <- bootcor_restr(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, hole=restrwin, nxprob=0.1)
 #' bc2
 #' summary(bc2)
 #' plot(bc2)
