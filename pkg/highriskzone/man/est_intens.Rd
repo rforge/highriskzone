@@ -2,19 +2,22 @@
 \alias{est_intens}
 \title{Estimates the intensity of the point pattern.}
 \usage{
-  est_intens(ppdata, covmatrix = NULL)
+  est_intens(ppdata, covmatrix = NULL, weights = NULL)
 }
 \arguments{
   \item{ppdata}{data of class ppp}
 
   \item{covmatrix}{(Optional) Covariance matrix of the
-  kernel of a normal distribution.}
+  kernel of a normal distribution}
+
+  \item{weights}{(Optional) vector of weights attached to
+  each observation}
 }
 \value{
   A list of \item{ intensest }{ Estimated intensity (object
   of class "im", see \code{\link[spatstat]{density.ppp}}).
   } \item{ covmatrix }{ Covariance matrix. If
-  \code{covmatrix = NULL} the matrix is estimated by
+  \code{covmatrix = NULL}, the matrix is estimated by
   \code{\link[ks]{Hscv}}. }
 }
 \description{

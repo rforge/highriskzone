@@ -10,17 +10,21 @@
   \item{nxprob}{probability of having unobserved events}
 }
 \value{
-  A list of of observed and unobserved point patterns. Both
-  of class ppp.
+  A list of observed and unobserved point patterns. Both of
+  class ppp.
 }
 \description{
   The thinning is done by drawing independently from a
-  Bernoulli distribution. Function is needed for functions
-  eval_method, sim_clintens, sim_intens
+  Bernoulli distribution. This function is needed for
+  functions eval_method, sim_clintens, sim_intens
+}
+\examples{
+data(craterB)
+ thdata <- thin(craterB, nxprob=0.1)
+ thdata
+ plot(thdata$observed); points(thdata$unobserved, col=4)
 }
 \seealso{
   \code{\link[stats]{rbinom}}, \code{\link[spatstat]{ppp}}
-  data(craterB) thdata <- thin(craterB, nxprob=0.1) thdata
-  plot(thdata$observed); points(thdata$unobserved, col=4)
 }
 

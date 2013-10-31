@@ -21,7 +21,7 @@
   \code{\link[spatstat]{density.ppp}}.
 }
 \description{
-  Used in function sim_nsppp.
+  Used in function bootcor_restr.
 }
 \seealso{
   \code{\link[spatstat]{density.ppp}},

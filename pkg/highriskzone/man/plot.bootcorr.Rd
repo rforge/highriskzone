@@ -17,10 +17,11 @@
   plotted.
 }
 \details{
-  This is the plot method for the class \code{hrzeval}
+  This is the plot method for the class \code{bootcorr}.
 }
 \seealso{
-  \code{\link[graphics]{plot}}, \code{\link{bootcor}},
-  \code{\link{plot.bootcorr}}
+  \code{\link[graphics]{plot}},
+  \code{\link{print.bootcor}},
+  \code{\link{summary.bootcorr}}
 }
 

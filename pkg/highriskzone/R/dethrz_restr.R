@@ -6,7 +6,7 @@
 #' Restriction areas can be taken into account.
 #'
 #' Used in functions eval_method, sim_clintens, sim_intens.
-#'
+#' \cr
 #' This function contains the same functionalities as \code{\link[highriskzone]{det_hrz}}.
 #' In addition, it offers the possibility to take into account so-called restriction areas. This is relevant in
 #' situations where the observed point pattern \code{ppdata} is incomplete. If it is known that no observations
@@ -19,10 +19,10 @@
 #' estimating the intensity. To do so, the observation probability can be specified by using \code{obsprobs} (value of the
 #' observation probability for each event) or \code{obsprobsimage} (image of the observation probability). Note that the
 #' observation probability may vary in space.
-#'
+#' \cr
 #' If there are no restriction areas in the observation window, \code{\link[highriskzone]{det_hrz}}
 #' can be used instead.
-#'
+#' \cr
 #' Note that for \code{criterion = "area"}, \code{cutoff} specifies the area of the high-risk zone outside the hole. If
 #' \code{integratehole = TRUE}, the area of the resulting high-risk zone will exceed \code{cutoff}.
 #' }

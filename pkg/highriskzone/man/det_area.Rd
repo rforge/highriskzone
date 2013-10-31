@@ -18,8 +18,8 @@
   A numerical value giving the area of the high-risk zone.
 }
 \description{
-  This function is for the intensity-based method.
-  Calculation of the area of the high-risk zone having the
+  This function is used for the intensity-based method.
+  Calculation of the area of the high-risk zone given the
   observation window, the intensity matrix and the
   threshold c. Used in function det_thresholdfromarea.
 }

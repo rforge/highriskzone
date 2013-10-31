@@ -1,6 +1,6 @@
 \name{print.hrzeval}
 \alias{print.hrzeval}
-\title{Print Brief Details of a the evaluation of a high-risk zone}
+\title{Print Brief Details of an evaluation of a high-risk zone}
 \usage{
   \method{print}{hrzeval} (x, ...)
 }

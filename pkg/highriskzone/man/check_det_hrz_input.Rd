@@ -9,9 +9,9 @@
   \item{ppdata}{Observed spatial point process of class
   ppp.}
 
-  \item{type}{Method to use, can be one of
-  \code{"dist"}(method of fixed radius or quantile-based
-  method), or \code{"intens"}(intensity-based method)}
+  \item{type}{Method to use, can be one of \code{"dist"}
+  (method of fixed radius or quantile-based method), or
+  \code{"intens"} (intensity-based method)}
 
   \item{criterion}{criterion to limit the high-risk zone,
   can be one of \code{"area"} (giving size of hrz),
@@ -21,10 +21,10 @@
 
   \item{cutoff}{Value of criterion (area, radius, quantile,
   alpha or threshold).  Depending on criterion and type: If
-  criterion = "direct" cutoff is the threshold. If
-  criterion = "indirect" cutoff is the quantile for the
+  criterion = "direct", cutoff is the threshold. If
+  criterion = "indirect", cutoff is the quantile for the
   quantile-based method and the failure probability alpha
-  for the intensity-base method. If criterion = "area"
+  for the intensity-base method. If criterion = "area",
   cutoff is the area the high-risk zone should have.}
 
   \item{distancemap}{(optional) distance map: distance of
@@ -48,7 +48,7 @@
   \code{\link[ks]{Hscv}}.}
 }
 \description{
-  For each argument it is checked, if it is of a correct
+  For each argument it is checked if it is of a correct
   value or class.
 }
 \seealso{

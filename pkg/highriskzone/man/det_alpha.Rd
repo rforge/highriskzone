@@ -11,7 +11,7 @@
 
   \item{threshold}{threshold c: The high-risk zone is the
   field in which the estimated intensity exceeds this
-  value}
+  value.}
 
   \item{nxprob}{probability of having unobserved events}
 }
@@ -19,9 +19,9 @@
   value of alpha
 }
 \description{
-  This function is for the intensity-based method. It
+  This function is used for the intensity-based method. It
   determines the probability to have at least one
-  unobserved event outside the high-risk zone. Poisson
+  unobserved event outside the high-risk zone. A Poisson
   distribution is used for the number of unobserved events
   in a certain area or field. Used in functions
   det_threshold, det_thresholdfromarea.

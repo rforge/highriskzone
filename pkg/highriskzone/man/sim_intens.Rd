@@ -17,9 +17,9 @@
   \code{\link{thin}})
 }
 \description{
-  Generation of a random point patter using the
+  Generation of a random point pattern using the
   inhomogeneous Poisson process (if lambda is not constant)
-  and thinning of this data, to get "observed" and
+  and thinning of this data, to obtain "observed" and
   "unobserved" events.
 }
 \seealso{

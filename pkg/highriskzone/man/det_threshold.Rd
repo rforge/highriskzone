@@ -19,9 +19,10 @@
 }
 \description{
   The high-risk zone is the field in which the estimated
-  intensity exceeds the threshold c, which is determinded
+  intensity exceeds the threshold c, which is determined
   here, having the failure probability alpha. This function
-  is for the intensity-method. Used in function det_hrz.
+  is for the intensity-based method. Used in function
+  det_hrz.
 }
 \seealso{
   \code{\link{det_alpha}}, \code{\link[stats]{uniroot}}

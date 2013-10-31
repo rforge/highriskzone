@@ -20,12 +20,13 @@ in a high-risk zone with desired area.}
   A list of \item{ threshold }{ Value of the threshold c.
   The high-risk zone is the field in which the estimated
   intensity exceeds this value } \item{ calccutoff }{
-  failure probability alpha; probability to have at least
-  unobserved event outside the high-risk zone }
+  failure probability alpha for given area; probability to
+  have at least unobserved event outside the high-risk zone
+  }
 }
 \description{
-  This function is for the intensity-based method. Used in
-  function det_hrz.
+  This function is used for the intensity-based method.
+  Used in function det_hrz.
 }
 \seealso{
   \code{\link{det_area}}, \code{\link{det_alpha}}

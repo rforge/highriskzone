@@ -5,8 +5,8 @@
   summary.bootcorr(object, ...)
 }
 \arguments{
-  \item{object}{bootstrap correction for of a high-risk
-  zone (object of class "\code{bootcorr}")}
+  \item{object}{bootstrap correction for a high-risk zone
+  (object of class "\code{bootcorr}")}
 
   \item{...}{ignored}
 }
@@ -20,6 +20,7 @@
   generic function \code{\link[base]{summary}}.
 }
 \seealso{
-  \code{\link[base]{summary}}, \code{\link{print.bootcorr}}
+  \code{\link[base]{summary}},
+  \code{\link{print.bootcorr}}, \code{\link{plot.bootcorr}}
 }
 

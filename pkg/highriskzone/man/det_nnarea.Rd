@@ -1,11 +1,11 @@
 \name{det_nnarea}
 \alias{det_nnarea}
-\title{Determination of the area of a high-risk zone using the next neighbour distance.}
+\title{Determination of the area of a high-risk zone using the nearest-neighbour distance.}
 \usage{
   det_nnarea(cutoffval, distancemap, win)
 }
 \arguments{
-  \item{cutoffval}{distance used ...?}
+  \item{cutoffval}{distance used as radius of the discs}
 
   \item{distancemap}{distance map (object of class "im",
   see \code{\link[spatstat]{distmap}}): distance of every

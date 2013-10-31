@@ -1,6 +1,6 @@
 \name{print.bootcorr}
 \alias{print.bootcorr}
-\title{Print Brief Details of a the bootstrap correction for a high-risk zone}
+\title{Print Brief Details of a bootstrap correction for a high-risk zone}
 \usage{
   print.bootcorr(x, ...)
 }

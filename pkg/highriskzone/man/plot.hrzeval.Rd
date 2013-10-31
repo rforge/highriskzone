@@ -58,7 +58,7 @@
   events inside and outside the high-risk zone are plotted.
 }
 \details{
-  This is the plot method for the class \code{hrzeval}
+  This is the plot method for the class \code{hrzeval}.
 }
 \seealso{
   \code{\link[graphics]{plot}}, \code{\link{eval_hrz}},

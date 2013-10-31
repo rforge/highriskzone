@@ -16,12 +16,13 @@
   \item{clustering}{a value larger or equal 1 which
   describes the amount of clustering; the adjusted
   estimated intensity of the observed pattern is divided by
-  this value; it also is the parameter of the Poisson
+  this value; it is also the parameter of the Poisson
   distribution for the number of points per cluster}
 
   \item{thinning}{constant thinning probability (in case
   the observed pattern is a thinned version of a full
-  pattern)}
+  pattern); usually equal to the probability of having
+  unobserved events}
 }
 \value{
   The simulated point pattern (an object of class "ppp").
@@ -54,13 +55,13 @@
   of a Poisson distributed number of points (with
   \code{clustering} being the expected number of points in
   each cluster) which are located in a disc of a given
-  \code{radius}. These clusters are combined together to
-  yield a single point pattern which is then returned as
-  the result.\cr The estimation of the intensity (on an
+  \code{radius}. These clusters are combined to yield a
+  single point pattern which is then returned as the
+  result.\cr The estimation of the intensity (on an
   adequate window) and the simulation of the Neyman-Scott
   process are performed seperately, so the intensity does
   not need to be reestimated in every iteration.\cr The
-  resulting process is a Matern process whose parent
+  resulting process is a Matérn process whose parent
   process is an inhomogeneous Poisson point process.
 }
 \examples{
