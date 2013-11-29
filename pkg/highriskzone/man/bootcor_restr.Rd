@@ -29,7 +29,7 @@
   representing a region inside the observation window of
   the \code{ppdata} where no observations were possible.}
 
-  \item{obsprobsimage}{(optional) an object of class
+  \item{obsprobimage}{(optional) an object of class
   \code{im} giving the observation probabilities inside the
   observation window. Ranges of the coordinates must equal
   those of \code{ppdata}.  Only used if \code{obsprobs} is
@@ -109,7 +109,7 @@
   instead.
 }
 \examples{
-data(craterB)
+data(craterA)
 set.seed(4321)
 # define restriction area
 restrwin <- owin(xrange=craterA$window$xrange, yrange=craterA$window$yrange,
@@ -123,7 +123,7 @@ oim1 <- eval.im(wim - 0.7 * rim)
 
 \dontrun{
 # perform bootstrap correction
-bc1 <- bootcor(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, obsprobimage=oim1, nxprob=0.1)
+bc1 <- bootcor_restr(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, obsprobimage=oim1, nxprob=0.1)
 bc1
 summary(bc1)
 plot(bc1)
@@ -133,14 +133,15 @@ hrzi1 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
  cutoff = bc1$alphastar, hole=NULL, obsprobs=NULL, obsprobimage=oim1, nxprob = 0.1)
 
 # perform bootstrap correction
-bc2 <- bootcor(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, hole=restrwin, nxprob=0.1)
+set.seed(4321)
+bc2 <- bootcor_restr(ppdata=craterA, cutoff=0.4, numit=100, tol=0.02, hole=restrwin, nxprob=0.1)
 bc2
 summary(bc2)
 plot(bc2)
 
 # determine high-risk zone by accounting for a hole
 hrzi2 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
- cutoff = 0.4, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
+ cutoff = bc2$alphastar, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
 }
 }
 \references{

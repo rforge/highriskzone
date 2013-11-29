@@ -2,7 +2,7 @@
 \alias{print.bootcorr}
 \title{Print Brief Details of a bootstrap correction for a high-risk zone}
 \usage{
-  print.bootcorr(x, ...)
+  \method{print}{bootcorr} (x, ...)
 }
 \arguments{
   \item{x}{bootstrap correction for of a high-risk zone

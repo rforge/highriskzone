@@ -25,7 +25,7 @@
 #' \cr
 #' Note that for \code{criterion = "area"}, \code{cutoff} specifies the area of the high-risk zone outside the hole. If
 #' \code{integratehole = TRUE}, the area of the resulting high-risk zone will exceed \code{cutoff}.
-#' }
+#' 
 #'
 #' For further information, Mahling et al. (2013) and Mahling (2013), Chapters 4 and 8 and Appendix A (References).
 #'
@@ -46,7 +46,7 @@
 #'                              events can actually be observed. For example, if only one third of the events in a specific region
 #'                              could be observed, the observation probability of the corresponding observations
 #'                              is 1/3.
-#' @param obsprobsimage  (optional) an object of class \code{im} giving the observation probabilities inside the
+#' @param obsprobimage  (optional) an object of class \code{im} giving the observation probabilities inside the
 #'                        observation window. Ranges of the coordinates must equal those of \code{ppdata}.
 #'                        Only used if \code{obsprobs} is not given.
 #' @param distancemap  (optional) distance map: distance of every pixel to the nearest observation
@@ -61,7 +61,6 @@
 #'                    \code{type="intens"} if no intensity is given. If not given, it will be estimated.
 #' @param returnintens  Should the image of the estimated intensity be returned? Defaults to \code{TRUE}.
 #' @export
-#' @aliases highriskzone.object
 #' @return An object of class "\code{highriskzone}", which is a list of
 #'    \item{ typehrz, criterion, cutoff }{ see arguments}
 #'    \item{ zone }{ Determined high-risk zone: Object of class "owin" based on a binary mask.
@@ -73,7 +72,7 @@
 #'    \item{ calccutoff }{ determined cutoff-value. For type="dist" and criterion="area", this is the
 #' quantile of the nearest-neighbour distance. For type="intens" and criterion="area", it is the failure
 #' probability alpha. For all other criterions it is NA.}
-#'    \item{ covmatrix }{ If not given (and \code{type="intens"}), it is estimated. See \code{\link[ks]{Hscv}}.
+#'    \item{ covmatrix }{ If not given (and \code{type="intens"}), it is estimated. See \code{\link[ks]{Hscv}}.}
 #'    \item{ estint }{ Estimated intensity. See \code{\link[spatstat]{density.ppp}}.}
 #' @seealso \code{\link[spatstat]{distmap}}, \code{\link[spatstat]{eval.im}}, \code{\link[spatstat]{owin}}
 #' @examples
@@ -99,7 +98,9 @@
 #'  cutoff = 0.4, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
 #'
 
-det_hrz_restr <- function(ppdata, type, criterion, cutoff, hole=NULL, integratehole=TRUE, obsprobs=NULL, obsprobimage=NULL, distancemap=NULL, intens=NULL, nxprob=0.1, covmatrix=NULL, returnintens=TRUE){
+det_hrz_restr <- function(ppdata, type, criterion, cutoff, hole=NULL, integratehole=TRUE, 
+                          obsprobs=NULL, obsprobimage=NULL, distancemap=NULL, intens=NULL, 
+                          nxprob=0.1, covmatrix=NULL, returnintens=TRUE){
   
   win <- ppdata$window
   calccutoff <- NA    

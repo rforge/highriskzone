@@ -2,7 +2,7 @@
 \alias{summary.bootcorr}
 \title{Summary of a the bootstrap correction for a high-risk zone}
 \usage{
-  summary.bootcorr(object, ...)
+  \method{summary}{bootcorr} (object, ...)
 }
 \arguments{
   \item{object}{bootstrap correction for a high-risk zone

@@ -37,7 +37,7 @@
 #'                Default value is 0.1.
 #' @param hole  (optional) an object of class \code{owin} representing a region inside the observation window of
 #'               the \code{ppdata} where no observations were possible.
-#' @param obsprobsimage  (optional) an object of class \code{im} giving the observation probabilities inside the
+#' @param obsprobimage  (optional) an object of class \code{im} giving the observation probabilities inside the
 #'                        observation window. Ranges of the coordinates must equal those of \code{ppdata}.
 #'                        Only used if \code{obsprobs} is not given.
 #' @param intens (optional) estimated intensity of the observed process (object of class "im",

@@ -1,6 +1,5 @@
 \name{det_hrz_restr}
 \alias{det_hrz_restr}
-\alias{highriskzone.object}
 \title{Determination of the high-risk zone.}
 \usage{
   det_hrz_restr(ppdata, type, criterion, cutoff,
@@ -42,7 +41,7 @@
   specific region could be observed, the observation
   probability of the corresponding observations is 1/3.}
 
-  \item{obsprobsimage}{(optional) an object of class
+  \item{obsprobimage}{(optional) an object of class
   \code{im} giving the observation probabilities inside the
   observation window. Ranges of the coordinates must equal
   those of \code{ppdata}.  Only used if \code{obsprobs} is
@@ -89,7 +88,7 @@
   probability alpha. For all other criterions it is NA.}
   \item{ covmatrix }{ If not given (and
   \code{type="intens"}), it is estimated. See
-  \code{\link[ks]{Hscv}}.  \item{ estint }{ Estimated
+  \code{\link[ks]{Hscv}}.} \item{ estint }{ Estimated
   intensity. See \code{\link[spatstat]{density.ppp}}.}
 }
 \description{
@@ -129,7 +128,7 @@
   \code{cutoff} specifies the area of the high-risk zone
   outside the hole. If \code{integratehole = TRUE}, the
   area of the resulting high-risk zone will exceed
-  \code{cutoff}. }
+  \code{cutoff}.
 
   For further information, Mahling et al. (2013) and
   Mahling (2013), Chapters 4 and 8 and Appendix A

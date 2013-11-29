@@ -15,6 +15,10 @@ print.bootcorr <- function(x, ...){
   cat("resulting value for alpha (cutoff):", x$alphastar, " \n")
 }
 
+
+
+
+
 #' Summary of a the bootstrap correction for a high-risk zone
 #'
 #' Prints a useful summary of the bootstrap correction for a high-risk zone.
@@ -45,6 +49,9 @@ summary.bootcorr <- function(object, ...){
   
 }
 
+
+
+
 #' Visualize the bootstrap correction for a high-risk zone.
 #'
 #' Plot a visualization of the bootstrap correction for a high-risk zone.
@@ -56,7 +63,7 @@ summary.bootcorr <- function(object, ...){
 #' @param ... extra arguments passed to the generic \code{\link[graphics]{plot}} function.
 #' @method plot bootcorr
 #' @S3method plot bootcorr
-#' @seealso \code{\link[graphics]{plot}}, \code{\link{print.bootcor}}, \code{\link{summary.bootcorr}}
+#' @seealso \code{\link[graphics]{plot}}, \code{\link{print.bootcorr}}, \code{\link{summary.bootcorr}}
 
 
 plot.bootcorr <- function(x, ...){
