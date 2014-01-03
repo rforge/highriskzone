@@ -185,7 +185,7 @@ sim_nsprocess <- function(ppdata, intens, radius, clustering=5, thinning=0){
 #' The estimation of the intensity (on an adequate window) and the
 #' simulation of the Neyman-Scott process are performed seperately,
 #' so the intensity does not need to be reestimated in every iteration.\cr
-#' The resulting process is a Matérn process whose parent process is an
+#' The resulting process is a \enc{Matérn}{Matern} process whose parent process is an
 #' inhomogeneous Poisson point process.
 #'
 #' @param ppdata  observed point pattern, whose estimated intensity (adjusted for

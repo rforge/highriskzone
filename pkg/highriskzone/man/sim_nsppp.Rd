@@ -61,8 +61,8 @@
   adequate window) and the simulation of the Neyman-Scott
   process are performed seperately, so the intensity does
   not need to be reestimated in every iteration.\cr The
-  resulting process is a Matérn process whose parent
-  process is an inhomogeneous Poisson point process.
+  resulting process is a \enc{Matérn}{Matern} process whose
+  parent process is an inhomogeneous Poisson point process.
 }
 \examples{
 data(craterA)
