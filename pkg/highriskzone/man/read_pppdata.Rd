@@ -2,8 +2,7 @@
 \alias{read_pppdata}
 \title{Read data, so it can be used for high-risk zone methodology.}
 \usage{
-  read_pppdata(xppp, yppp, xwin = NULL, ywin = NULL,
-    unitname = NULL)
+read_pppdata(xppp, yppp, xwin = NULL, ywin = NULL, unitname = NULL)
 }
 \arguments{
   \item{xppp}{Vector of x coordinates of data points}
@@ -22,14 +21,14 @@
   respectively.}
 }
 \value{
-  An object of class "ppp" describing a point pattern in
-  the two-dimensional plane.
+An object of class "ppp" describing a point pattern in the
+two-dimensional plane.
 }
 \description{
-  If xwin or ywin is NULL, the observation window will be a
-  rectangular bounding box. Vertices must be listed
-  anticlockwise; no vertex should be repeated. Only needed
-  for data that is not already of class ppp.
+If xwin or ywin is NULL, the observation window will be a
+rectangular bounding box. Vertices must be listed
+anticlockwise; no vertex should be repeated. Only needed
+for data that is not already of class ppp.
 }
 \examples{
 data(craterA)
@@ -42,8 +41,8 @@ crater <- read_pppdata(xppp = patternA$x, yppp = patternA$y,
 crater
 }
 \seealso{
-  \code{\link[spatstat]{ppp}},
-  \code{\link[spatstat]{bounding.box.xy}},
-  \code{\link[spatstat]{owin}}
+\code{\link[spatstat]{ppp}},
+\code{\link[spatstat]{bounding.box.xy}},
+\code{\link[spatstat]{owin}}
 }
 

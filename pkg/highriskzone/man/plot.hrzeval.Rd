@@ -2,11 +2,10 @@
 \alias{plot.hrzeval}
 \title{Visualize the evaluation of a high-risk zone.}
 \usage{
-  \method{plot}{hrzeval} (x, ..., hrz = NULL, obspp = NULL,
-    plothrz = FALSE, plotobs = FALSE, windowcol = "white",
-    insidecol = "blue", outsidecol = "red", insidepch = 20,
-    outsidepch = 19, zonecol = "grey", obscol = "black",
-    obspch = 1)
+\method{plot}{hrzeval}(x, ..., hrz = NULL, obspp = NULL, plothrz = FALSE,
+  plotobs = FALSE, windowcol = "white", insidecol = "blue",
+  outsidecol = "red", insidepch = 20, outsidepch = 19, zonecol = "grey",
+  obscol = "black", obspch = 1)
 }
 \arguments{
   \item{x}{evaluation of a high-risk zone (object of class
@@ -53,15 +52,15 @@
   events}
 }
 \description{
-  Plot a visualization of the evaluation of a high-risk
-  zone. At least the observation window and the unobserved
-  events inside and outside the high-risk zone are plotted.
+Plot a visualization of the evaluation of a high-risk zone.
+At least the observation window and the unobserved events
+inside and outside the high-risk zone are plotted.
 }
 \details{
-  This is the plot method for the class \code{hrzeval}.
+This is the plot method for the class \code{hrzeval}.
 }
 \seealso{
-  \code{\link[graphics]{plot}}, \code{\link{eval_hrz}},
-  \code{\link{plot.highriskzone}}
+\code{\link[graphics]{plot}}, \code{\link{eval_hrz}},
+\code{\link{plot.highriskzone}}
 }
 

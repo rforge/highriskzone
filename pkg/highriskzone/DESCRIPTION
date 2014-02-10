@@ -16,21 +16,3 @@ Description: Functions for determining and evaluating high-risk zones and
     unexploded World War II bombs by using point process methodology' (Mahling
     et al., 2013).
 License: MIT
-Collate:
-    'dethrz.R'
-    'dethrzbase.R'
-    'estintens.R'
-    'evalhrz.R'
-    'evalmethod.R'
-    'readpppdata.R'
-    'simulationbase.R'
-    'highriskzone-package.R'
-    'data.R'
-    'genericevalhrz.R'
-    'generichrz.R'
-    'bootcorrect.R'
-    'bootcorrect_restr.R'
-    'dethrz_restr.R'
-    'detnsintens_restr.R'
-    'estintens_weight.R'
-    'genericbootcorr.R'

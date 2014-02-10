@@ -2,7 +2,7 @@
 \alias{summary.hrzeval}
 \title{Summary of a the evaluation of a high-risk zone}
 \usage{
-  \method{summary}{hrzeval} (object, ...)
+\method{summary}{hrzeval}(object, ...)
 }
 \arguments{
   \item{object}{evaluation of a high-risk zone (object of
@@ -11,15 +11,15 @@
   \item{...}{ignored}
 }
 \description{
-  Prints a useful summary of the evaluation of a high-risk
-  zone.
+Prints a useful summary of the evaluation of a high-risk
+zone.
 }
 \details{
-  A useful description of the hrzeval object is printed.
-  This is a method for the generic function
-  \code{\link[base]{summary}}.
+A useful description of the hrzeval object is printed. This
+is a method for the generic function
+\code{\link[base]{summary}}.
 }
 \seealso{
-  \code{\link[base]{summary}}, \code{\link{print.hrzeval}}
+\code{\link[base]{summary}}, \code{\link{print.hrzeval}}
 }
 

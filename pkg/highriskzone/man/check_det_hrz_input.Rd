@@ -2,8 +2,8 @@
 \alias{check_det_hrz_input}
 \title{Checks the arguments of det_hrz}
 \usage{
-  check_det_hrz_input(ppdata, type, criterion, cutoff,
-    distancemap, intens, nxprob, covmatrix)
+check_det_hrz_input(ppdata, type, criterion, cutoff, distancemap, intens,
+  nxprob, covmatrix)
 }
 \arguments{
   \item{ppdata}{Observed spatial point process of class
@@ -48,10 +48,10 @@
   \code{\link[ks]{Hscv}}.}
 }
 \description{
-  For each argument it is checked if it is of a correct
-  value or class.
+For each argument it is checked if it is of a correct value
+or class.
 }
 \seealso{
-  \code{\link{det_hrz}}
+\code{\link{det_hrz}}
 }
 

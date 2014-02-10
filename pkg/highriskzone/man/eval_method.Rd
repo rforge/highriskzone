@@ -2,10 +2,9 @@
 \alias{eval_method}
 \title{Evaluation of the procedures determining the high-risk zone.}
 \usage{
-  eval_method(ppdata, type, criterion, cutoff, numit = 100,
-    nxprob = 0.1, distancemap = NULL, intens = NULL,
-    covmatrix = NULL, simulate, radiusClust = NULL,
-    clustering = 5, pbar = TRUE)
+eval_method(ppdata, type, criterion, cutoff, numit = 100, nxprob = 0.1,
+  distancemap = NULL, intens = NULL, covmatrix = NULL, simulate,
+  radiusClust = NULL, clustering = 5, pbar = TRUE)
 }
 \arguments{
   \item{numit}{Number of iterations}
@@ -68,77 +67,75 @@
   \code{\link[ks]{Hscv}}.}
 }
 \value{
-  A \code{data.frame} with variables \item{ Iteration }{
-  Iterationstep of the result } \item{ Type, Criterion,
-  Cutoff, nxprob }{ see arguments } \item{ threshold }{
-  determined threshold. If criterion="area", it is either
-  the distance (if type="dist") or the threshold c (for
-  type="intens"). If criterion="indirect", it is either the
-  quantile of the nearest-neighbour distance which is used
-  as radius (if type="dist") or the threshold c (for
-  type="intens"). If criterion="direct", it equals the
-  cutoff for both types.} \item{ calccutoff }{ determined
-  cutoff-value. For type="dist" and criterion="area", this
-  is the quantile of the nearest-neighbour distance. For
-  type="intens" and criterion="area", it is the failure
-  probability alpha. For all other criterions it is NA.}
-  \item{ covmatrix11, covmatrix12, covmatrix21, covmatrix22
-  }{ values in the covariance matrix. covmatrix11 and
-  covmatrix22 are the diagonal elements (variances). }
-  \item{ numbermiss }{ number of unobserved points outside
-  the high-risk zone } \item{ numberunobserved }{ number of
-  observations in the unobserved point pattern
-  \ifelse{latex}{\eqn{\tilde Z}}{Z'} } \item{ missingfrac
-  }{ fraction of unobserved events outside the high-risk
-  zone (numbermiss/numberunobserved) } \item{ arearegion }{
-  area of the high-risk zone } \item{ numberobs }{ number
-  of observations in the observed point pattern
-  \ifelse{latex}{\eqn{\tilde Y}}{Y'} }
+A \code{data.frame} with variables \item{ Iteration }{
+Iterationstep of the result } \item{ Type, Criterion,
+Cutoff, nxprob }{ see arguments } \item{ threshold }{
+determined threshold. If criterion="area", it is either the
+distance (if type="dist") or the threshold c (for
+type="intens"). If criterion="indirect", it is either the
+quantile of the nearest-neighbour distance which is used as
+radius (if type="dist") or the threshold c (for
+type="intens"). If criterion="direct", it equals the cutoff
+for both types.} \item{ calccutoff }{ determined
+cutoff-value. For type="dist" and criterion="area", this is
+the quantile of the nearest-neighbour distance. For
+type="intens" and criterion="area", it is the failure
+probability alpha. For all other criterions it is NA.}
+\item{ covmatrix11, covmatrix12, covmatrix21, covmatrix22
+}{ values in the covariance matrix. covmatrix11 and
+covmatrix22 are the diagonal elements (variances). } \item{
+numbermiss }{ number of unobserved points outside the
+high-risk zone } \item{ numberunobserved }{ number of
+observations in the unobserved point pattern
+\ifelse{latex}{\eqn{\tilde Z}}{Z'} } \item{ missingfrac }{
+fraction of unobserved events outside the high-risk zone
+(numbermiss/numberunobserved) } \item{ arearegion }{ area
+of the high-risk zone } \item{ numberobs }{ number of
+observations in the observed point pattern
+\ifelse{latex}{\eqn{\tilde Y}}{Y'} }
 }
 \description{
-  Evaluates the performance of the three methods: \itemize{
-  \item Method of fixed radius \item Quantile-based method
-  \item Intensity-based method } For further details on the
-  methods, see \code{\link{det_hrz}} or the paper of
-  Mahling et al. (2013)(References). \cr There are three
-  ways to simulate data for the evaluation.
+Evaluates the performance of the three methods: \itemize{
+\item Method of fixed radius \item Quantile-based method
+\item Intensity-based method } For further details on the
+methods, see \code{\link{det_hrz}} or the paper of Mahling
+et al. (2013)(References). \cr There are three ways to
+simulate data for the evaluation.
 }
 \details{
-  The three simulation types are: \describe{ \item{
-  Data-based simulation }{ Here a given data set is used.
-  The data set is thinned as explained below.  Note that
-  this method is very different from the others, since it
-  is using the real data.  } \item{ Simulation of an
-  inhomogeneous Poisson process }{ Here, an inhomogeneous
-  Poisson process is simulated and then that data is
-  thinned.  } \item{ Simulation of a Neyman-Scott process
-  }{ Here a Neyman-Scott process is simulated (see
-  \code{\link{sim_nsppp}},
-  \code{\link[spatstat]{rNeymanScott}}) and this data is
-  then also thinned.  } } Thinning:\cr Let \eqn{X} be the
-  spatial point process, which is the location of all
-  events and let \eqn{Y} be a subset of \eqn{X} describing
-  the observed process. The process of unobserved events
-  then is \ifelse{latex}{\eqn{Z = X \setminus Y}}{Z = X \
-  Y} , meaning that \eqn{Z} and \eqn{Y} are disjoint and
-  together forming \eqn{X}.\cr Since \eqn{Z} is not known,
-  in this function an observed or simulated spatial point
-  pattern \code{ppdata} is taken as the full pattern (which
-  we denote by \ifelse{latex}{\eqn{\tilde X}}{X'})
-  comprising the observed events \ifelse{latex}{\eqn{\tilde
-  Y}}{Y'} as well as the unobserved
-  \ifelse{latex}{\eqn{\tilde Z}}{Z'}. Each event in
-  \ifelse{latex}{\eqn{\tilde X}}{X'} is assigned to one of
-  the two processes \ifelse{latex}{\eqn{\tilde Y}}{Y'} or
-  \ifelse{latex}{\eqn{\tilde Z}}{Z'} by drawing independent
-  Bernoulli random numbers. \cr The resulting process of
-  observed events \ifelse{latex}{\eqn{\tilde Y}}{Y'} is
-  used to determine the high-risk zone. Knowing now the
-  unobserved process, it can be seen how many events are
-  outside and inside the high-risk zone.\cr
+The three simulation types are: \describe{ \item{
+Data-based simulation }{ Here a given data set is used. The
+data set is thinned as explained below.  Note that this
+method is very different from the others, since it is using
+the real data.  } \item{ Simulation of an inhomogeneous
+Poisson process }{ Here, an inhomogeneous Poisson process
+is simulated and then that data is thinned.  } \item{
+Simulation of a Neyman-Scott process }{ Here a Neyman-Scott
+process is simulated (see \code{\link{sim_nsppp}},
+\code{\link[spatstat]{rNeymanScott}}) and this data is then
+also thinned.  } } Thinning:\cr Let \eqn{X} be the spatial
+point process, which is the location of all events and let
+\eqn{Y} be a subset of \eqn{X} describing the observed
+process. The process of unobserved events then is
+\ifelse{latex}{\eqn{Z = X \setminus Y}}{Z = X \ Y} ,
+meaning that \eqn{Z} and \eqn{Y} are disjoint and together
+forming \eqn{X}.\cr Since \eqn{Z} is not known, in this
+function an observed or simulated spatial point pattern
+\code{ppdata} is taken as the full pattern (which we denote
+by \ifelse{latex}{\eqn{\tilde X}}{X'}) comprising the
+observed events \ifelse{latex}{\eqn{\tilde Y}}{Y'} as well
+as the unobserved \ifelse{latex}{\eqn{\tilde Z}}{Z'}. Each
+event in \ifelse{latex}{\eqn{\tilde X}}{X'} is assigned to
+one of the two processes \ifelse{latex}{\eqn{\tilde Y}}{Y'}
+or \ifelse{latex}{\eqn{\tilde Z}}{Z'} by drawing
+independent Bernoulli random numbers. \cr The resulting
+process of observed events \ifelse{latex}{\eqn{\tilde
+Y}}{Y'} is used to determine the high-risk zone. Knowing
+now the unobserved process, it can be seen how many events
+are outside and inside the high-risk zone.\cr
 
-  \code{type} and \code{criterion} may be vectors in this
-  function.
+\code{type} and \code{criterion} may be vectors in this
+function.
 }
 \examples{
 data(craterB)
@@ -160,8 +157,8 @@ data(craterB)
             pout_i = ( sum(evalm_i$numbermiss > 0) / nrow(evalm_i) ))
 }
 \seealso{
-  \code{\link{det_hrz}},
-  \code{\link[spatstat]{rNeymanScott}}, \code{\link{thin}},
-  \code{\link{sim_nsppp}}, \code{\link{sim_intens}}
+\code{\link{det_hrz}},
+\code{\link[spatstat]{rNeymanScott}}, \code{\link{thin}},
+\code{\link{sim_nsppp}}, \code{\link{sim_intens}}
 }
 

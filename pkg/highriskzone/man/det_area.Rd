@@ -2,7 +2,7 @@
 \alias{det_area}
 \title{Calculation of the area of the high-risk zone.}
 \usage{
-  det_area(win, intensmatrix, threshold)
+det_area(win, intensmatrix, threshold)
 }
 \arguments{
   \item{win}{observation window}
@@ -15,16 +15,16 @@
   value}
 }
 \value{
-  A numerical value giving the area of the high-risk zone.
+A numerical value giving the area of the high-risk zone.
 }
 \description{
-  This function is used for the intensity-based method.
-  Calculation of the area of the high-risk zone given the
-  observation window, the intensity matrix and the
-  threshold c. Used in function det_thresholdfromarea.
+This function is used for the intensity-based method.
+Calculation of the area of the high-risk zone given the
+observation window, the intensity matrix and the threshold
+c. Used in function det_thresholdfromarea.
 }
 \seealso{
-  \code{\link[spatstat]{owin}},
-  \code{\link[spatstat]{area.owin}}
+\code{\link[spatstat]{owin}},
+\code{\link[spatstat]{area.owin}}
 }
 

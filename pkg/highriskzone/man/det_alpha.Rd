@@ -2,7 +2,7 @@
 \alias{det_alpha}
 \title{calculation of alpha (failure probability), when having the threshold c}
 \usage{
-  det_alpha(intens, threshold, nxprob = 0.1)
+det_alpha(intens, threshold, nxprob = 0.1)
 }
 \arguments{
   \item{intens}{estimated intensity of the observed process
@@ -16,14 +16,14 @@
   \item{nxprob}{probability of having unobserved events}
 }
 \value{
-  value of alpha
+value of alpha
 }
 \description{
-  This function is used for the intensity-based method. It
-  determines the probability to have at least one
-  unobserved event outside the high-risk zone. A Poisson
-  distribution is used for the number of unobserved events
-  in a certain area or field. Used in functions
-  det_threshold, det_thresholdfromarea.
+This function is used for the intensity-based method. It
+determines the probability to have at least one unobserved
+event outside the high-risk zone. A Poisson distribution is
+used for the number of unobserved events in a certain area
+or field. Used in functions det_threshold,
+det_thresholdfromarea.
 }
 

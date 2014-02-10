@@ -2,10 +2,9 @@
 \alias{plot.highriskzone}
 \title{Plot a high-risk zone}
 \usage{
-  \method{plot}{highriskzone} (x, ..., pattern = NULL,
-    win = NULL, plotpattern = FALSE, plotwindow = FALSE,
-    windowcol = "white", usegpclib = FALSE,
-    zonecol = "grey")
+\method{plot}{highriskzone}(x, ..., pattern = NULL, win = NULL,
+  plotpattern = FALSE, plotwindow = FALSE, windowcol = "white",
+  usegpclib = FALSE, zonecol = "grey")
 }
 \arguments{
   \item{x}{high-risk zone (object of class
@@ -38,14 +37,13 @@
   zone.}
 }
 \description{
-  Plot a high-risk zone.
+Plot a high-risk zone.
 }
 \details{
-  This is the plot method for the class
-  \code{highriskzone}.
+This is the plot method for the class \code{highriskzone}.
 }
 \seealso{
-  \code{\link[graphics]{plot}}, for examples see
-  \code{\link{det_hrz}}
+\code{\link[graphics]{plot}}, for examples see
+\code{\link{det_hrz}}
 }
 

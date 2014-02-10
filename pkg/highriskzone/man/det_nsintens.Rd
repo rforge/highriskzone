@@ -2,7 +2,7 @@
 \alias{det_nsintens}
 \title{Determination of the intensity for the Neyman Scott simulation.}
 \usage{
-  det_nsintens(ppdata, radius)
+det_nsintens(ppdata, radius)
 }
 \arguments{
   \item{ppdata}{observed point pattern whose estimated
@@ -13,15 +13,15 @@
   points in which the cluster points are located}
 }
 \value{
-  A pixel image (object of class "im"). See
-  \code{\link[spatstat]{density.ppp}}.
+A pixel image (object of class "im"). See
+\code{\link[spatstat]{density.ppp}}.
 }
 \description{
-  Used in function sim_nsppp.
+Used in function sim_nsppp.
 }
 \seealso{
-  \code{\link[spatstat]{density.ppp}},
-  \code{\link[spatstat]{bounding.box}},
-  \code{\link[spatstat]{owin}}, \code{\link[ks]{Hscv}}
+\code{\link[spatstat]{density.ppp}},
+\code{\link[spatstat]{bounding.box}},
+\code{\link[spatstat]{owin}}, \code{\link[ks]{Hscv}}
 }
 

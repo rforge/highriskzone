@@ -2,7 +2,7 @@
 \alias{det_nsintens_restr}
 \title{Determination of the intensity for the Neyman-Scott simulation.}
 \usage{
-  det_nsintens_restr(ppdata, radius, weights)
+det_nsintens_restr(ppdata, radius, weights)
 }
 \arguments{
   \item{ppdata}{observed point pattern whose estimated
@@ -17,15 +17,15 @@
   \code{ppdata}.}
 }
 \value{
-  A pixel image (object of class "im"). See
-  \code{\link[spatstat]{density.ppp}}.
+A pixel image (object of class "im"). See
+\code{\link[spatstat]{density.ppp}}.
 }
 \description{
-  Used in function bootcor_restr.
+Used in function bootcor_restr.
 }
 \seealso{
-  \code{\link[spatstat]{density.ppp}},
-  \code{\link[spatstat]{bounding.box}},
-  \code{\link[spatstat]{owin}}, \code{\link[ks]{Hscv}}
+\code{\link[spatstat]{density.ppp}},
+\code{\link[spatstat]{bounding.box}},
+\code{\link[spatstat]{owin}}, \code{\link[ks]{Hscv}}
 }
 

@@ -2,7 +2,7 @@
 \alias{sim_nsppp}
 \title{Generation of a realisation of a Neyman-Scott process}
 \usage{
-  sim_nsppp(ppdata, radius, clustering = 5, thinning = 0)
+sim_nsppp(ppdata, radius, clustering = 5, thinning = 0)
 }
 \arguments{
   \item{ppdata}{observed point pattern, whose estimated
@@ -25,44 +25,42 @@
   unobserved events}
 }
 \value{
-  The simulated point pattern (an object of class "ppp").
-  Additionally, some intermediate results of the simulation
-  are returned as attributes of this point pattern: see
-  \code{\link[spatstat]{rNeymanScott}}.
+The simulated point pattern (an object of class "ppp").
+Additionally, some intermediate results of the simulation
+are returned as attributes of this point pattern: see
+\code{\link[spatstat]{rNeymanScott}}.
 }
 \description{
-  This algorithm generates a realisation of a Neyman-Scott
-  process whose expected number of points equals the number
-  of observations in a given pattern.
+This algorithm generates a realisation of a Neyman-Scott
+process whose expected number of points equals the number
+of observations in a given pattern.
 }
 \details{
-  First, the algorithm generates a Poisson point process
-  (see \code{\link[spatstat]{rpoispp}} for details) of
-  parent points with intensity kappa, which is a pixel
-  image object of class "im" (see
-  \code{\link[spatstat]{im.object}}).\cr This pixel image
-  is derived from the observed pattern using
-  \code{\link[spatstat]{density.ppp}}. The bandwidth is not
-  chosen in advance.\cr If only a thinned version of the
-  original pattern has been observed, this can be taken
-  into account using the parameter \code{thinning}.
-  Usually, not the estimated intensity itself is used for
-  simulating the parent process, but its values are divided
-  by a constant named "clustering".\cr Second, each parent
-  point is replaced by a random cluster of points, created
-  by calling the function
-  \code{\link[spatstat]{runifdisc}}. Each cluster consists
-  of a Poisson distributed number of points (with
-  \code{clustering} being the expected number of points in
-  each cluster) which are located in a disc of a given
-  \code{radius}. These clusters are combined to yield a
-  single point pattern which is then returned as the
-  result.\cr The estimation of the intensity (on an
-  adequate window) and the simulation of the Neyman-Scott
-  process are performed seperately, so the intensity does
-  not need to be reestimated in every iteration.\cr The
-  resulting process is a \enc{Matérn}{Matern} process whose
-  parent process is an inhomogeneous Poisson point process.
+First, the algorithm generates a Poisson point process (see
+\code{\link[spatstat]{rpoispp}} for details) of parent
+points with intensity kappa, which is a pixel image object
+of class "im" (see \code{\link[spatstat]{im.object}}).\cr
+This pixel image is derived from the observed pattern using
+\code{\link[spatstat]{density.ppp}}. The bandwidth is not
+chosen in advance.\cr If only a thinned version of the
+original pattern has been observed, this can be taken into
+account using the parameter \code{thinning}. Usually, not
+the estimated intensity itself is used for simulating the
+parent process, but its values are divided by a constant
+named "clustering".\cr Second, each parent point is
+replaced by a random cluster of points, created by calling
+the function \code{\link[spatstat]{runifdisc}}. Each
+cluster consists of a Poisson distributed number of points
+(with \code{clustering} being the expected number of points
+in each cluster) which are located in a disc of a given
+\code{radius}. These clusters are combined to yield a
+single point pattern which is then returned as the
+result.\cr The estimation of the intensity (on an adequate
+window) and the simulation of the Neyman-Scott process are
+performed seperately, so the intensity does not need to be
+reestimated in every iteration.\cr The resulting process is
+a \enc{Matérn}{Matern} process whose parent process is an
+inhomogeneous Poisson point process.
 }
 \examples{
 data(craterA)
@@ -76,8 +74,8 @@ data(craterA)
  par(op)
 }
 \seealso{
-  \code{\link[spatstat]{rNeymanScott}},
-  \code{\link[spatstat]{rThomas}},
-  \code{\link[spatstat]{rMatClust}}
+\code{\link[spatstat]{rNeymanScott}},
+\code{\link[spatstat]{rThomas}},
+\code{\link[spatstat]{rMatClust}}
 }
 

@@ -3,9 +3,8 @@
 \alias{highriskzone.object}
 \title{Determination of the high-risk zone.}
 \usage{
-  det_hrz(ppdata, type, criterion, cutoff,
-    distancemap = NULL, intens = NULL, nxprob = 0.1,
-    covmatrix = NULL)
+det_hrz(ppdata, type, criterion, cutoff, distancemap = NULL, intens = NULL,
+  nxprob = 0.1, covmatrix = NULL)
 }
 \arguments{
   \item{ppdata}{Observed spatial point process of class
@@ -50,75 +49,73 @@
   \code{\link[ks]{Hscv}}.}
 }
 \value{
-  An object of class "\code{highriskzone}", which is a list
-  of \item{ typehrz, criterion, cutoff }{ see arguments}
-  \item{ zone }{ Determined high-risk zone: Object of class
-  "owin" based on a binary mask.  See
-  \code{\link[spatstat]{owin}}. } \item{ threshold }{
-  determined threshold. If criterion="area", it is either
-  the distance (if type="dist") or the threshold c (for
-  type="intens"). If criterion="indirect", it is either the
-  quantile of the nearest-neighbour distance which is used
-  as radius (if type="dist") or the threshold c (for
-  type="intens"). If criterion="direct", it equals the
-  cutoff for both types.} \item{ calccutoff }{ determined
-  cutoff-value. For type="dist" and criterion="area", this
-  is the quantile of the nearest-neighbour distance. For
-  type="intens" and criterion="area", it is the failure
-  probability alpha. For all other criterions it is NA.}
-  \item{ covmatrix }{ If not given (and
-  \code{type="intens"}), it is estimated. See
-  \code{\link[ks]{Hscv}}.}
+An object of class "\code{highriskzone}", which is a list
+of \item{ typehrz, criterion, cutoff }{ see arguments}
+\item{ zone }{ Determined high-risk zone: Object of class
+"owin" based on a binary mask.  See
+\code{\link[spatstat]{owin}}. } \item{ threshold }{
+determined threshold. If criterion="area", it is either the
+distance (if type="dist") or the threshold c (for
+type="intens"). If criterion="indirect", it is either the
+quantile of the nearest-neighbour distance which is used as
+radius (if type="dist") or the threshold c (for
+type="intens"). If criterion="direct", it equals the cutoff
+for both types.} \item{ calccutoff }{ determined
+cutoff-value. For type="dist" and criterion="area", this is
+the quantile of the nearest-neighbour distance. For
+type="intens" and criterion="area", it is the failure
+probability alpha. For all other criterions it is NA.}
+\item{ covmatrix }{ If not given (and
+\code{type="intens"}), it is estimated. See
+\code{\link[ks]{Hscv}}.}
 }
 \description{
-  \code{det_hrz} determines the high-risk zone through the
-  method of fixed radius (type = "dist" and criterion =
-  "direct"), the quantile-based method (type = "dist" and
-  criterion = "area"/"indirect") and the intensity-based
-  method (type = "intens").
+\code{det_hrz} determines the high-risk zone through the
+method of fixed radius (type = "dist" and criterion =
+"direct"), the quantile-based method (type = "dist" and
+criterion = "area"/"indirect") and the intensity-based
+method (type = "intens").
 }
 \details{
-  There are different methods implemented to determine a
-  high-risk zone. \describe{ \item{ Method of fixed radius
-  }{ In this method, the high-risk zone is determined by
-  drawing a circle around each observed event with a fixed
-  radius. This method will be used when \code{type =
-  "dist"} and \code{criterion = "direct"}. \code{cutoff}
-  then is the radius.  } \item{ Quantile-based method }{
-  This method is a development of the above. Here the
-  radius is not fixed. It uses the distance of every
-  observed event to the nearest other event, which is
-  calculated by the nearest-neighbour distance. The radius
-  is assessed by the p-quantile of the empirical
-  distribution function of the nearest-neighbour distance.
-  This method will be used when \code{type = "dist"} and
-  \code{criterion = "indirect"} or \code{"area"}. If
-  \code{criterion = "indirect"}, then \code{cutoff} is the
-  quantile that should be used.  If \code{criterion =
-  "area"} then \code{cutoff} is the area that the high-risk
-  zone has to have at the end and from that the
-  quantile/the radii are determined. When the calculation
-  is done via the area, it can not really be classified to
-  the quantile-based method. It is rather a third
-  "distance-based" method.  } \item{ Intensity-based method
-  }{ The first step of this method is to estimate the
-  intensity of the observed events.  The high-risk zone is
-  then the field in which the estimated intensity exceeds a
-  certain value. This value is called threshold c.  The
-  method will be used when \code{type = "intens"}. There
-  are three different ways to get to a high-risk zone:
-  \enumerate{ \item Fixing the threshold c: \code{criterion
-  = "direct"} \item Fixing the area of the high-risk zone:
-  \code{criterion = "area"} \item Fixing the failure
-  probability alpha, which is the probability of having
-  unobserved events outside the high-risk zone:
-  \code{criterion = "indirect"} Here, the point process is
-  assumed to be an inhomogeneous Poisson process.  } For
-  further information see Mahling et al. (2013)
-  (References).  } }
+There are different methods implemented to determine a
+high-risk zone. \describe{ \item{ Method of fixed radius }{
+In this method, the high-risk zone is determined by drawing
+a circle around each observed event with a fixed radius.
+This method will be used when \code{type = "dist"} and
+\code{criterion = "direct"}. \code{cutoff} then is the
+radius.  } \item{ Quantile-based method }{ This method is a
+development of the above. Here the radius is not fixed. It
+uses the distance of every observed event to the nearest
+other event, which is calculated by the nearest-neighbour
+distance. The radius is assessed by the p-quantile of the
+empirical distribution function of the nearest-neighbour
+distance. This method will be used when \code{type =
+"dist"} and \code{criterion = "indirect"} or \code{"area"}.
+If \code{criterion = "indirect"}, then \code{cutoff} is the
+quantile that should be used.  If \code{criterion = "area"}
+then \code{cutoff} is the area that the high-risk zone has
+to have at the end and from that the quantile/the radii are
+determined. When the calculation is done via the area, it
+can not really be classified to the quantile-based method.
+It is rather a third "distance-based" method.  } \item{
+Intensity-based method }{ The first step of this method is
+to estimate the intensity of the observed events.  The
+high-risk zone is then the field in which the estimated
+intensity exceeds a certain value. This value is called
+threshold c.  The method will be used when \code{type =
+"intens"}. There are three different ways to get to a
+high-risk zone: \enumerate{ \item Fixing the threshold c:
+\code{criterion = "direct"} \item Fixing the area of the
+high-risk zone: \code{criterion = "area"} \item Fixing the
+failure probability alpha, which is the probability of
+having unobserved events outside the high-risk zone:
+\code{criterion = "indirect"} Here, the point process is
+assumed to be an inhomogeneous Poisson process.  } For
+further information see Mahling et al. (2013) (References).
+} }
 
-  If there are restriction areas in the observation window,
-  use \code{\link[highriskzone]{det_hrz_restr}} instead.
+If there are restriction areas in the observation window,
+use \code{\link[highriskzone]{det_hrz_restr}} instead.
 }
 \examples{
 data(craterA)
@@ -150,21 +147,21 @@ hrzi3 <- det_hrz(craterA, type = "intens", criterion = "direct", cutoff = 0.0001
 ## More detailed examples on http://highriskzone.r-forge.r-project.org/
 }
 \references{
-  Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut
-  \enc{Küchenhoff}{Kuechenhoff} (2013), \emph{Determining
-  high-risk zones for unexploded World War II bombs by
-  using point process methodology.} Journal of the Royal
-  Statistical Society, Series C 62(2), 181-199.
+Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut
+\enc{Küchenhoff}{Kuechenhoff} (2013), \emph{Determining
+high-risk zones for unexploded World War II bombs by using
+point process methodology.} Journal of the Royal
+Statistical Society, Series C 62(2), 181-199.
 
-  Monia Mahling (2013), \emph{Determining high-risk zones
-  by using spatial point process methodology.} Ph.D.
-  thesis, Cuvillier Verlag \enc{Göttingen}{Goettingen},
-  available online: http://edoc.ub.uni-muenchen.de/15886/
+Monia Mahling (2013), \emph{Determining high-risk zones by
+using spatial point process methodology.} Ph.D. thesis,
+Cuvillier Verlag \enc{Göttingen}{Goettingen}, available
+online: http://edoc.ub.uni-muenchen.de/15886/
 }
 \seealso{
-  \code{\link[spatstat]{distmap}},
-  \code{\link[spatstat]{eval.im}},
-  \code{\link[spatstat]{owin}}, \code{\link{eval_method}},
-  \code{\link[highriskzone]{det_hrz_restr}}
+\code{\link[spatstat]{distmap}},
+\code{\link[spatstat]{eval.im}},
+\code{\link[spatstat]{owin}}, \code{\link{eval_method}},
+\code{\link[highriskzone]{det_hrz_restr}}
 }
 

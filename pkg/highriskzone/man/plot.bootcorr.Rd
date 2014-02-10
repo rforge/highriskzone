@@ -2,7 +2,7 @@
 \alias{plot.bootcorr}
 \title{Visualize the bootstrap correction for a high-risk zone.}
 \usage{
-  \method{plot}{bootcorr} (x, ...)
+\method{plot}{bootcorr}(x, ...)
 }
 \arguments{
   \item{x}{bootstrap correction for a high-risk zone
@@ -12,16 +12,15 @@
   \code{\link[graphics]{plot}} function.}
 }
 \description{
-  Plot a visualization of the bootstrap correction for a
-  high-risk zone. The different values tested for alpha are
-  plotted.
+Plot a visualization of the bootstrap correction for a
+high-risk zone. The different values tested for alpha are
+plotted.
 }
 \details{
-  This is the plot method for the class \code{bootcorr}.
+This is the plot method for the class \code{bootcorr}.
 }
 \seealso{
-  \code{\link[graphics]{plot}},
-  \code{\link{print.bootcorr}},
-  \code{\link{summary.bootcorr}}
+\code{\link[graphics]{plot}}, \code{\link{print.bootcorr}},
+\code{\link{summary.bootcorr}}
 }
 

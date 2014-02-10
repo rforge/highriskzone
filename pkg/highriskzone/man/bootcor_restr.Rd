@@ -2,10 +2,10 @@
 \alias{bootcor_restr}
 \title{Bootstrap correction to obtain desired failure probability}
 \usage{
-  bootcor_restr(ppdata, cutoff, numit = 100, tol = 0.001,
-    nxprob = 0.1, hole = NULL, obsprobimage = NULL,
-    intens = NULL, covmatrix = NULL, simulate = "intens",
-    radiusClust = NULL, clustering = 5, verbose = TRUE)
+bootcor_restr(ppdata, cutoff, numit = 100, tol = 0.001, nxprob = 0.1,
+  hole = NULL, obsprobimage = NULL, intens = NULL, covmatrix = NULL,
+  simulate = "intens", radiusClust = NULL, clustering = 5,
+  verbose = TRUE)
 }
 \arguments{
   \item{ppdata}{Observed spatial point process of class
@@ -62,51 +62,50 @@
   values/progress be printed?}
 }
 \value{
-  An object of class bootcorr, which consists of a list of
-  the final value for alpha (\code{alphastar}) and a
-  data.frame \code{course} containing information on the
-  simulation course, e.g. the tested values.
+An object of class bootcorr, which consists of a list of
+the final value for alpha (\code{alphastar}) and a
+data.frame \code{course} containing information on the
+simulation course, e.g. the tested values.
 }
 \description{
-  Simulation-based iterative procedure to correct for
-  possible bias with respect to the failure probability
-  alpha
+Simulation-based iterative procedure to correct for
+possible bias with respect to the failure probability alpha
 }
 \details{
-  For a desired failure probability alpha, the
-  corresponding parameter which is to use when determining
-  a high-risk zone is found in an iterative procedure. The
-  simulation procedure is the same as in
-  \code{\link[highriskzone]{eval_method}}. In every
-  iteration, the number of high-risk zones with at least
-  one unobserved event located outside is compared with the
-  desired failure probability. If necessary, the value of
-  \code{cutoff} is increased or decreased. The final value
-  \code{alphastar} can than be used in
-  \code{\link[highriskzone]{det_hrz}}.
+For a desired failure probability alpha, the corresponding
+parameter which is to use when determining a high-risk zone
+is found in an iterative procedure. The simulation
+procedure is the same as in
+\code{\link[highriskzone]{eval_method}}. In every
+iteration, the number of high-risk zones with at least one
+unobserved event located outside is compared with the
+desired failure probability. If necessary, the value of
+\code{cutoff} is increased or decreased. The final value
+\code{alphastar} can than be used in
+\code{\link[highriskzone]{det_hrz}}.
 
-  The function offers the possibility to take into account
-  so-called restriction areas. This is relevant in
-  situations where the observed point pattern \code{ppdata}
-  is incomplete. If it is known that no observations can be
-  made in a certain area (for example because of water
-  expanses), this can be accounted for by integrating a
-  hole in the observation window. The shape and location of
-  the hole is given by \code{hole}. Holes are part of the
-  resulting high-risk zone. Another approach consists in
-  weighting the observed events with their reciprocal
-  observation probability when estimating the intensity. To
-  do so, the observation probability can be specified by
-  using \code{obsprobsimage} (an image of the observation
-  probability). Note that the observation probability may
-  vary in space.
+The function offers the possibility to take into account
+so-called restriction areas. This is relevant in situations
+where the observed point pattern \code{ppdata} is
+incomplete. If it is known that no observations can be made
+in a certain area (for example because of water expanses),
+this can be accounted for by integrating a hole in the
+observation window. The shape and location of the hole is
+given by \code{hole}. Holes are part of the resulting
+high-risk zone. Another approach consists in weighting the
+observed events with their reciprocal observation
+probability when estimating the intensity. To do so, the
+observation probability can be specified by using
+\code{obsprobsimage} (an image of the observation
+probability). Note that the observation probability may
+vary in space.
 
-  For further information, see Mahling (2013), Appendix A
-  (References).
+For further information, see Mahling (2013), Appendix A
+(References).
 
-  If there are no restriction areas in the observation
-  window, \code{\link[highriskzone]{bootcor}} can be used
-  instead.
+If there are no restriction areas in the observation
+window, \code{\link[highriskzone]{bootcor}} can be used
+instead.
 }
 \examples{
 data(craterA)
@@ -145,21 +144,21 @@ hrzi2 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
 }
 }
 \references{
-  Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut
-  \enc{Küchenhoff}{Kuechenhoff} (2013), \emph{Determining
-  high-risk zones for unexploded World War II bombs by
-  using point process methodology.} Journal of the Royal
-  Statistical Society, Series C 62(2), 181-199.
+Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut
+\enc{Küchenhoff}{Kuechenhoff} (2013), \emph{Determining
+high-risk zones for unexploded World War II bombs by using
+point process methodology.} Journal of the Royal
+Statistical Society, Series C 62(2), 181-199.
 
-  Monia Mahling (2013), \emph{Determining high-risk zones
-  by using spatial point process methodology.} Ph.D.
-  thesis, Cuvillier Verlag \enc{Göttingen}{Goettingen},
-  available online: http://edoc.ub.uni-muenchen.de/15886/
-  Chapter 6 and Appendix A
+Monia Mahling (2013), \emph{Determining high-risk zones by
+using spatial point process methodology.} Ph.D. thesis,
+Cuvillier Verlag \enc{Göttingen}{Goettingen}, available
+online: http://edoc.ub.uni-muenchen.de/15886/ Chapter 6 and
+Appendix A
 }
 \seealso{
-  \code{\link[highriskzone]{det_hrz}},
-  \code{\link[highriskzone]{eval_method}},
-  \code{\link[highriskzone]{bootcor}}
+\code{\link[highriskzone]{det_hrz}},
+\code{\link[highriskzone]{eval_method}},
+\code{\link[highriskzone]{bootcor}}
 }
 

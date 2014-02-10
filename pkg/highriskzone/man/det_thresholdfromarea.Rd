@@ -3,7 +3,7 @@
 \title{Determination of alpha and the threshold c which results
 in a high-risk zone with desired area.}
 \usage{
-  det_thresholdfromarea(intens, areahrz, win, nxprob = 0.1)
+det_thresholdfromarea(intens, areahrz, win, nxprob = 0.1)
 }
 \arguments{
   \item{intens}{estimated intensity of the observed process
@@ -17,18 +17,17 @@ in a high-risk zone with desired area.}
   \item{nxprob}{probability of having unbserved events}
 }
 \value{
-  A list of \item{ threshold }{ Value of the threshold c.
-  The high-risk zone is the field in which the estimated
-  intensity exceeds this value } \item{ calccutoff }{
-  failure probability alpha for given area; probability to
-  have at least unobserved event outside the high-risk zone
-  }
+A list of \item{ threshold }{ Value of the threshold c. The
+high-risk zone is the field in which the estimated
+intensity exceeds this value } \item{ calccutoff }{ failure
+probability alpha for given area; probability to have at
+least unobserved event outside the high-risk zone }
 }
 \description{
-  This function is used for the intensity-based method.
-  Used in function det_hrz.
+This function is used for the intensity-based method. Used
+in function det_hrz.
 }
 \seealso{
-  \code{\link{det_area}}, \code{\link{det_alpha}}
+\code{\link{det_area}}, \code{\link{det_alpha}}
 }
 

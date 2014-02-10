@@ -2,10 +2,10 @@
 \alias{det_hrz_restr}
 \title{Determination of the high-risk zone.}
 \usage{
-  det_hrz_restr(ppdata, type, criterion, cutoff,
-    hole = NULL, integratehole = TRUE, obsprobs = NULL,
-    obsprobimage = NULL, distancemap = NULL, intens = NULL,
-    nxprob = 0.1, covmatrix = NULL, returnintens = TRUE)
+det_hrz_restr(ppdata, type, criterion, cutoff, hole = NULL,
+  integratehole = TRUE, obsprobs = NULL, obsprobimage = NULL,
+  distancemap = NULL, intens = NULL, nxprob = 0.1, covmatrix = NULL,
+  returnintens = TRUE)
 }
 \arguments{
   \item{ppdata}{Observed spatial point process of class
@@ -70,69 +70,67 @@
   intensity be returned? Defaults to \code{TRUE}.}
 }
 \value{
-  An object of class "\code{highriskzone}", which is a list
-  of \item{ typehrz, criterion, cutoff }{ see arguments}
-  \item{ zone }{ Determined high-risk zone: Object of class
-  "owin" based on a binary mask.  See
-  \code{\link[spatstat]{owin}}. } \item{ threshold }{
-  determined threshold. If criterion="area", it is either
-  the distance (if type="dist") or the threshold c (for
-  type="intens"). If criterion="indirect", it is either the
-  quantile of the nearest-neighbour distance which is used
-  as radius (if type="dist") or the threshold c (for
-  type="intens"). If criterion="direct", it equals the
-  cutoff for both types.} \item{ calccutoff }{ determined
-  cutoff-value. For type="dist" and criterion="area", this
-  is the quantile of the nearest-neighbour distance. For
-  type="intens" and criterion="area", it is the failure
-  probability alpha. For all other criterions it is NA.}
-  \item{ covmatrix }{ If not given (and
-  \code{type="intens"}), it is estimated. See
-  \code{\link[ks]{Hscv}}.} \item{ estint }{ Estimated
-  intensity. See \code{\link[spatstat]{density.ppp}}.}
+An object of class "\code{highriskzone}", which is a list
+of \item{ typehrz, criterion, cutoff }{ see arguments}
+\item{ zone }{ Determined high-risk zone: Object of class
+"owin" based on a binary mask.  See
+\code{\link[spatstat]{owin}}. } \item{ threshold }{
+determined threshold. If criterion="area", it is either the
+distance (if type="dist") or the threshold c (for
+type="intens"). If criterion="indirect", it is either the
+quantile of the nearest-neighbour distance which is used as
+radius (if type="dist") or the threshold c (for
+type="intens"). If criterion="direct", it equals the cutoff
+for both types.} \item{ calccutoff }{ determined
+cutoff-value. For type="dist" and criterion="area", this is
+the quantile of the nearest-neighbour distance. For
+type="intens" and criterion="area", it is the failure
+probability alpha. For all other criterions it is NA.}
+\item{ covmatrix }{ If not given (and
+\code{type="intens"}), it is estimated. See
+\code{\link[ks]{Hscv}}.} \item{ estint }{ Estimated
+intensity. See \code{\link[spatstat]{density.ppp}}.}
 }
 \description{
-  \code{det_hrz_restr} determines the high-risk zone
-  through the method of fixed radius (type = "dist" and
-  criterion = "direct"), the quantile-based method (type =
-  "dist" and criterion = "area"/"indirect") and the
-  intensity-based method (type = "intens"). Restriction
-  areas can be taken into account.
+\code{det_hrz_restr} determines the high-risk zone through
+the method of fixed radius (type = "dist" and criterion =
+"direct"), the quantile-based method (type = "dist" and
+criterion = "area"/"indirect") and the intensity-based
+method (type = "intens"). Restriction areas can be taken
+into account.
 }
 \details{
-  Used in functions eval_method, sim_clintens, sim_intens.
-  \cr This function contains the same functionalities as
-  \code{\link[highriskzone]{det_hrz}}. In addition, it
-  offers the possibility to take into account so-called
-  restriction areas. This is relevant in situations where
-  the observed point pattern \code{ppdata} is incomplete.
-  If it is known that no observations can be made in a
-  certain area (for example because of water expanses),
-  this can be accounted for by integrating a hole in the
-  observation window. The shape and location of the hole is
-  given by \code{hole}, whereas \code{integratehole} is
-  used to state whether the hole is to become part of the
-  resulting high-risk zone. This may also be a reasonable
-  approach if only few observations could be made in a
-  certain area. Another approach consists in weighting the
-  observed events with their reciprocal observation
-  probability when estimating the intensity. To do so, the
-  observation probability can be specified by using
-  \code{obsprobs} (value of the observation probability for
-  each event) or \code{obsprobsimage} (image of the
-  observation probability). Note that the observation
-  probability may vary in space. \cr If there are no
-  restriction areas in the observation window,
-  \code{\link[highriskzone]{det_hrz}} can be used instead.
-  \cr Note that for \code{criterion = "area"},
-  \code{cutoff} specifies the area of the high-risk zone
-  outside the hole. If \code{integratehole = TRUE}, the
-  area of the resulting high-risk zone will exceed
-  \code{cutoff}.
+Used in functions eval_method, sim_clintens, sim_intens.
+\cr This function contains the same functionalities as
+\code{\link[highriskzone]{det_hrz}}. In addition, it offers
+the possibility to take into account so-called restriction
+areas. This is relevant in situations where the observed
+point pattern \code{ppdata} is incomplete. If it is known
+that no observations can be made in a certain area (for
+example because of water expanses), this can be accounted
+for by integrating a hole in the observation window. The
+shape and location of the hole is given by \code{hole},
+whereas \code{integratehole} is used to state whether the
+hole is to become part of the resulting high-risk zone.
+This may also be a reasonable approach if only few
+observations could be made in a certain area. Another
+approach consists in weighting the observed events with
+their reciprocal observation probability when estimating
+the intensity. To do so, the observation probability can be
+specified by using \code{obsprobs} (value of the
+observation probability for each event) or
+\code{obsprobsimage} (image of the observation
+probability). Note that the observation probability may
+vary in space. \cr If there are no restriction areas in the
+observation window, \code{\link[highriskzone]{det_hrz}} can
+be used instead. \cr Note that for \code{criterion =
+"area"}, \code{cutoff} specifies the area of the high-risk
+zone outside the hole. If \code{integratehole = TRUE}, the
+area of the resulting high-risk zone will exceed
+\code{cutoff}.
 
-  For further information, Mahling et al. (2013) and
-  Mahling (2013), Chapters 4 and 8 and Appendix A
-  (References).
+For further information, Mahling et al. (2013) and Mahling
+(2013), Chapters 4 and 8 and Appendix A (References).
 }
 \examples{
 data(craterA)
@@ -157,8 +155,8 @@ hrzi2 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
  cutoff = 0.4, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
 }
 \seealso{
-  \code{\link[spatstat]{distmap}},
-  \code{\link[spatstat]{eval.im}},
-  \code{\link[spatstat]{owin}}
+\code{\link[spatstat]{distmap}},
+\code{\link[spatstat]{eval.im}},
+\code{\link[spatstat]{owin}}
 }
 

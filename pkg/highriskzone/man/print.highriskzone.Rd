@@ -2,7 +2,7 @@
 \alias{print.highriskzone}
 \title{Print Brief Details of a high-risk zone}
 \usage{
-  \method{print}{highriskzone} (x, ...)
+\method{print}{highriskzone}(x, ...)
 }
 \arguments{
   \item{x}{high-risk zone (object of class
@@ -11,15 +11,15 @@
   \item{...}{ignored}
 }
 \description{
-  Prints a very brief description of a high-risk zone.
+Prints a very brief description of a high-risk zone.
 }
 \details{
-  A very brief description of the highriskzone x is
-  printed. This is a method for the generic function
-  \code{\link[base]{print}}.
+A very brief description of the highriskzone x is printed.
+This is a method for the generic function
+\code{\link[base]{print}}.
 }
 \seealso{
-  \code{\link[base]{print}},
-  \code{\link{summary.highriskzone}}
+\code{\link[base]{print}},
+\code{\link{summary.highriskzone}}
 }
 

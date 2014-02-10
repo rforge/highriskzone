@@ -57,7 +57,8 @@
 #' plot(bc)
 #'
 #' \dontrun{
-#' hrzbc <- det_hrz(craterB, type = "intens", criterion = "indirect", cutoff = bc$alphastar, nxprob = 0.1)
+#' hrzbc <- det_hrz(craterB, type = "intens", criterion = "indirect", 
+#' cutoff = bc$alphastar, nxprob = 0.1)
 #' }
 
 bootcor <- function(ppdata, cutoff, numit = 1000, tol=0.02,

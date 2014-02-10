@@ -2,7 +2,7 @@
 \alias{det_radius}
 \title{Determination of the nearest-neighbour distance which results in a high-risk zone with desired area}
 \usage{
-  det_radius(ppdata, distancemap, areahrz, win)
+det_radius(ppdata, distancemap, areahrz, win)
 }
 \arguments{
   \item{ppdata}{observed spatial point pattern of class
@@ -17,14 +17,14 @@
   \item{win}{observation window of class owin}
 }
 \value{
-  A list of \item{ cutoffdist }{ quantile of the
-  nearest-neighbour distance } \item{ thresh }{ distance }
+A list of \item{ cutoffdist }{ quantile of the
+nearest-neighbour distance } \item{ thresh }{ distance }
 }
 \description{
-  Used in function det_hrz.
+Used in function det_hrz.
 }
 \seealso{
-  \code{\link{det_nnarea}}, \code{\link[stats]{quantile}},
-  \code{\link[stats]{uniroot}}
+\code{\link{det_nnarea}}, \code{\link[stats]{quantile}},
+\code{\link[stats]{uniroot}}
 }
 

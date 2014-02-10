@@ -2,10 +2,9 @@
 \alias{bootcor}
 \title{Bootstrap correction to obtain desired failure probability}
 \usage{
-  bootcor(ppdata, cutoff, numit = 1000, tol = 0.02,
-    nxprob = 0.1, intens = NULL, covmatrix = NULL,
-    simulate = "intens", radiusClust = NULL,
-    clustering = 5, verbose = TRUE)
+bootcor(ppdata, cutoff, numit = 1000, tol = 0.02, nxprob = 0.1,
+  intens = NULL, covmatrix = NULL, simulate = "intens",
+  radiusClust = NULL, clustering = 5, verbose = TRUE)
 }
 \arguments{
   \item{ppdata}{Observed spatial point process of class
@@ -52,31 +51,30 @@
   values/progress be printed?}
 }
 \value{
-  An object of class bootcorr, which consists of a list of
-  the final value for alpha (\code{alphastar}) and a
-  data.frame \code{course} containing information on the
-  simulation course, e.g. the tested values.
+An object of class bootcorr, which consists of a list of
+the final value for alpha (\code{alphastar}) and a
+data.frame \code{course} containing information on the
+simulation course, e.g. the tested values.
 }
 \description{
-  Simulation-based iterative procedure to correct for
-  possible bias with respect to the failure probability
-  alpha
+Simulation-based iterative procedure to correct for
+possible bias with respect to the failure probability alpha
 }
 \details{
-  For a desired failure probability alpha, the
-  corresponding parameter which is to use when determining
-  a high-risk zone is found in an iterative procedure. The
-  simulation procedure is the same as in
-  \code{\link[highriskzone]{eval_method}}. In every
-  iteration, the number of high-risk zones with at least
-  one unobserved event located outside is compared with the
-  desired failure probability. If necessary, the value of
-  \code{cutoff} is increased or decreased. The final value
-  \code{alphastar} can than be used in
-  \code{\link[highriskzone]{det_hrz}}.
+For a desired failure probability alpha, the corresponding
+parameter which is to use when determining a high-risk zone
+is found in an iterative procedure. The simulation
+procedure is the same as in
+\code{\link[highriskzone]{eval_method}}. In every
+iteration, the number of high-risk zones with at least one
+unobserved event located outside is compared with the
+desired failure probability. If necessary, the value of
+\code{cutoff} is increased or decreased. The final value
+\code{alphastar} can than be used in
+\code{\link[highriskzone]{det_hrz}}.
 
-  If there are restriction areas in the observation window,
-  use \code{\link[highriskzone]{bootcor_restr}} instead.
+If there are restriction areas in the observation window,
+use \code{\link[highriskzone]{bootcor_restr}} instead.
 }
 \examples{
 data(craterB)
@@ -88,25 +86,25 @@ summary(bc)
 plot(bc)
 
 \dontrun{
-hrzbc <- det_hrz(craterB, type = "intens", criterion = "indirect", cutoff = bc$alphastar, nxprob = 0.1)
+hrzbc <- det_hrz(craterB, type = "intens", criterion = "indirect",
+cutoff = bc$alphastar, nxprob = 0.1)
 }
 }
 \references{
-  Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut
-  \enc{Küchenhoff}{Kuechenhoff} (2013), \emph{Determining
-  high-risk zones for unexploded World War II bombs by
-  using point process methodology.} Journal of the Royal
-  Statistical Society, Series C 62(2), 181-199.
+Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut
+\enc{Küchenhoff}{Kuechenhoff} (2013), \emph{Determining
+high-risk zones for unexploded World War II bombs by using
+point process methodology.} Journal of the Royal
+Statistical Society, Series C 62(2), 181-199.
 
-  Monia Mahling (2013), \emph{Determining high-risk zones
-  by using spatial point process methodology.} Ph.D.
-  thesis, Cuvillier Verlag \enc{Göttingen}{Goettingen},
-  available online: http://edoc.ub.uni-muenchen.de/15886/
-  Chapter 6
+Monia Mahling (2013), \emph{Determining high-risk zones by
+using spatial point process methodology.} Ph.D. thesis,
+Cuvillier Verlag \enc{Göttingen}{Goettingen}, available
+online: http://edoc.ub.uni-muenchen.de/15886/ Chapter 6
 }
 \seealso{
-  \code{\link[highriskzone]{det_hrz}},
-  \code{\link[highriskzone]{eval_method}},
-  \code{\link[highriskzone]{bootcor_restr}}
+\code{\link[highriskzone]{det_hrz}},
+\code{\link[highriskzone]{eval_method}},
+\code{\link[highriskzone]{bootcor_restr}}
 }
 
