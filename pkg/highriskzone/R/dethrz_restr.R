@@ -76,6 +76,7 @@
 #'    \item{ estint }{ Estimated intensity. See \code{\link[spatstat]{density.ppp}}.}
 #' @seealso \code{\link[spatstat]{distmap}}, \code{\link[spatstat]{eval.im}}, \code{\link[spatstat]{owin}}
 #' @examples
+#' \dontrun{
 #'  data(craterA)
 #'  spatstat.options(npixel=400)
 #'
@@ -96,7 +97,7 @@
 #'# determine high-risk zone by accounting for a hole
 #'hrzi2 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
 #'  cutoff = 0.4, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
-#'
+#'}
 
 det_hrz_restr <- function(ppdata, type, criterion, cutoff, hole=NULL, integratehole=TRUE, 
                           obsprobs=NULL, obsprobimage=NULL, distancemap=NULL, intens=NULL, 

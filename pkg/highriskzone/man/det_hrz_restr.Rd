@@ -133,7 +133,8 @@ For further information, Mahling et al. (2013) and Mahling
 (2013), Chapters 4 and 8 and Appendix A (References).
 }
 \examples{
-data(craterA)
+\dontrun{
+ data(craterA)
  spatstat.options(npixel=400)
 
 # define restriction area
@@ -153,6 +154,7 @@ hrzi1 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
 # determine high-risk zone by accounting for a hole
 hrzi2 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
  cutoff = 0.4, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
+}
 }
 \seealso{
 \code{\link[spatstat]{distmap}},

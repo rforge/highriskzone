@@ -48,6 +48,7 @@
 #' Chapter 6
 #' @seealso \code{\link[highriskzone]{det_hrz}}, \code{\link[highriskzone]{eval_method}}, \code{\link[highriskzone]{bootcor_restr}}
 #' @examples
+#' \dontrun{
 #' data(craterB)
 #' set.seed(4321)
 #'
@@ -56,7 +57,7 @@
 #' summary(bc)
 #' plot(bc)
 #'
-#' \dontrun{
+#' 
 #' hrzbc <- det_hrz(craterB, type = "intens", criterion = "indirect", 
 #' cutoff = bc$alphastar, nxprob = 0.1)
 #' }

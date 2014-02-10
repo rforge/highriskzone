@@ -77,6 +77,7 @@ If there are restriction areas in the observation window,
 use \code{\link[highriskzone]{bootcor_restr}} instead.
 }
 \examples{
+\dontrun{
 data(craterB)
 set.seed(4321)
 
@@ -85,7 +86,7 @@ bc
 summary(bc)
 plot(bc)
 
-\dontrun{
+
 hrzbc <- det_hrz(craterB, type = "intens", criterion = "indirect",
 cutoff = bc$alphastar, nxprob = 0.1)
 }
