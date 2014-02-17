@@ -113,7 +113,7 @@ det_hrz_restr <- function(ppdata, type, criterion, cutoff, hole=NULL, integrateh
   
   if (!is.null(obsprobimage)){
     if (!is.null(hole)){
-      holeim <- as.im(X=winminus, W=craterA$window, value=0)
+      holeim <- as.im(X=winminus, W=ppdata$window, value=0)
       obsprobimage <- eval.im(obsprobimage + holeim)
     }
     sumim <- summary(obsprobimage)

@@ -124,7 +124,7 @@ bootcor_restr <- function(ppdata, cutoff, numit = 100, tol=0.001, nxprob = 0.1,
 
   if (!is.null(obsprobimage)){
     if (!is.null(hole)){
-      holeim <- as.im(X=winminus, W=craterA$window, value=0)
+      holeim <- as.im(X=winminus, W=ppdata$window, value=0)
       obsprobimage <- eval.im(obsprobimage + holeim)
     }
     sumim <- summary(obsprobimage)
