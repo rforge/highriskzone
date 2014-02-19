@@ -15,4 +15,5 @@ Description: Functions for determining and evaluating high-risk zones and
     an R package' (Seibold, 2012) and 'Determining high-risk zones for
     unexploded World War II bombs by using point process methodology' (Mahling
     et al., 2013).
-License: MIT
+License: MIT + file LICENSE
+Encoding: latin1
