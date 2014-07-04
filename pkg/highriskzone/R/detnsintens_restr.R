@@ -18,7 +18,7 @@
 det_nsintens_restr <- function(ppdata, radius, weights){
 
   pppsim <- ppdata
-  frameWin <- bounding.box(pppsim$window)
+  frameWin <- boundingbox(pppsim$window)
   dilatedWin <- owin(frameWin$xrange + 1.2*c(-radius, radius), frameWin$yrange + 1.2*c(-radius, radius))
   pppsim$window <- dilatedWin
 

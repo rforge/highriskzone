@@ -61,7 +61,7 @@ sim_intens <- function(ppdata, intensSim, nxprob) {
                   "rejected as lying outside the specified window. Set number of pixels higher."))
     rr <- ripras(ppsim$x, ppsim$y)
     bb <- bounding.box.xy(ppsim$x, ppsim$y)
-    bb <- bounding.box(rr, bb, ppsim$window)
+    bb <- boundingbox(rr, bb, ppsim$window)
     rejectwindow <- if (!is.null(rr)) 
       rebound.owin(rr, bb)
     else bb
@@ -107,7 +107,7 @@ sim_intens <- function(ppdata, intensSim, nxprob) {
 det_nsintens <- function(ppdata, radius){
   
   pppsim <- ppdata
-  frameWin <- bounding.box(pppsim$window)
+  frameWin <- boundingbox(pppsim$window)
   dilatedWin <- owin(frameWin$xrange + 1.2*c(-radius, radius), frameWin$yrange + 1.2*c(-radius, radius))
   pppsim$window <- dilatedWin
   
@@ -185,7 +185,7 @@ sim_nsprocess <- function(ppdata, intens, radius, clustering=5, thinning=0){
 #' The estimation of the intensity (on an adequate window) and the
 #' simulation of the Neyman-Scott process are performed seperately,
 #' so the intensity does not need to be reestimated in every iteration.\cr
-#' The resulting process is a \enc{Matérn}{Matern} process whose parent process is an
+#' The resulting process is a \enc{Mat?rn}{Matern} process whose parent process is an
 #' inhomogeneous Poisson point process.
 #'
 #' @param ppdata  observed point pattern, whose estimated intensity (adjusted for
