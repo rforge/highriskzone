@@ -14,13 +14,13 @@
 #' @author
 #' Heidi Seibold \email{Heidi.Seibold@@campus.lmu.de},
 #' Monia Mahling \email{monia.mahling@@stat.uni-muenchen.de}
-#' 
+#' Sebastian Linne \email{Sebastian.Linne@@campus.lmu.de}
 #'
 #' Maintainer: Heidi Seibold \email{Heidi.Seibold@@campus.lmu.de}
 #' @name highriskzone-package
 #' @docType package
 #' @aliases highriskzone package-highriskzone
-#' @import spatstat ks
+#' @import spatstat ks fields deldir rgeos
 #' @title Determining high-risk zones by using spatial point process methodology
 #' @keywords package
 #' @references Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut \enc{Küchenhoff}{Kuechenhoff} (2013),
