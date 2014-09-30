@@ -13,6 +13,8 @@ Depends:
     fields,
     rgeos,
     deldir
+Suggests:
+    INLA
 Description: Functions for determining and evaluating high-risk zones and
     simulating and thinning point process data, as described in 'Determining
     high risk zones using point process methodology - Realization by building

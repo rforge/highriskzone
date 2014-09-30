@@ -11,7 +11,7 @@
 #' @param weights (optional) integration weights for the spde model, only used if argument mesh is NULL
 #' @param alpha (optional) alpha value for the spde model, only used if argument spde is NULL
 #' @param ... additional arguments for the construction of the spde model (see \code{\link[INLA]{inla.spde2.matern}})
-#' @param npixel number of pixel per dimension (see \code{\link[spatstat]{spatstat.options}})s
+#' @param npixel number of pixel per dimension (see \code{\link[spatstat]{spatstat.options}})
 #' @export
 #' @return A list of
 #'    \item{ intensest }{ Pixel image with the estimated intensities of the random field. }
@@ -19,16 +19,15 @@
 #' @examples
 #' data(craterA)
 #' est_spde <- est_intens_spde(coords=craterA)
-#' image.plot(list(x=est_spde$intensest$xcol, y=est_spde$intensest$yrow, z=log(t(est_spde$intensest$v))), main="logarithmic intensity")
+#' image.plot(list(x=est_spde$intensest$xcol, y=est_spde$intensest$yrow, 
+#'                 z=log(t(est_spde$intensest$v))), main="logarithmic intensity")
 #' points(craterA)
-
-#require(highriskzone);require(INLA);require(deldir);require(rgeos);require(fields)
 
 est_intens_spde <- function(coords, win=NULL, npixel=200, fine_mesh=FALSE, mesh=NULL, weights=NULL, alpha=2, ...){
   if(!require(INLA)){
     warning("This function requires R-INLA, but the R-INLA package is not available on CRAN.\n
          Trying to install it from source(\"http://www.math.ntnu.no/inla/givemeINLA.R\") \n 
-If this fails or if you want to get some extra information please take a look at www.r-inla.org!
+See www.r-inla.org for more information!
 ")
     source("http://www.math.ntnu.no/inla/givemeINLA.R")
   }
@@ -60,16 +59,16 @@ If this fails or if you want to get some extra information please take a look at
     # create mesh
     xrange <- win$xrange[2]- win$xrange[1]
     yrange <- win$yrange[2]- win$yrange[1]
-    mesh_boundary <- inla.mesh.segment(boundary)
+    mesh_boundary <- INLA::inla.mesh.segment(boundary)
     if(fine_mesh){
-      mesh<-inla.mesh.2d(boundary=mesh_boundary, max.edge=min(xrange,yrange)*c(0.025,0.05), cutoff=min(xrange,yrange)*0.0125)
+      mesh <- INLA::inla.mesh.2d(boundary=mesh_boundary, max.edge=min(xrange,yrange)*c(0.025,0.05), cutoff=min(xrange,yrange)*0.0125)
     }
     else{
-      mesh<-inla.mesh.2d(boundary=mesh_boundary, max.edge=min(xrange,yrange)*c(0.1,0.2), cutoff=min(xrange,yrange)*0.05)
+      mesh <- INLA::inla.mesh.2d(boundary=mesh_boundary, max.edge=min(xrange,yrange)*c(0.1,0.2), cutoff=min(xrange,yrange)*0.05)
     }
   }
   
-  spde <- inla.spde2.matern(mesh=mesh, alpha=alpha,...)
+  spde <- INLA::inla.spde2.matern(mesh=mesh, alpha=alpha,...)
   
   if(is.null(weights)){
     crater_region <- as(boundary, 'gpc.poly')
@@ -80,15 +79,15 @@ If this fails or if you want to get some extra information please take a look at
   mesh_n <- mesh$n
   y <- rep(0:1, c(mesh_n, n))
   e <- c(weights, rep(0, n))
-  A <- rBind(Diagonal(mesh_n, rep(1, mesh_n)), inla.spde.make.A(mesh, xy_coords))
-  stack <- inla.stack(data=list(y=y, e=e), A=list(1,A), tag='crater', effects=list(list(beta0=rep(1,mesh_n+n)), list(i=1:mesh_n)))
+  A <- rBind(Diagonal(mesh_n, rep(1, mesh_n)), INLA::inla.spde.make.A(mesh, xy_coords))
+  stack <- INLA::inla.stack(data=list(y=y, e=e), A=list(1,A), tag='crater', effects=list(list(beta0=rep(1,mesh_n+n)), list(i=1:mesh_n)))
   
   
-  inla_result <- inla(y ~ 0 + beta0 + f(i, model=spde), family="poisson", data=inla.stack.data(stack), 
-                      control.predictor=list(A=inla.stack.A(stack)), E=inla.stack.data(stack)$e)
-  random_field <- inla.spde2.result(inla_result, 'i', spde) 
-  projector <- inla.mesh.projector(mesh, dims=c(npixel,npixel), xlim=c(win$xrange[1],win$xrange[2]), ylim=c(win$yrange[1],win$yrange[2]))
-  intensity_spde <- inla.mesh.project(projector, random_field$summary.value$mean) + mean(inla_result$marginals.fix[[1]][,1])
+  inla_result <- INLA::inla(y ~ 0 + beta0 + f(i, model=spde), family="poisson", data=INLA::inla.stack.data(stack), 
+                      control.predictor=list(A=INLA::inla.stack.A(stack)), E=INLA::inla.stack.data(stack)$e)
+  random_field <- INLA::inla.spde2.result(inla_result, 'i', spde) 
+  projector <- INLA::inla.mesh.projector(mesh, dims=c(npixel,npixel), xlim=c(win$xrange[1],win$xrange[2]), ylim=c(win$yrange[1],win$yrange[2]))
+  intensity_spde <- INLA::inla.mesh.project(projector, random_field$summary.value$mean) + mean(inla_result$marginals.fix[[1]][,1])
   
   pixel_in_poly <- matrix(in.poly(projector$lattice$loc, rbind(boundary,boundary[1,])), ncol=npixel)
   pixel_in_poly[pixel_in_poly==0] <- NA
