@@ -23,7 +23,7 @@
 #'                 z=log(t(est_spde$intensest$v))), main="logarithmic intensity")
 #' points(craterA)
 
-est_intens_spde <- function(coords, win=NULL, npixel=200, fine_mesh=FALSE, mesh=NULL, weights=NULL, alpha=2, ...){
+est_intens_spde <- function(coords, win=NULL, npixel=50, fine_mesh=FALSE, mesh=NULL, weights=NULL, alpha=2, ...){
   if(!require(INLA)){
     warning("This function requires R-INLA, but the R-INLA package is not available on CRAN.\n
          Trying to install it from source(\"http://www.math.ntnu.no/inla/givemeINLA.R\") \n 

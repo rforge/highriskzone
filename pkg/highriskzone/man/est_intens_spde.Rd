@@ -3,7 +3,7 @@
 \alias{est_intens_spde}
 \title{Estimates the intensity of the point pattern by using the SPDE method from r-INLA.}
 \usage{
-est_intens_spde(coords, win = NULL, npixel = 200, fine_mesh = FALSE,
+est_intens_spde(coords, win = NULL, npixel = 50, fine_mesh = FALSE,
   mesh = NULL, weights = NULL, alpha = 2, ...)
 }
 \arguments{

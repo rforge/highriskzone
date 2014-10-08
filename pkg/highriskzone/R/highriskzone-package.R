@@ -5,7 +5,7 @@
 #' \tabular{ll}{
 #' Package: \tab highriskzone\cr
 #' Type: \tab Package\cr
-#' Version: \tab 1.1\cr
+#' Version: \tab 1.2\cr
 #' Date: \tab 2013-10-31\cr
 #' License: \tab MIT\cr
 #' LazyLoad: \tab yes\cr
@@ -20,7 +20,7 @@
 #' @name highriskzone-package
 #' @docType package
 #' @aliases highriskzone package-highriskzone
-#' @import spatstat ks fields deldir rgeos
+#' @import spatstat ks fields deldir rgeos Matrix
 #' @title Determining high-risk zones by using spatial point process methodology
 #' @keywords package
 #' @references Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut \enc{Küchenhoff}{Kuechenhoff} (2013),
