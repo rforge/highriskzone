@@ -20,7 +20,7 @@
 #' data(craterA)
 #' est_spde <- est_intens_spde(coords=craterA)
 #' image.plot(list(x=est_spde$intensest$xcol, y=est_spde$intensest$yrow, 
-#'                 z=log(t(est_spde$intensest$v))), main="logarithmic intensity")
+#'                 z=log(t(est_spde$intensest$v))), main="estimated logarithmic intensity")
 #' points(craterA)
 
 est_intens_spde <- function(coords, win=NULL, npixel=50, fine_mesh=FALSE, mesh=NULL, weights=NULL, alpha=2, ...){
