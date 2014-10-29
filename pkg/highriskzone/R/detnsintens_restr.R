@@ -9,7 +9,7 @@
 #'          points are located
 #' @param weights Vector of observation probabilities associated with the observations contained in \code{ppdata}.
 #' @return A pixel image (object of class "im"). See \code{\link[spatstat]{density.ppp}}.
-#' @seealso \code{\link[spatstat]{density.ppp}}, \code{\link[spatstat]{bounding.box}},
+#' @seealso \code{\link[spatstat]{density.ppp}}, \code{\link[spatstat]{boundingbox}},
 #'          \code{\link[spatstat]{owin}}, \code{\link[ks]{Hscv}}
 
 

@@ -98,7 +98,7 @@ sim_intens <- function(ppdata, intensSim, nxprob) {
 #' @param radius  radius of the circles around the parent points in which the cluster
 #'          points are located
 #' @return A pixel image (object of class "im"). See \code{\link[spatstat]{density.ppp}}.  
-#' @seealso \code{\link[spatstat]{density.ppp}}, \code{\link[spatstat]{bounding.box}}, 
+#' @seealso \code{\link[spatstat]{density.ppp}}, \code{\link[spatstat]{boundingbox}}, 
 #'          \code{\link[spatstat]{owin}}, \code{\link[ks]{Hscv}}
 
 
