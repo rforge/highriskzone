@@ -2,7 +2,7 @@ Package: highriskzone
 Type: Package
 Title: Determining and evaluating high-risk zones
 Version: 1.2
-Date: 2013-10-31
+Date: 2014-11-24
 Author: Heidi Seibold <Heidi.Seibold@campus.lmu.de>, Monia Mahling
     <monia.mahling@stat.uni-muenchen.de>, Sebastian Linne
     <Sebastian.Linne@campus.lmu.de>
@@ -23,3 +23,5 @@ Description: Functions for determining and evaluating high-risk zones and
     an R package' (Seibold, 2012) and 'Determining high-risk zones for
     unexploded World War II bombs by using point process methodology' (Mahling
     et al., 2013).
+License: MIT + file LICENSE
+
