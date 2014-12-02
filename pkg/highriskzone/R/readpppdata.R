@@ -23,7 +23,7 @@
 #'                        xwin = windowA$x, ywin = windowA$y)
 #' crater
 
-#- früher: readDataPPP
+#- fr?her: readDataPPP
 read_pppdata <- function(xppp, yppp, xwin=NULL, ywin=NULL, unitname=NULL) {
   
   #check if input arguments have correct values

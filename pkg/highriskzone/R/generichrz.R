@@ -8,7 +8,7 @@
 #' @param x high-risk zone (object of class "\code{highriskzone}")
 #' @param ... ignored
 #' @method print highriskzone
-#' @S3method print highriskzone
+#' @export print highriskzone
 #' @seealso \code{\link[base]{print}}, \code{\link{summary.highriskzone}}
 
 print.highriskzone <- function(x,...){
@@ -31,7 +31,7 @@ print.highriskzone <- function(x,...){
 #' @param object high-risk zone (object of class "\code{highriskzone}")
 #' @param ... ignored
 #' @method summary highriskzone
-#' @S3method summary highriskzone
+#' @export summary highriskzone
 #' @seealso \code{\link[base]{summary}}, \code{\link{print.highriskzone}}
 
 summary.highriskzone <- function(object, ...){
@@ -73,7 +73,7 @@ summary.highriskzone <- function(object, ...){
 #' See \code{\link[spatstat]{as.polygonal}}
 #' @param zonecol the colour used to plot the high-risk zone.
 #' @method plot highriskzone
-#' @S3method plot highriskzone
+#' @export plot highriskzone
 #' @seealso \code{\link[graphics]{plot}}, for examples see \code{\link{det_hrz}}
 
 plot.highriskzone <- function(x, ..., pattern=NULL, win=NULL, plotpattern=FALSE, plotwindow=FALSE, windowcol="white", 

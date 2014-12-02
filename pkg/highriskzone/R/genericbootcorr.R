@@ -8,7 +8,7 @@
 #' @param x bootstrap correction for of a high-risk zone (object of class "\code{bootcorr}")
 #' @param ... ignored
 #' @method print bootcorr
-#' @S3method print bootcorr
+#' @export print bootcorr
 #' @seealso \code{\link[base]{print}}, \code{\link{summary.bootcorr}}
 
 print.bootcorr <- function(x, ...){
@@ -29,7 +29,7 @@ print.bootcorr <- function(x, ...){
 #' @param object bootstrap correction for a high-risk zone (object of class "\code{bootcorr}")
 #' @param ... ignored
 #' @method summary bootcorr
-#' @S3method summary bootcorr
+#' @export summary bootcorr
 #' @seealso \code{\link[base]{summary}}, \code{\link{print.bootcorr}}, \code{\link{plot.bootcorr}}
 
 summary.bootcorr <- function(object, ...){
@@ -62,7 +62,7 @@ summary.bootcorr <- function(object, ...){
 #' @param x bootstrap correction for a high-risk zone (object of class "\code{bootcorr}")
 #' @param ... extra arguments passed to the generic \code{\link[graphics]{plot}} function.
 #' @method plot bootcorr
-#' @S3method plot bootcorr
+#' @export plot bootcorr
 #' @seealso \code{\link[graphics]{plot}}, \code{\link{print.bootcorr}}, \code{\link{summary.bootcorr}}
 
 

@@ -80,12 +80,12 @@
 #' quantile of the nearest-neighbour distance. For type="intens" and criterion="area", it is the failure
 #' probability alpha. For all other criterions it is NA.}
 #'    \item{ covmatrix }{ If not given (and \code{type="intens"}), it is estimated. See \code{\link[ks]{Hscv}}.}
-#' @references Monia Mahling, Michael \enc{Höhle}{Hoehle} & Helmut \enc{Küchenhoff}{Kuechenhoff} (2013),
+#' @references Monia Mahling, Michael \enc{H?hle}{Hoehle} & Helmut \enc{K?chenhoff}{Kuechenhoff} (2013),
 #' \emph{Determining high-risk zones for unexploded World War II bombs by using point process methodology.}
 #' Journal of the Royal Statistical Society, Series C 62(2), 181-199.
 #' @references Monia Mahling (2013),
 #' \emph{Determining high-risk zones by using spatial point process methodology.}
-#' Ph.D. thesis, Cuvillier Verlag \enc{Göttingen}{Goettingen},
+#' Ph.D. thesis, Cuvillier Verlag \enc{G?ttingen}{Goettingen},
 #' available online: http://edoc.ub.uni-muenchen.de/15886/
 #' @seealso \code{\link[spatstat]{distmap}}, \code{\link[spatstat]{eval.im}}, \code{\link[spatstat]{owin}},
 #'                \code{\link{eval_method}}, \code{\link[highriskzone]{det_hrz_restr}}
@@ -104,13 +104,13 @@
 #' plot(hrzd3, zonecol = 4,  win = craterA$window, plotwindow = TRUE)
 #' par(op)
 #' 
+#' \dontrun{
 #' # or first calculate the distancemap and use it:
 #' distm <- distmap(craterA)
 #' hrzd <- det_hrz(craterA, type = "dist", criterion = "direct", cutoff = 100,
 #'                 distancemap = distm, nxprob = 0.1)
 #'                 
 #' ## type: intens
-#' \dontrun{
 #' hrzi1 <- det_hrz(craterA, type = "intens", criterion = "area", cutoff = 1000000, nxprob = 0.1)
 #' hrzi2 <- det_hrz(craterA, type = "intens", criterion = "indirect", cutoff = 0.1, nxprob = 0.1)
 #' hrzi3 <- det_hrz(craterA, type = "intens", criterion = "direct", cutoff = 0.0001, nxprob = 0.1)

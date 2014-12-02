@@ -8,7 +8,7 @@
 #' @param x evaluation of a high-risk zone (object of class "\code{hrzeval}")
 #' @param ... ignored
 #' @method print hrzeval
-#' @S3method print hrzeval
+#' @export print hrzeval
 #' @seealso \code{\link[base]{print}}, \code{\link{summary.hrzeval}}
 
 print.hrzeval <- function(x, ...){
@@ -28,7 +28,7 @@ print.hrzeval <- function(x, ...){
 #' @param object evaluation of a high-risk zone (object of class "\code{hrzeval}")
 #' @param ... ignored
 #' @method summary hrzeval
-#' @S3method summary hrzeval
+#' @export summary hrzeval
 #' @seealso \code{\link[base]{summary}}, \code{\link{print.hrzeval}}
 
 summary.hrzeval <- function(object, ...){
@@ -66,7 +66,7 @@ summary.hrzeval <- function(object, ...){
 #' @param obscol the color used to plot the observed events
 #' @param obspch plotting 'character' of the observed events
 #' @method plot hrzeval
-#' @S3method plot hrzeval
+#' @export plot hrzeval
 #' @seealso \code{\link[graphics]{plot}}, \code{\link{eval_hrz}}, \code{\link{plot.highriskzone}}
 
 
