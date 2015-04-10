@@ -1,5 +1,6 @@
 #' Estimates the intensity of the point pattern.
 #'
+#'
 #' Estimates the intensity of the point pattern by a kernel method 
 #' (See \code{\link[spatstat]{density.ppp}}). 
 #'
