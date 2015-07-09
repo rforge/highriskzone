@@ -8,12 +8,13 @@ Author: Heidi Seibold <Heidi.Seibold@campus.lmu.de>, Monia Mahling
     <Sebastian.Linne@campus.lmu.de>
 Maintainer: Heidi Seibold <Heidi.Seibold@campus.lmu.de>
 Depends:
-    spatstat,
     ks,
     fields,
     rgeos,
     deldir,
     Matrix
+Imports: 
+    spatstat
 Suggests:
     INLA
 Additional_repositories: http://www.math.ntnu.no/inla/R/stable 
