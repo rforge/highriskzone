@@ -15,7 +15,7 @@
 #' \dontrun{
 #' data(craterA)
 #' #change npixel = 50 with 1000 and you get a nicer picture
-#' spatstat.options(npixel=50)
+#' spatstat::spatstat.options(npixel=50)
 #' int <- est_intens(craterA)
 #' plot(int$intensest, main = "pixel image of intensity")
 #' plot(craterA$window, main = "contour plot of intensity"); contour(int$intensest, add =TRUE)

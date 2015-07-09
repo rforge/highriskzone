@@ -70,14 +70,16 @@
 #' set.seed(4321)
 
 #'# define restriction area
-#'restrwin <- owin(xrange=craterA$window$xrange, yrange=craterA$window$yrange,
-#'  poly=list(x=c(1500, 1500, 2000, 2000), y=c(2000, 1500, 1500, 2000)))
+#'restrwin <- spatstat::owin(xrange = craterA$window$xrange, 
+#'                           yrange = craterA$window$yrange,
+#'                           poly = list(x = c(1500, 1500, 2000, 2000), 
+#'                                       y = c(2000, 1500, 1500, 2000)))
 #'
 #'# create image of observation probability (30% inside restriction area)
-#'wim <- as.im(craterA$window, value=1)
-#'rim <- as.im(restrwin, xy=list(x=wim$xcol, y=wim$yrow))
+#'wim <- spatstat::as.im(craterA$window, value = 1)
+#'rim <- spatstat::as.im(restrwin, xy = list(x = wim$xcol, y = wim$yrow))
 #'rim$v[is.na(rim$v)] <- 0
-#'oim1 <- eval.im(wim - 0.7 * rim)
+#'oim1 <- spatstat::eval.im(wim - 0.7 * rim)
 #'
 #' \dontrun{
 #'# perform bootstrap correction

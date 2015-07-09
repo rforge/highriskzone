@@ -78,7 +78,7 @@
 #' @examples
 #' \dontrun{
 #'  data(craterA)
-#'  spatstat.options(npixel=400)
+#'  spatstat::spatstat.options(npixel=400)
 #'
 #'# define restriction area
 #'restrwin <- owin(xrange=craterA$window$xrange, yrange=craterA$window$yrange,

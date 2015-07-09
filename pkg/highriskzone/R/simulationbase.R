@@ -49,8 +49,8 @@ sim_intens <- function(ppdata, intensSim, nxprob) {
   
   # Warnings  
   if ( max(ppdata$window$xrange[2] - ppdata$window$xrange[1], ppdata$window$yrange[2] - ppdata$window$yrange[1])
-       /spatstat.options()$npixel > 4000 ) {
-    warning( "For given size of ppdata$window the number of pixels are too low. Set higher by using spatstat.options(npixel).")
+       /spatstat::spatstat.options()$npixel > 4000 ) {
+    warning( "For given size of ppdata$window the number of pixels are too low. Set higher by using spatstat::spatstat.options(npixel).")
   }
   
   
