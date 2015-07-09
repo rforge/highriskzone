@@ -16,7 +16,7 @@ Depends:
     Matrix
 Suggests:
     INLA
-Additional_repositories: http://www.math.ntnu.no/inla
+Additional_repositories: http://www.math.ntnu.no/inla/R/stable 
 Description: Functions for determining and evaluating high-risk zones and
     simulating and thinning point process data, as described in 'Determining
     high risk zones using point process methodology - Realization by building
