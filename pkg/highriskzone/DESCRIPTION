@@ -2,7 +2,7 @@ Package: highriskzone
 Type: Package
 Title: Determining and evaluating high-risk zones
 Version: 1.2
-Date: 2014-11-24
+Date: 2015-07-09
 Author: Heidi Seibold <Heidi.Seibold@campus.lmu.de>, Monia Mahling
     <monia.mahling@stat.uni-muenchen.de>, Sebastian Linne
     <Sebastian.Linne@campus.lmu.de>
