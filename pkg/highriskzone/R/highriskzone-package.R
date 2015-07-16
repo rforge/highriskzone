@@ -19,7 +19,7 @@
 #' Maintainer: Heidi Seibold \email{Heidi.Seibold@@campus.lmu.de}
 #' @name highriskzone-package
 #' @docType package
-#' @aliases highriskzone package-highriskzone
+#' @aliases package-highriskzone
 #' @import spatstat ks fields deldir rgeos Matrix
 #' @title Determining high-risk zones by using spatial point process methodology
 #' @keywords package

@@ -154,10 +154,12 @@ sim_nsprocess <- function(ppdata, intens, radius, clustering=5, thinning=0){
     n <- rpois(1, lambdaclust)
     return(runifdisc(n, radius, centre=c(x0, y0)))
   }
-  
-  resultppp <- rNeymanScott(kappa=intenssim, rmax=radius, rcluster=nclust, radius=radius, 
+#  resultppp <- rNeymanScott(kappa=intenssim, rmax=radius, rcluster=nclust, radius=radius, 
+#                            lambdaclust=clustering, win=ppdata$window)
+  resultppp <- rNeymanScott(kappa=intenssim, expand=radius, rcluster=nclust, radius=radius, 
                             lambdaclust=clustering, win=ppdata$window)
-  return(resultppp)
+
+    return(resultppp)
 }
 
 

@@ -3,7 +3,6 @@
 \docType{package}
 \encoding{latin1}
 \name{highriskzone-package}
-\alias{highriskzone}
 \alias{highriskzone-package}
 \alias{package-highriskzone}
 \title{Determining high-risk zones by using spatial point process methodology}
