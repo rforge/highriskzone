@@ -10,7 +10,6 @@ Maintainer: Heidi Seibold <Heidi.Seibold@uzh.ch>
 Depends:
     ks,
     fields,
-    maps,
     rgeos,
     deldir,
     Matrix
