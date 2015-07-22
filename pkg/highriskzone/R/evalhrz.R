@@ -6,6 +6,7 @@
 #' @param hrz  High-risk zone of class owin based on a binary mask (see \code{\link[spatstat]{area.owin}})
 #' @param unobspp  Unobserved spatial point process 
 #' @param obspp  Observed spatial point process
+#' @importFrom methods is
 #' @export  
 #' @return An object of class "\code{hrzeval}", which is a list of
 #'    \item{ numbermiss }{ number of unobserved events outside the high-risk zone }

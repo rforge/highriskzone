@@ -2,10 +2,10 @@
 #'
 #' Estimates the intensity of the point pattern by a kernel method
 #' (See \code{\link[spatstat]{density.ppp}}).
-#'
 #' @param ppdata  data of class ppp
 #' @param covmatrix (Optional) Covariance matrix of the kernel of a normal distribution
 #' @param weights (Optional) vector of weights attached to each observation
+#' @importFrom stats density
 #' @export
 #' @return A list of
 #'    \item{ intensest }{ Estimated intensity (object of class "im", see \code{\link[spatstat]{density.ppp}}). }

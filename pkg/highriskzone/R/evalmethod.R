@@ -51,6 +51,8 @@
 #'          this value; it is also the parameter of the Poisson distribution
 #'          for the number of points per cluster. Only used for \code{simulate = "clintens"}.
 #' @param pbar  logical. Should progress bar be printed?
+#' @importFrom utils txtProgressBar
+#' @importFrom utils setTxtProgressBar
 #' @export  
 #' @return A \code{data.frame} with variables 
 #'    \item{ Iteration }{ Iterationstep of the result }

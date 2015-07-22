@@ -62,6 +62,7 @@ summary.bootcorr <- function(object, ...){
 #' @param x bootstrap correction for a high-risk zone (object of class "\code{bootcorr}")
 #' @param ... extra arguments passed to the generic \code{\link[graphics]{plot}} function.
 #' @method plot bootcorr
+#' @importFrom graphics points
 #' @export plot bootcorr
 #' @seealso \code{\link[graphics]{plot}}, \code{\link{print.bootcorr}}, \code{\link{summary.bootcorr}}
 

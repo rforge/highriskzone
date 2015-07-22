@@ -8,6 +8,7 @@
 #' @param full  all observations of the point pattern
 #' @param nxprob  probability of having unobserved events 
 #' @return A list of observed and unobserved point patterns. Both of class ppp.
+#' @importFrom stats rbinom
 #' @seealso \code{\link[stats]{rbinom}}, \code{\link[spatstat]{ppp}}
 #' @examples
 #'  data(craterB)
@@ -137,6 +138,7 @@ det_nsintens <- function(ppdata, radius){
 #' @param thinning  constant thinning probability (in case the observed pattern is a
 #'          thinned version of a full pattern); usually equal to the probability of having
 #'          unobserved events
+#' @importFrom stats rpois
 #' @return The simulated point pattern (an object of class "ppp").
 #'        Additionally, some intermediate results of the simulation are returned as 
 #'        attributes of this point pattern: see \code{\link[spatstat]{rNeymanScott}}.

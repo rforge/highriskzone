@@ -1,6 +1,6 @@
 Package: highriskzone
 Type: Package
-Title: Determining and evaluating high-risk zones
+Title: Determining and Evaluating High-Risk Zones
 Version: 1.2
 Date: 2015-07-09
 Author: Heidi Seibold <Heidi.Seibold@uzh.ch>, Monia Mahling
@@ -14,7 +14,10 @@ Depends:
     deldir,
     Matrix
 Imports: 
-    spatstat
+    spatstat,
+    methods,
+    stats,
+    utils
 Suggests:
     INLA
 Additional_repositories: http://www.math.ntnu.no/inla/R/stable 

@@ -33,6 +33,7 @@ det_nnarea <- function(cutoffval, distancemap, win){
 #'                     distance of every location in the observation window to the nearest event
 #' @param areahrz  given area of the high-risk zone
 #' @param win  observation window of class owin 
+#' @importFrom stats uniroot
 #' @return A list of 
 #'     \item{ cutoffdist }{ quantile of the nearest-neighbour distance }
 #'     \item{ thresh }{ distance }
@@ -132,6 +133,7 @@ det_alpha <- function(intens, threshold, nxprob=0.1) {
 #' @param alpha   failure probability: probability to have at least one unobserved event
 #'                outside the high-risk zone
 #' @param nxprob  probability of having unobserved events
+#' @importFrom stats uniroot
 #' @return value of the threshold c
 #' @seealso \code{\link{det_alpha}}, \code{\link[stats]{uniroot}}
 
@@ -191,6 +193,7 @@ det_area <- function(win, intensmatrix, threshold){
 #' @param areahrz  area of the high-risk zone 
 #' @param win  observation window
 #' @param nxprob  probability of having unbserved events  
+#' @importFrom stats uniroot
 #' @return A list of
 #'   \item{ threshold }{ Value of the threshold c. The high-risk zone is the field in which the estimated intensity 
 #'                   exceeds this value }

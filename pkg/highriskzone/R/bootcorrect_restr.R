@@ -53,6 +53,8 @@
 #'          this value; it also is the parameter of the Poisson distribution
 #'          for the number of points per cluster. Only used for \code{simulate = "clintens"}.
 #' @param verbose logical. Should information on tested values/progress be printed?
+#' @importFrom stats quantile
+#' @importFrom stats rbinom
 #' @export
 #' @return An object of class bootcorr, which consists of a list of the final value for alpha (\code{alphastar})
 #'         and a data.frame \code{course} containing information on the simulation course, e.g. the tested values.
