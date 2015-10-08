@@ -113,7 +113,7 @@ det_nsintens <- function(ppdata, radius){
   pppsim$window <- dilatedWin
   
   covmatrixsim <- Hscv(cbind(pppsim$x, pppsim$y))
-  intensest <- density(pppsim, varcov=covmatrixsim)
+  intensest <- density(pppsim, varcov=covmatrixsim, positive=TRUE)
   
   return(intensest)
 }
