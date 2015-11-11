@@ -1,8 +1,8 @@
 Package: highriskzone
 Type: Package
 Title: Determining and Evaluating High-Risk Zones
-Version: 1.2
-Date: 2015-07-09
+Version: 1.3
+Date: 2015-10101010101010101010-09
 Author: Heidi Seibold <Heidi.Seibold@uzh.ch>, Monia Mahling
     <monia.mahling@stat.uni-muenchen.de>, Sebastian Linne
     <Sebastian.Linne@campus.lmu.de>
@@ -14,7 +14,7 @@ Depends:
     deldir,
     Matrix
 Imports: 
-    spatstat,
+    spatstat (>= 1.42-2),
     methods,
     stats,
     utils
