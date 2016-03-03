@@ -13,14 +13,14 @@ Depends:
     rgeos,
     deldir,
     Matrix
-Imports: 
+Imports:
     spatstat (>= 1.42-2),
     methods,
     stats,
     utils
 Suggests:
     INLA
-Additional_repositories: http://www.math.ntnu.no/inla/R/stable 
+Additional_repositories: https://www.math.ntnu.no/inla/R/stable
 Description: Functions for determining and evaluating high-risk zones and
     simulating and thinning point process data, as described in 'Determining
     high risk zones using point process methodology - Realization by building
@@ -28,3 +28,4 @@ Description: Functions for determining and evaluating high-risk zones and
     unexploded World War II bombs by using point process methodology' (Mahling
     et al., 2013).
 License: MIT + file LICENSE
+RoxygenNote: 5.0.1
