@@ -20,13 +20,6 @@ License: \tab MIT\cr
 LazyLoad: \tab yes\cr
 }
 }
-\author{
-Heidi Seibold \email{Heidi.Seibold@campus.lmu.de},
-Monia Mahling \email{monia.mahling@stat.uni-muenchen.de}
-Sebastian Linne \email{Sebastian.Linne@campus.lmu.de}
-
-Maintainer: Heidi Seibold \email{Heidi.Seibold@campus.lmu.de}
-}
 \references{
 Monia Mahling, Michael \enc{H?hle}{Hoehle} & Helmut \enc{K?chenhoff}{Kuechenhoff} (2013),
 \emph{Determining high-risk zones for unexploded World War II bombs by using point process methodology.}
@@ -43,5 +36,11 @@ Heidi Seibold (2012), \emph{Determining high risk zones using point process meth
 \seealso{
 \code{\link[spatstat]{spatstat-package}}
 }
-\keyword{package}
+\author{
+Heidi Seibold \email{Heidi.Seibold@campus.lmu.de},
+Monia Mahling \email{monia.mahling@stat.uni-muenchen.de}
+Sebastian Linne \email{Sebastian.Linne@campus.lmu.de}
 
+Maintainer: Heidi Seibold \email{Heidi.Seibold@campus.lmu.de}
+}
+\keyword{package}

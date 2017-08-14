@@ -13,4 +13,3 @@ data(craterA)
 Bomb crater Point Pattern
 }
 \keyword{datasets}
-

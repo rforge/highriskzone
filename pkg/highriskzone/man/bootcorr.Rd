@@ -90,4 +90,3 @@ Chapter 6
 \seealso{
 \code{\link[highriskzone]{det_hrz}}, \code{\link[highriskzone]{eval_method}}, \code{\link[highriskzone]{bootcor_restr}}
 }
-

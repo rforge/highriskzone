@@ -21,4 +21,3 @@ This is the plot method for the class \code{bootcorr}.
 \seealso{
 \code{\link[graphics]{plot}}, \code{\link{print.bootcorr}}, \code{\link{summary.bootcorr}}
 }
-

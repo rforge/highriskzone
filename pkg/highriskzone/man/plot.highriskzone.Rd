@@ -38,4 +38,3 @@ This is the plot method for the class \code{highriskzone}.
 \seealso{
 \code{\link[graphics]{plot}}, for examples see \code{\link{det_hrz}}
 }
-

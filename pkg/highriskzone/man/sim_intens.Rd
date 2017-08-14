@@ -23,4 +23,3 @@ and thinning of this data, to obtain "observed" and "unobserved" events.
 \seealso{
 \code{\link{thin}}, \code{\link[spatstat]{rpoispp}}
 }
-

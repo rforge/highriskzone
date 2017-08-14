@@ -2,8 +2,8 @@
 % Please edit documentation in R/dethrz.R
 \name{det_hrz}
 \alias{det_hrz}
-\alias{highriskzone}
 \alias{highriskzone.object}
+\alias{highriskzone}
 \title{Determination of the high-risk zone.}
 \usage{
 det_hrz(ppdata, type, criterion, cutoff, distancemap = NULL, intens = NULL,
@@ -21,9 +21,10 @@ or \code{"direct"} (giving radius/threshold c depending on type)}
 
 \item{cutoff}{Value of criterion (area, radius, quantile, alpha or threshold). 
 Depending on criterion and type: 
-If criterion = "direct", cutoff is the threshold. If criterion = "indirect", cutoff is
-the quantile for the quantile-based method and the failure probability alpha for the 
-intensity-base method. If criterion = "area", cutoff is the area the high-risk zone should
+If criterion = "direct" and type = "intens", cutoff is the maximum intensity of unexploded bombs
+outside the risk zone. If type = "dist" instead, cutoff is the radius of the circle around each exploded bomb.
+"If criterion = "indirect", cutoff is the quantile for the quantile-based method and the failure 
+probability alpha for the intensity-base method. If criterion = "area", cutoff is the area the high-risk zone should
 have.}
 
 \item{distancemap}{(optional) distance map: distance of every pixel to the nearest observation 
@@ -43,15 +44,15 @@ using \code{\link[ks]{Hscv}}.}
 }
 \value{
 An object of class "\code{highriskzone}", which is a list of
-   \item{ typehrz, criterion, cutoff }{ see arguments}
+   \item{ typehrz, criterion, cutoff, nxprob }{ see arguments}
    \item{ zone }{ Determined high-risk zone: Object of class "owin" based on a binary mask. 
                   See \code{\link[spatstat]{owin}}. }
-   \item{ threshold }{ determined threshold. If criterion="area", it is either the distance (if type="dist")
-or the threshold c (for type="intens"). If criterion="indirect", it is either the quantile of the
-nearest-neighbour distance which is used as radius (if type="dist") or the threshold c (for type="intens"). If criterion="direct",
-it equals the cutoff for both types.}
+   \item{ threshold }{ determined threshold. If type = "dist" and criterion = "direct" it is the specified radius.
+   If criterion = "indirect" or "area" the determined radius used to construct a risk zone fulfilling the specified criterion 
+   and cutoff. If type = "dist" it is the specified or calculated threshold c, the maximum intensitiy of unexploded bombs 
+   outside the risk zone.}
    \item{ calccutoff }{ determined cutoff-value. For type="dist" and criterion="area", this is the
-quantile of the nearest-neighbour distance. For type="intens" and criterion="area", it is the failure
+quantile of the nearest-neighbour distance. For type="intens" and criterion="area" or "direct", it is the failure
 probability alpha. For all other criterions it is NA.}
    \item{ covmatrix }{ If not given (and \code{type="intens"}), it is estimated. See \code{\link[ks]{Hscv}}.}
 }
@@ -82,10 +83,12 @@ There are different methods implemented to determine a high-risk zone.
        }
 \item{ Intensity-based method }{
        The first step of this method is to estimate the intensity of the observed events.
-       The high-risk zone is then the field in which the estimated intensity exceeds a 
+       Based on the estimated intensity and the specified probability of unobserved bombs \code{nxprob} 
+       it is possible to estimate the intensity of unobserved/unexploded bombs.
+       The high-risk zone is then the area in which the estimated intensity of unexploded bombs exceeds a 
        certain  value. This value is called threshold c.
        The method will be used when \code{type = "intens"}. There are three different ways to
-       get to a high-risk zone: 
+       construct a high-risk zone: 
        \enumerate{
           \item Fixing the threshold c: \code{criterion = "direct"} 
           \item Fixing the area of the high-risk zone: \code{criterion = "area"}
@@ -98,7 +101,8 @@ There are different methods implemented to determine a high-risk zone.
 }
 
 If there are restriction areas in the observation window, use \code{\link[highriskzone]{det_hrz_restr}}
-instead.
+instead. For estimation of intensity based highrikszones with a bigger observation area than area of interest
+(evaluation area) use \code{\link[highriskzone]{det_hrz_eval_ar}}.
 }
 \examples{
  data(craterA)
@@ -130,17 +134,16 @@ hrzi3 <- det_hrz(craterA, type = "intens", criterion = "direct", cutoff = 0.0001
 ## More detailed examples on http://highriskzone.r-forge.r-project.org/
 }
 \references{
-Monia Mahling, Michael \enc{H?hle}{Hoehle} & Helmut \enc{K?chenhoff}{Kuechenhoff} (2013),
+Monia Mahling, Michael \enc{Hoehle}{Hoehle} & Helmut \enc{Kuechenhoff}{Kuechenhoff} (2013),
 \emph{Determining high-risk zones for unexploded World War II bombs by using point process methodology.}
 Journal of the Royal Statistical Society, Series C 62(2), 181-199.
 
 Monia Mahling (2013),
 \emph{Determining high-risk zones by using spatial point process methodology.}
-Ph.D. thesis, Cuvillier Verlag \enc{G?ttingen}{Goettingen},
+Ph.D. thesis, Cuvillier Verlag \enc{Goettingen}{Goettingen},
 available online: http://edoc.ub.uni-muenchen.de/15886/
 }
 \seealso{
 \code{\link[spatstat]{distmap}}, \code{\link[spatstat]{eval.im}}, \code{\link[spatstat]{owin}},
                \code{\link{eval_method}}, \code{\link[highriskzone]{det_hrz_restr}}
 }
-

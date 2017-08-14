@@ -26,4 +26,3 @@ Used in function bootcor_restr.
 \code{\link[spatstat]{density.ppp}}, \code{\link[spatstat]{boundingbox}},
          \code{\link[spatstat]{owin}}, \code{\link[ks]{Hscv}}
 }
-

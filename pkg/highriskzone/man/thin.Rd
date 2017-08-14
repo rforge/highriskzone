@@ -26,4 +26,3 @@ The thinning is done by drawing independently from a Bernoulli distribution. Thi
 \seealso{
 \code{\link[stats]{rbinom}}, \code{\link[spatstat]{ppp}}
 }
-

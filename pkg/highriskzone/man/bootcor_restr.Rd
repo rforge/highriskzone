@@ -134,4 +134,3 @@ Chapter 6 and Appendix A
 \seealso{
 \code{\link[highriskzone]{det_hrz}}, \code{\link[highriskzone]{eval_method}}, \code{\link[highriskzone]{bootcor}}
 }
-

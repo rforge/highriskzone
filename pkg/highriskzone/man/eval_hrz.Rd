@@ -51,4 +51,3 @@ of the unobserved events have been revealed..
 \seealso{
 \code{\link[spatstat]{inside.owin}}, \code{\link[spatstat]{area.owin}}
 }
-

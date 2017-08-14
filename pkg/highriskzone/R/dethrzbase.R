@@ -182,6 +182,37 @@ det_area <- function(win, intensmatrix, threshold){
   return(arearegion)
 }
 
+#' Calculation of the area of the high-risk zone. 
+#'
+#' This function is used for the intensity-based method with a hole restriction area. Calculation of the
+#' area of the high-risk zone given the observation window,
+#' the intensity matrix, the threshold c and a hole. Used in function 
+#' det_thresholdfromarea_hole.
+#'
+#' @param win  observation window
+#' @param intensmatrix  matrix of the estimated intensity of the observed process (\code{as.matrix(intens)})
+#' @param threshold  threshold c: The high-risk zone is the field in which the estimated intensity 
+#'                   exceeds this value
+#' @param hole specified hole
+#' @param integratehole Should the \code{hole} be part of the resulting high-risk zone? Defaults to \code{TRUE}                 
+#' @return A numerical value giving the area of the high-risk zone.
+#' @seealso \code{\link[spatstat]{owin}}, \code{\link[spatstat]{area.owin}}
+
+
+#- fr?her intens_areahrz 
+det_area_hole <- function(win, intensmatrix, threshold, hole, integratehole = TRUE){
+  
+  R <- intensmatrix > threshold
+  
+  safetyregion <- if (integratehole) {
+    owin(xrange = win$xrange, yrange = win$yrange, mask = (as.matrix(hole)|R))
+  } else {
+    owin(xrange=win$xrange, yrange=win$yrange, mask=R)
+  }
+  safetyregion$m[is.na(safetyregion$m)] <- FALSE
+  arearegion <- area.owin(safetyregion)
+  return(arearegion)
+}
 
 
 #' Determination of alpha and the threshold c which results
@@ -232,3 +263,59 @@ det_thresholdfromarea <- function(intens, areahrz, win, nxprob=0.1){
   result <- list(threshold=thresh, calccutoff=alpha)
   return(result)
 }
+
+
+#' Determination of alpha and the threshold c which results
+#' in a high-risk zone with desired area if a hole is present. 
+#'
+#' This function is used for the intensity-based method. Used in function det_hrz_restr.
+#'
+#' @param intens  estimated intensity of the observed process (object of class "im", see \code{\link[spatstat]{density.ppp}}) 
+#' @param areahrz area of the high-risk zone 
+#' @param win     observation window
+#' @param nxprob  probability of having unbserved events  
+#' @param hole  an object of class \code{owin} representing a region inside the observation window of
+#'               the \code{ppdata} where no observations were possible.
+#' @param integratehole    Should the \code{hole} be part of the resulting high-risk zone? Defaults to \code{TRUE}.
+#' @importFrom stats uniroot
+#' @return A list of
+#'   \item{ threshold }{ Value of the threshold c. The high-risk zone is the field in which the estimated intensity 
+#'                   exceeds this value }
+#'   \item{ calccutoff }{ failure probability alpha for given area; probability to have at least unobserved event outside the high-risk zone }
+#' @seealso \code{\link{det_area}}, \code{\link{det_alpha}}
+
+#- fr?her: intens_area  
+det_thresholdfromarea_rest <- function(intens, areahrz, win, nxprob=0.1, hole = hole, integratehole = TRUE){
+  
+  intensmatrix <- as.matrix(intens)
+  
+  f <- function(logthreshold){
+    ifelse(is.null(hole), det_area(win=win, intensmatrix=intensmatrix, exp(logthreshold)) - areahrz, 
+    det_area_hole(win=win, intensmatrix=intensmatrix, exp(logthreshold), 
+                  hole = hole, integratehole = integratehole) - areahrz)
+  }
+  
+  ### neu
+  minint <- -100000
+  maxint <- log(max(range(intens)))
+  ### neu
+  if(sign(f(minint)) != sign(f(maxint))){
+    thres <- uniroot(f, lower=minint, upper=maxint)
+    thresh <- exp(thres$root)
+    
+    fal <- function(alpha) {
+      det_alpha(intens, threshold=thresh, nxprob=nxprob) - alpha
+    }
+    
+    al <- uniroot(fal, lower=-1, upper=2)
+    alpha <- al$root
+    
+  }else{
+    thresh <- ifelse(f(minint) < 0, exp(minint), exp(maxint)) 
+    alpha <- NA
+  }
+  
+  result <- list(threshold=thresh, calccutoff=alpha)
+  return(result)
+}
+

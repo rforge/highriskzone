@@ -24,4 +24,3 @@ Used in function sim_nsppp.
 \code{\link[spatstat]{density.ppp}}, \code{\link[spatstat]{boundingbox}}, 
          \code{\link[spatstat]{owin}}, \code{\link[ks]{Hscv}}
 }
-

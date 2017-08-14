@@ -25,10 +25,12 @@
 #'        }
 #' \item{ Intensity-based method }{
 #'        The first step of this method is to estimate the intensity of the observed events.
-#'        The high-risk zone is then the field in which the estimated intensity exceeds a 
+#'        Based on the estimated intensity and the specified probability of unobserved bombs \code{nxprob} 
+#'        it is possible to estimate the intensity of unobserved/unexploded bombs.
+#'        The high-risk zone is then the area in which the estimated intensity of unexploded bombs exceeds a 
 #'        certain  value. This value is called threshold c.
 #'        The method will be used when \code{type = "intens"}. There are three different ways to
-#'        get to a high-risk zone: 
+#'        construct a high-risk zone: 
 #'        \enumerate{
 #'           \item Fixing the threshold c: \code{criterion = "direct"} 
 #'           \item Fixing the area of the high-risk zone: \code{criterion = "area"}
@@ -41,7 +43,8 @@
 #' }
 #'
 #' If there are restriction areas in the observation window, use \code{\link[highriskzone]{det_hrz_restr}}
-#' instead.
+#' instead. For estimation of intensity based highrikszones with a bigger observation area than area of interest
+#' (evaluation area) use \code{\link[highriskzone]{det_hrz_eval_ar}}.
 #'
 #' @param ppdata  Observed spatial point process of class ppp.
 #' @param type  Method to use, can be one of \code{"dist"} (method of fixed radius or quantile-based method), or
@@ -51,9 +54,10 @@
 #'        or \code{"direct"} (giving radius/threshold c depending on type) 
 #' @param cutoff  Value of criterion (area, radius, quantile, alpha or threshold). 
 #'                 Depending on criterion and type: 
-#'                 If criterion = "direct", cutoff is the threshold. If criterion = "indirect", cutoff is
-#'                 the quantile for the quantile-based method and the failure probability alpha for the 
-#'                 intensity-base method. If criterion = "area", cutoff is the area the high-risk zone should
+#'                 If criterion = "direct" and type = "intens", cutoff is the maximum intensity of unexploded bombs
+#'                 outside the risk zone. If type = "dist" instead, cutoff is the radius of the circle around each exploded bomb.
+#'                 "If criterion = "indirect", cutoff is the quantile for the quantile-based method and the failure 
+#'                 probability alpha for the intensity-base method. If criterion = "area", cutoff is the area the high-risk zone should
 #'                 have.
 #' @param distancemap  (optional) distance map: distance of every pixel to the nearest observation 
 #'                     of the point pattern; only needed for \code{type="dist"}. If not given, 
@@ -69,23 +73,23 @@
 #' @export  
 #' @aliases highriskzone.object highriskzone
 #' @return An object of class "\code{highriskzone}", which is a list of
-#'    \item{ typehrz, criterion, cutoff }{ see arguments}
+#'    \item{ typehrz, criterion, cutoff, nxprob }{ see arguments}
 #'    \item{ zone }{ Determined high-risk zone: Object of class "owin" based on a binary mask. 
 #'                   See \code{\link[spatstat]{owin}}. }
-#'    \item{ threshold }{ determined threshold. If criterion="area", it is either the distance (if type="dist")
-#' or the threshold c (for type="intens"). If criterion="indirect", it is either the quantile of the
-#' nearest-neighbour distance which is used as radius (if type="dist") or the threshold c (for type="intens"). If criterion="direct",
-#' it equals the cutoff for both types.}
+#'    \item{ threshold }{ determined threshold. If type = "dist" and criterion = "direct" it is the specified radius.
+#'    If criterion = "indirect" or "area" the determined radius used to construct a risk zone fulfilling the specified criterion 
+#'    and cutoff. If type = "dist" it is the specified or calculated threshold c, the maximum intensitiy of unexploded bombs 
+#'    outside the risk zone.}
 #'    \item{ calccutoff }{ determined cutoff-value. For type="dist" and criterion="area", this is the
-#' quantile of the nearest-neighbour distance. For type="intens" and criterion="area", it is the failure
+#' quantile of the nearest-neighbour distance. For type="intens" and criterion="area" or "direct", it is the failure
 #' probability alpha. For all other criterions it is NA.}
 #'    \item{ covmatrix }{ If not given (and \code{type="intens"}), it is estimated. See \code{\link[ks]{Hscv}}.}
-#' @references Monia Mahling, Michael \enc{H?hle}{Hoehle} & Helmut \enc{K?chenhoff}{Kuechenhoff} (2013),
+#' @references Monia Mahling, Michael \enc{Hoehle}{Hoehle} & Helmut \enc{Kuechenhoff}{Kuechenhoff} (2013),
 #' \emph{Determining high-risk zones for unexploded World War II bombs by using point process methodology.}
 #' Journal of the Royal Statistical Society, Series C 62(2), 181-199.
 #' @references Monia Mahling (2013),
 #' \emph{Determining high-risk zones by using spatial point process methodology.}
-#' Ph.D. thesis, Cuvillier Verlag \enc{G?ttingen}{Goettingen},
+#' Ph.D. thesis, Cuvillier Verlag \enc{Goettingen}{Goettingen},
 #' available online: http://edoc.ub.uni-muenchen.de/15886/
 #' @seealso \code{\link[spatstat]{distmap}}, \code{\link[spatstat]{eval.im}}, \code{\link[spatstat]{owin}},
 #'                \code{\link{eval_method}}, \code{\link[highriskzone]{det_hrz_restr}}
@@ -124,7 +128,11 @@ det_hrz <- function(ppdata, type, criterion, cutoff, distancemap=NULL, intens=NU
   
   win <- ppdata$window
   calccutoff <- NA
-  
+  type <- match.arg(type, choices=c("intens", "dist"))  
+  criterion <- match.arg(criterion, choices=c("area", "indirect", "direct"))
+  # Check Inputs
+  check_det_hrz_input(ppdata = ppdata, type = type, criterion = criterion, cutoff = cutoff,
+                      distancemap = distancemap, intens = intens, nxprob = nxprob, covmatrix = covmatrix)
   
   
   # set the right values
@@ -166,16 +174,25 @@ det_hrz <- function(ppdata, type, criterion, cutoff, distancemap=NULL, intens=NU
       
     }else{
       
-      threshold <- ifelse(criterion=="indirect", det_threshold(intens=intens, alpha=cutoff, nxprob=nxprob), cutoff)
+      threshold <- ifelse(criterion=="indirect", det_threshold(intens=intens, alpha=cutoff, nxprob=nxprob), 
+                          (1-nxprob)/nxprob * cutoff)
       
     }
     
     HRZimage <- eval.im(intens > threshold)
     
+    if(criterion == "direct")
+      calccutoff <- det_alpha(intens, threshold = threshold, nxprob = nxprob)
+    
+    threshold <- nxprob / (1-nxprob) * threshold
+    
   }
   
   Rwindow <- owin(xrange=win$xrange, yrange=win$yrange, mask=as.matrix(HRZimage))
-  result <- list(typehrz=type, criterion=criterion, cutoff=cutoff, zone=Rwindow, threshold=threshold, calccutoff=calccutoff, covmatrix=covmatrix)
+  
+  result <- list(typehrz=type, criterion=criterion, cutoff=cutoff, nxprob = nxprob, zone=Rwindow, 
+                 threshold=threshold, calccutoff=calccutoff, 
+                 covmatrix=covmatrix)
   class(result) <- "highriskzone"
   return(result)
   
@@ -201,11 +218,6 @@ check_det_hrz_input <- function(ppdata, type, criterion, cutoff, distancemap, in
     stop("data is not of class ppp")
   }
   
-  match.arg( type, choices=c("intens", "dist") )  
-  
-  match.arg( criterion, choices=c("area", "indirect", "direct") )
-  
-  
   #this is for every criterion
   stopifnot( cutoff > 0 | length(cutoff) != 1 ) 
   #special: alpha and the quantile can only be in [0,1]
@@ -215,16 +227,10 @@ check_det_hrz_input <- function(ppdata, type, criterion, cutoff, distancemap, in
   
   if ( !is.im(intens) & !is.null(intens) ) stop("wrong input for intens. The intensity must be of class im (see density.ppp) or NULL.")
   
-  if ( nxprob > 0 & nxprob < 1 ) stop("nxprob is a probability and therefore it has to be in the interval [0, 1]")
+  if ( !(nxprob > 0 & nxprob < 1) ) stop("nxprob is a probability and therefore it has to be in the interval [0, 1]")
   
   if ( !is.null(covmatrix) && (!isSymmetric(covmatrix) | !all(eigen(covmatrix)$values > 0)) ){
     stop("covmatrix has to be symmetric and positive semidefinit")
   }
   
 }
-
-
-
-
-
-       

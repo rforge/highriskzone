@@ -33,4 +33,3 @@ plot(craterA$window, main = "contour plot of intensity"); contour(int$intensest,
 \seealso{
 \code{\link[spatstat]{density.ppp}}, \code{\link[ks]{Hscv}}, \code{\link[spatstat]{eval.im}}
 }
-

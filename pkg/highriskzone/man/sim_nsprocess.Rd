@@ -35,4 +35,3 @@ Simulation of the Neyman-Scott process. Only applicable if the intensity was est
 for an appropriately enlarged window.
 More details in \code{sim_nsppp}.
 }
-

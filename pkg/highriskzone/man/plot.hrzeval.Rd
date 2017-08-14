@@ -51,4 +51,3 @@ This is the plot method for the class \code{hrzeval}.
 \seealso{
 \code{\link[graphics]{plot}}, \code{\link{eval_hrz}}, \code{\link{plot.highriskzone}}
 }
-

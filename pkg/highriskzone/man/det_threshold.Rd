@@ -26,4 +26,3 @@ This function is for the intensity-based method. Used in function det_hrz.
 \seealso{
 \code{\link{det_alpha}}, \code{\link[stats]{uniroot}}
 }
-

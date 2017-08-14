@@ -23,4 +23,3 @@ probability to have at least one unobserved event outside the high-risk zone.
 A Poisson distribution is used for the number of unobserved events in a certain area or field.
 Used in functions det_threshold, det_thresholdfromarea.
 }
-

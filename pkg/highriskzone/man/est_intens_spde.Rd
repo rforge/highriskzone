@@ -43,4 +43,3 @@ image.plot(list(x=est_spde$intensest$xcol, y=est_spde$intensest$yrow,
 points(craterA)
 }
 }
-

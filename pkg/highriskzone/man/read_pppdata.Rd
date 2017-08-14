@@ -39,4 +39,3 @@ crater
 \seealso{
 \code{\link[spatstat]{ppp}}, \code{\link[spatstat]{bounding.box.xy}}, \code{\link[spatstat]{owin}}
 }
-

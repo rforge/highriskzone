@@ -71,4 +71,3 @@ inhomogeneous Poisson point process.
 \code{\link[spatstat]{rNeymanScott}}, \code{\link[spatstat]{rThomas}}, 
          \code{\link[spatstat]{rMatClust}}
 }
-

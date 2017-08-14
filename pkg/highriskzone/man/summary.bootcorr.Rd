@@ -21,4 +21,3 @@ This is a method for the generic function \code{\link[base]{summary}}.
 \seealso{
 \code{\link[base]{summary}}, \code{\link{print.bootcorr}}, \code{\link{plot.bootcorr}}
 }
-

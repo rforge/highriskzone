@@ -20,9 +20,10 @@ or \code{"direct"} (giving radius/threshold c depending on type)}
 
 \item{cutoff}{Value of criterion (area, radius, quantile, alpha or threshold). 
 Depending on criterion and type: 
-If criterion = "direct", cutoff is the threshold. If criterion = "indirect", cutoff is
-the quantile for the quantile-based method and the failure probability alpha for the 
-intensity-base method. If criterion = "area", cutoff is the area the high-risk zone should
+If criterion = "direct" and type = "intens", cutoff is the maximum intensity of unexploded bombs
+outside the risk zone. If type = "dist" instead, cutoff is the radius of the circle around each exploded bomb.
+"If criterion = "indirect", cutoff is the quantile for the quantile-based method and the failure 
+probability alpha for the intensity-base method. If criterion = "area", cutoff is the area the high-risk zone should
 have.}
 
 \item{numit}{Number of iterations}
@@ -137,4 +138,3 @@ high-risk zone.\cr
 \seealso{
 \code{\link{det_hrz}}, \code{\link[spatstat]{rNeymanScott}}, \code{\link{thin}}, \code{\link{sim_nsppp}}, \code{\link{sim_intens}}
 }
-

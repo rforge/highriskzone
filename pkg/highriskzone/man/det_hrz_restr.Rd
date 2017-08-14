@@ -56,15 +56,15 @@ Default value is 0.1.}
 }
 \value{
 An object of class "\code{highriskzone}", which is a list of
-   \item{ typehrz, criterion, cutoff }{ see arguments}
+   \item{ typehrz, criterion, cutoff, nxprob}{ see arguments}
    \item{ zone }{ Determined high-risk zone: Object of class "owin" based on a binary mask.
                   See \code{\link[spatstat]{owin}}. }
-   \item{ threshold }{ determined threshold. If criterion="area", it is either the distance (if type="dist")
-or the threshold c (for type="intens"). If criterion="indirect", it is either the quantile of the
-nearest-neighbour distance which is used as radius (if type="dist") or the threshold c (for type="intens"). If criterion="direct",
-it equals the cutoff for both types.}
+   \item{ threshold }{ determined threshold. If type = "dist" and criterion = "direct" it is the specified radius.
+   If criterion = "indirect" or "area" the determined radius used to construct a risk zone fulfilling the specified criterion 
+   and cutoff. If type = "dist" it is the specified or calculated threshold c, the maximum intensitiy of unexploded bombs 
+   outside the risk zone.}
    \item{ calccutoff }{ determined cutoff-value. For type="dist" and criterion="area", this is the
-quantile of the nearest-neighbour distance. For type="intens" and criterion="area", it is the failure
+quantile of the nearest-neighbour distance. For type="intens" and criterion="area" or "direct", it is the failure
 probability alpha. For all other criterions it is NA.}
    \item{ covmatrix }{ If not given (and \code{type="intens"}), it is estimated. See \code{\link[ks]{Hscv}}.}
    \item{ estint }{ Estimated intensity. See \code{\link[spatstat]{density.ppp}}.}
@@ -126,4 +126,3 @@ hrzi2 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
 \seealso{
 \code{\link[spatstat]{distmap}}, \code{\link[spatstat]{eval.im}}, \code{\link[spatstat]{owin}}
 }
-

@@ -23,4 +23,3 @@ Used in function det_radius.
 \seealso{
 \code{\link[spatstat]{eval.im}}, \code{\link[spatstat]{owin}}, \code{\link[spatstat]{area.owin}}
 }
-

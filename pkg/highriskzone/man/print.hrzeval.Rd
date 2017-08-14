@@ -21,4 +21,3 @@ This is a method for the generic function \code{\link[base]{print}}.
 \seealso{
 \code{\link[base]{print}}, \code{\link{summary.hrzeval}}
 }
-

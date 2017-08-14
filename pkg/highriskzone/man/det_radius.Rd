@@ -27,4 +27,3 @@ Used in function det_hrz.
 \seealso{
 \code{\link{det_nnarea}}, \code{\link[stats]{quantile}}, \code{\link[stats]{uniroot}}
 }
-
