@@ -13,12 +13,14 @@
 #'    \item{ covmatrix }{ Covariance matrix. If \code{covmatrix = NULL} the matrix is estimated by \code{\link[ks]{Hscv}}. }             
 #' @seealso \code{\link[spatstat]{density.ppp}}, \code{\link[ks]{Hscv}}, \code{\link[spatstat]{eval.im}}
 #' @examples
+#' \dontrun{
 #' data(craterA)
-#' #change npixel = 50 with 1000 and you get a nicer picture
-#' spatstat::spatstat.options(npixel=50)
+#' #change npixel = 10 with 1000 and you get a nicer picture
+#' spatstat::spatstat.options(npixel=10)
 #' int <- est_intens(craterA)
 #' plot(int$intensest, main = "pixel image of intensity")
 #' plot(craterA$window, main = "contour plot of intensity"); contour(int$intensest, add =TRUE)
+#' }
 
 
 

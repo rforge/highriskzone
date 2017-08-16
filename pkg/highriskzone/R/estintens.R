@@ -6,6 +6,7 @@
 #' @param covmatrix (Optional) Covariance matrix of the kernel of a normal distribution
 #' @param weights (Optional) vector of weights attached to each observation
 #' @importFrom stats density
+#' @importFrom ks Hscv
 #' @export
 #' @return A list of
 #'    \item{ intensest }{ Estimated intensity (object of class "im", see \code{\link[spatstat]{density.ppp}}). }

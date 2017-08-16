@@ -13,6 +13,10 @@
 #' @param ... additional arguments for the construction of the spde model (see \code{\link[INLA]{inla.spde2.matern}})
 #' @param npixel number of pixel per dimension (see \code{\link[spatstat]{spatstat.options}})
 #' @importFrom methods as
+#' @importFrom deldir deldir
+#' @importFrom deldir tile.list
+#' @importFrom Matrix rBind
+#' @importFrom Matrix Diagonal
 #' @export
 #' @return A list of
 #'    \item{ intensest }{ Pixel image with the estimated intensities of the random field. }

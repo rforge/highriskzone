@@ -30,8 +30,8 @@
 #' @param highriskzone the estimated highriskzone for the evaluation area
 #' @param thresh_const the constant multiplied with the determined threshold, 0 < thresh_const < 1. 
 #' @return The constant width of the guard region.
-#'@import mvtnorm
-#'@export
+#' @importFrom mvtnorm dmvnorm
+#' @export
 det_guard_width <- function(highriskzone, thresh_const = .5) {
   if (class(highriskzone)[1] != "highriskzone")
     stop("highriskzone has to be of class highriskzone!")

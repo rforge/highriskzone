@@ -56,7 +56,7 @@ The resulting process is a \enc{Mat?rn}{Matern} process whose parent process is 
 inhomogeneous Poisson point process.
 }
 \examples{
-     
+\dontrun{      
  data(craterA)
  data(craterB)
  set.seed(100)
@@ -66,6 +66,7 @@ inhomogeneous Poisson point process.
  plot(sim_pp1, main = "simulated cluster process 1")
  plot(sim_pp2, main = "simulated cluster process 2")
  par(op)
+ }
 }
 \seealso{
 \code{\link[spatstat]{rNeymanScott}}, \code{\link[spatstat]{rThomas}}, 

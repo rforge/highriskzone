@@ -210,7 +210,8 @@ sim_nsprocess <- function(ppdata, intens, radius, clustering=5, thinning=0){
 #'        attributes of this point pattern: see \code{\link[spatstat]{rNeymanScott}}.
 #' @seealso \code{\link[spatstat]{rNeymanScott}}, \code{\link[spatstat]{rThomas}}, 
 #'          \code{\link[spatstat]{rMatClust}}
-#' @examples      
+#' @examples
+#' \dontrun{      
 #'  data(craterA)
 #'  data(craterB)
 #'  set.seed(100)
@@ -220,6 +221,7 @@ sim_nsprocess <- function(ppdata, intens, radius, clustering=5, thinning=0){
 #'  plot(sim_pp1, main = "simulated cluster process 1")
 #'  plot(sim_pp2, main = "simulated cluster process 2")
 #'  par(op)
+#'  }
 
 sim_nsppp <- function ( ppdata, radius, clustering=5, thinning=0 ) {
   intensest <- det_nsintens( ppdata = ppdata, radius = radius)

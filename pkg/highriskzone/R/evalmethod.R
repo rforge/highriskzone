@@ -73,7 +73,8 @@
 #'    \item{ numberobs }{ number of observations in the observed point pattern \ifelse{latex}{\eqn{\tilde Y}}{Y'} }
 #'    
 #' @seealso \code{\link{det_hrz}}, \code{\link[spatstat]{rNeymanScott}}, \code{\link{thin}}, \code{\link{sim_nsppp}}, \code{\link{sim_intens}}
-#' @examples    
+#' @examples
+#' \dontrun{    
 #'  data(craterB)
 #'  
 #'  # the input values are mainly the same as in det_hrz, so for more example ideas, 
@@ -91,6 +92,7 @@
 #'             pmiss_i = mean(evalm_i$missingfrac),
 #'             pout_d = ( sum(evalm_d$numbermiss > 0) / nrow(evalm_d) ), 
 #'             pout_i = ( sum(evalm_i$numbermiss > 0) / nrow(evalm_i) ))
+#' }
 
 
 eval_method <- function(ppdata, type, criterion, cutoff, numit = 100, 
