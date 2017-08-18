@@ -1,4 +1,5 @@
 library(highriskzone)
+library(spatstat)
 
 data(craterA)
 spatstat.options(npixel=400)
