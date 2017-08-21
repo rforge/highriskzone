@@ -23,14 +23,16 @@ Estimates the intensity of the point pattern by a kernel method
 (See \code{\link[spatstat]{density.ppp}}).
 }
 \examples{
-\dontrun{
 data(craterA)
-#change npixel = 50 with 1000 and you get a nicer picture
+#change npixel = 50 to 1000 to get a nicer picture
 spatstat::spatstat.options(npixel=50)
-int <- est_intens(craterA)
+# use only ten observations for fast computation
+thin.craterA <- craterA[1:10]
+int <- est_intens(thin.craterA)
+# Plot estimated intensity
 plot(int$intensest, main = "pixel image of intensity")
-plot(craterA$window, main = "contour plot of intensity"); contour(int$intensest, add =TRUE)
-}
+plot(craterA$window, main = "contour plot of intensity")
+contour(int$intensest, add =TRUE)
 }
 \seealso{
 \code{\link[spatstat]{density.ppp}}, \code{\link[ks]{Hscv}}, \code{\link[spatstat]{eval.im}}

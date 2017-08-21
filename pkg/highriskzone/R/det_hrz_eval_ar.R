@@ -22,6 +22,23 @@
 #'                    using \code{\link[ks]{Hscv}}. 
 #' @return An object of class "\code{highriskzone}"
 #' @export  
+#' @examples
+#' set.seed(12412)
+#' spatstat::spatstat.options(npixel=300)
+#' data(craterB)
+#' # reduce number of observations for faster computation
+#' thin.craterB <- craterB[sample(1:craterB$n, 40)]
+#' # define evaluation area of interest
+#' eval.ar <- spatstat::owin(xrange = c(0, 1900), yrange = c(0, 3400), 
+#'                poly = matrix(c(250,250, 1200,1000,250,1000), byrow = TRUE, ncol = 2))
+#'
+#' hrzi1 <- det_hrz_eval_ar(thin.craterB, eval_ar = eval.ar, criterion = "direct",
+#'                         cutoff = 3e-6, nxprob = .2)
+#'
+#' plot(hrzi1)
+#' plot(thin.craterB, add = TRUE)
+#' plot(eval.ar, add = TRUE)
+#' plot(craterB$window, add = TRUE)
 
 det_hrz_eval_ar<- function (ppdata, eval_ar, criterion = c("indirect", "direct"), cutoff,
                             intens = NULL, nxprob = 0.1, 
@@ -65,7 +82,11 @@ det_hrz_eval_ar<- function (ppdata, eval_ar, criterion = c("indirect", "direct")
   
 }
 
-
+#' Determination of failure probability within evaluation area
+#' @param intens estimated intensity
+#' @param eval_ar evaluation area
+#' @param threshold given threshold
+#' @param nxprob constant probability of non-explosion   
 det_alpha_eval_ar <- function(intens, eval_ar, threshold, nxprob = 0.1) {
   areaPixel <- intens$xstep * intens$ystep
   
@@ -78,6 +99,11 @@ det_alpha_eval_ar <- function(intens, eval_ar, threshold, nxprob = 0.1) {
   alpha <- 1 - exp(-(nxprob/(1 - nxprob) * intens.intWwR))
   return(alpha)
 }
+#' Determination of necessary threshold to keep alpha in evaluation area
+#' @param intens estimated intensity
+#' @param eval_ar evaluation area
+#' @param alpha desired failure probability in eval area
+#' @param nxprob constant probability of non-explosion
 
 det_threshold_eval_ar <- function(intens, eval_ar, alpha = 1e-05, nxprob = 0.1) {
   f <- function(logthreshold) {

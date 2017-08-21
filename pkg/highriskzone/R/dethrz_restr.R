@@ -76,28 +76,29 @@
 #'    \item{ estint }{ Estimated intensity. See \code{\link[spatstat]{density.ppp}}.}
 #' @seealso \code{\link[spatstat]{distmap}}, \code{\link[spatstat]{eval.im}}, \code{\link[spatstat]{owin}}
 #' @examples
-#' \dontrun{
-#'  data(craterA)
-#'  spatstat::spatstat.options(npixel=400)
+#' set.seed(1211515)
+#' data(craterA)
+#' #change npixel = 100 to 1000 to get a nicer picture
+#' spatstat::spatstat.options(npixel=100)
+#' # reduce number of observations for faster computation
+#' craterA <- craterA[sample(1:craterA$n, 150)]
+#' # define restriction area
+#' restrwin <- spatstat::owin(xrange=craterA$window$xrange, yrange=craterA$window$yrange,
+#'                            poly=list(x=c(1500, 1500, 2000, 2000), y=c(2000, 1500, 1500, 2000)))
 #'
-#'# define restriction area
-#'restrwin <- owin(xrange=craterA$window$xrange, yrange=craterA$window$yrange,
-#'  poly=list(x=c(1500, 1500, 2000, 2000), y=c(2000, 1500, 1500, 2000)))
-#'
-#'# create image of observation probability (30% inside restriction area)
-#'wim <- as.im(craterA$window, value=1)
-#'rim <- as.im(restrwin, xy=list(x=wim$xcol, y=wim$yrow))
-#'rim$v[is.na(rim$v)] <- 0
-#'oim1 <- eval.im(wim - 0.7 * rim)
-#'
-#'# determine high-risk zone by weighting the observations
-#'hrzi1 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
-#'  cutoff = 0.4, hole=NULL, obsprobs=NULL, obsprobimage=oim1, nxprob = 0.1)
-#'
-#'# determine high-risk zone by accounting for a hole
-#'hrzi2 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
-#'  cutoff = 0.4, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
-#'}
+#' # create image of observation probability (30% inside restriction area)
+#' wim <- spatstat::as.im(craterA$window, value=1)
+#' rim <- spatstat::as.im(restrwin, xy=list(x=wim$xcol, y=wim$yrow))
+#' rim$v[is.na(rim$v)] <- 0
+#' oim1 <- spatstat::eval.im(wim - 0.7 * rim)
+#' # determine high-risk zone by weighting the observations
+#' hrzi1 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
+#'                        cutoff = 0.4, hole=NULL, obsprobs=NULL, obsprobimage=oim1, nxprob = 0.1)
+#' 
+#' # determine high-risk zone by accounting for a hole
+#' hrzi2 <- det_hrz_restr(ppdata=craterA, type = "intens", criterion = "indirect",
+#'                        cutoff = 0.4, hole=restrwin, obsprobs=NULL, obsprobimage=NULL, nxprob = 0.1)
+ 
 
 det_hrz_restr <- function(ppdata, type, criterion, cutoff, hole=NULL, integratehole=TRUE, 
                           obsprobs=NULL, obsprobimage=NULL, distancemap=NULL, intens=NULL, 
@@ -163,7 +164,7 @@ det_hrz_restr <- function(ppdata, type, criterion, cutoff, hole=NULL, integrateh
     
     if(is.null(intens)){
       
-      estim <- est_intens(ppdata, covmatrix=covmatrix, weights=1/invweight)
+      estim <- est_intens_weight(ppdata, covmatrix=covmatrix, weights=1/invweight)
       intens <- estim$intensest
       covmatrix <- estim$covmatrix
       

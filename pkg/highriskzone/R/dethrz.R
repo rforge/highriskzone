@@ -95,7 +95,8 @@
 #'                \code{\link{eval_method}}, \code{\link[highriskzone]{det_hrz_restr}}
 #' @examples
 #'  data(craterA)
-#'  spatstat::spatstat.options(npixel=400)
+#' ## change npixel to 1000 to obtain nicer plots
+#' spatstat::spatstat.options(npixel=100)
 #' ## type: dist
 #' hrzd1 <- det_hrz(craterA, type = "dist", criterion = "area", cutoff = 1000000, nxprob = 0.1)
 #' hrzd2 <- det_hrz(craterA, type = "dist", criterion = "indirect", cutoff = 0.9, nxprob = 0.1)
@@ -113,11 +114,19 @@
 #' distm <- distmap(craterA)
 #' hrzd <- det_hrz(craterA, type = "dist", criterion = "direct", cutoff = 100,
 #'                 distancemap = distm, nxprob = 0.1)
-#'                 
-#' ## type: intens
-#' hrzi1 <- det_hrz(craterA, type = "intens", criterion = "area", cutoff = 1000000, nxprob = 0.1)
+#' }                
+#' ## type: intens 
+#' # reduce number of observations for faster computation
+#' thin.craterA <- craterA[1:10]
+#' hrzi1 <- det_hrz(thin.craterA, type = "intens", criterion = "area", cutoff = 100000, nxprob = 0.1)
+#' plot(hrzi1)
+#' plot(thin.craterA, add = TRUE)
+#' plot(thin.craterA$window, add = TRUE)
+#' \dontrun{
 #' hrzi2 <- det_hrz(craterA, type = "intens", criterion = "indirect", cutoff = 0.1, nxprob = 0.1)
 #' hrzi3 <- det_hrz(craterA, type = "intens", criterion = "direct", cutoff = 0.0001, nxprob = 0.1)
+#' plot(hrzi2)
+#' plot(hrzi3)
 #' }
 #'                  
 #' ## More detailed examples on http://highriskzone.r-forge.r-project.org/
