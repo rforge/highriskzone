@@ -1,5 +1,5 @@
 #' Estimation of width of a guard region given an estimated highriskzone
-
+#'
 #' \code{det_guard_width} determines the necessary width of a guard region in which
 #' the existence of additional observed bomb craters could change a intensity based estimated 
 #' highriskzone within the evaluation area of interest.

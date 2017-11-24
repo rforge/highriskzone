@@ -2,7 +2,19 @@
 % Please edit documentation in R/det_puffer.R
 \name{det_guard_width}
 \alias{det_guard_width}
-\title{Estimation of width of a guard region given an estimated highriskzone
+\title{Estimation of width of a guard region given an estimated highriskzone}
+\usage{
+det_guard_width(highriskzone, thresh_const = 0.5)
+}
+\arguments{
+\item{highriskzone}{the estimated highriskzone for the evaluation area}
+
+\item{thresh_const}{the constant multiplied with the determined threshold, 0 < thresh_const < 1.}
+}
+\value{
+The constant width of the guard region.
+}
+\description{
 \code{det_guard_width} determines the necessary width of a guard region in which
 the existence of additional observed bomb craters could change a intensity based estimated 
 highriskzone within the evaluation area of interest.
@@ -25,19 +37,9 @@ by addditional observations with a bigger distance from the boarder. This can be
 which intuitively means that 1/thresh_const crater observation at the same point could expand the highriskzone within 
 the evaluation area in the direction of the additional observations, or that a point the boarder becomes part of the highriskzone
 by the observation of a single additional crater if the intensity at this point was thresh_cont times the highriskzone threshold
-based on all crater observations within the evaluation area.}
-\usage{
-det_guard_width(highriskzone, thresh_const = 0.5)
+based on all crater observations within the evaluation area.
 }
-\arguments{
-\item{highriskzone}{the estimated highriskzone for the evaluation area}
-
-\item{thresh_const}{the constant multiplied with the determined threshold, 0 < thresh_const < 1.}
-}
-\value{
-The constant width of the guard region.
-}
-\description{
+\details{
 For more infos on the construction of guard zones see Mahling (2013, Appendix B, Approach 2)
 }
 \examples{

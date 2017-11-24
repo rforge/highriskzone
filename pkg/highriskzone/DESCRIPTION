@@ -1,8 +1,8 @@
 Package: highriskzone
 Type: Package
 Title: Determining and Evaluating High-Risk Zones
-Version: 1.4-1
-Date: 2017-08-16
+Version: 1.4-2
+Date: 2017-11-24
 Author: Heidi Seibold <Heidi.Seibold@uzh.ch>, Monia Mahling
     <monia.mahling@stat.uni-muenchen.de>, Sebastian Linne
     <Sebastian.Linne@campus.lmu.de>, Felix Guenther 
@@ -12,7 +12,7 @@ Depends:
     fields,
     rgeos
 Imports:
-    spatstat (>= 1.42-2),
+    spatstat (>= 1.54-0),
     methods,
     stats,
     utils,

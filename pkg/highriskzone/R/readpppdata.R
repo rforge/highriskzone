@@ -39,7 +39,7 @@ read_pppdata <- function(xppp, yppp, xwin=NULL, ywin=NULL, unitname=NULL) {
     w <- bounding.box.xy(xppp, yppp)
     w$xrange <- w$xrange + c(-1,1)*0.1*(w$xrange[2] - w$xrange[1])
     w$yrange <- w$yrange + c(-1,1)*0.1*(w$yrange[2] - w$yrange[1])
-    unitname <- spatstat::as.units(unitname)
+    unitname <- spatstat::as.unitname(unitname)
     w$units <- unitname
   } else{
     win <- bounding.box.xy(xwin, ywin)
