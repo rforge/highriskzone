@@ -108,6 +108,9 @@ eval_method <- function(ppdata, type, criterion, cutoff, numit = 100,
   }
   match.arg(simulate, choices=c("thinning", "intens", "clintens"))
   
+  if (any((type %in% c("intens", "dist")) == FALSE)) {
+    stop("The entries in type must be either 'intens' or 'dist'")
+  }
   
   #here the intensity is being estimated
   if ( simulate == "intens" ) {
@@ -127,15 +130,9 @@ eval_method <- function(ppdata, type, criterion, cutoff, numit = 100,
   # for the output later
   if ( simulate == "clintens" ) {
     result <- matrix(data=NA, nrow=0, ncol=18)
-    #colnames(result) <- c("Iteration", "Type", "Criterion", "Cutoff", "nxprob", "threshold", 
-    #                      "calccutoff", "covmatrix11", "covmatrix12", "covmatrix21", "covmatrix22", 
-    #                      "numbermiss", "numberunobserved", "missingfrac", "arearegion", "numberobserved", 
-    #                      "clusterrad", "clustering")
+    
   } else {
-    result <- matrix( data=NA, nrow=0, ncol=16 )
-    #colnames(result) <- c("Iteration", "Type", "Criterion", "Cutoff", "nxprob", "threshold", 
-    #                      "calccutoff", "covmatrix11", "covmatrix12", "covmatrix21", "covmatrix22", 
-    #                      "numbermiss", "numberunobserved", "missingfrac", "arearegion", "numberobserved")    
+    result <- matrix(data=NA, nrow=0, ncol=16)
   }
   
   
@@ -181,10 +178,14 @@ eval_method <- function(ppdata, type, criterion, cutoff, numit = 100,
       typej <- type[j]
       criterionj <- criterion[j]
       cutoffj <- cutoff[j]
-      
-      resultdetHRZ <- det_hrz(ppdata=observed, type=typej, criterion=criterionj, 
-                              cutoff=cutoffj, distancemap=distancemap, intens=intensest, 
-                              nxprob=nxprob, covmatrix=covmatrix)
+      if (typej == "dist") {
+        resultdetHRZ <- det_hrz(ppdata=observed, type=typej, criterion=criterionj, 
+                                cutoff=cutoffj, distancemap=distancemap)
+      } else {
+        resultdetHRZ <- det_hrz(ppdata=observed, type=typej, criterion=criterionj, 
+                                cutoff=cutoffj, intens = intensest, covmatrix = covmatrix,
+                                nxprob=nxprob)  
+      }
       resultevalHRZ <- eval_hrz(hrz=resultdetHRZ$zone, unobspp=unobserved, obspp=observed)
       
       covmatrix11 <- ifelse(all(is.null(resultdetHRZ$covmatrix)), NA, resultdetHRZ$covmatrix[1, 1])

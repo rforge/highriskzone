@@ -15,7 +15,6 @@
 #' @importFrom methods as
 #' @importFrom deldir deldir
 #' @importFrom deldir tile.list
-#' @importFrom Matrix rBind
 #' @importFrom Matrix Diagonal
 #' @export
 #' @return A list of
@@ -86,7 +85,7 @@ See www.r-inla.org for more information!
   mesh_n <- mesh$n
   y <- rep(0:1, c(mesh_n, n))
   e <- c(weights, rep(0, n))
-  A <- rBind(Diagonal(mesh_n, rep(1, mesh_n)), INLA::inla.spde.make.A(mesh, xy_coords))
+  A <- rbind(Diagonal(mesh_n, rep(1, mesh_n)), INLA::inla.spde.make.A(mesh, xy_coords))
   stack <- INLA::inla.stack(data=list(y=y, e=e), A=list(1,A), tag='crater', effects=list(list(beta0=rep(1,mesh_n+n)), list(i=1:mesh_n)))
   
   

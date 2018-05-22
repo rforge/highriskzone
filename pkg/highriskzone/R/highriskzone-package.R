@@ -2,14 +2,6 @@
 #' The package highriskzone provides tools to determine and evaluate high-risk zones of
 #' unobserved events by using point process methodology.
 #'
-#' \tabular{ll}{
-#' Package: \tab highriskzone\cr
-#' Type: \tab Package\cr
-#' Version: \tab 1.2\cr
-#' Date: \tab 2013-10-31\cr
-#' License: \tab MIT\cr
-#' LazyLoad: \tab yes\cr
-#' }
 #'
 #' @author
 #' Heidi Seibold \email{Heidi.Seibold@@campus.lmu.de},

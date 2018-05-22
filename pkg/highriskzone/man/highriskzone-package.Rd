@@ -10,16 +10,6 @@
 The package highriskzone provides tools to determine and evaluate high-risk zones of
 unobserved events by using point process methodology.
 }
-\details{
-\tabular{ll}{
-Package: \tab highriskzone\cr
-Type: \tab Package\cr
-Version: \tab 1.2\cr
-Date: \tab 2013-10-31\cr
-License: \tab MIT\cr
-LazyLoad: \tab yes\cr
-}
-}
 \references{
 Monia Mahling, Michael \enc{Hoehle}{Hoehle} & Helmut \enc{Kuechenhoff}{Kuechenhoff} (2013),
 \emph{Determining high-risk zones for unexploded World War II bombs by using point process methodology.}
