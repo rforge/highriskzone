@@ -1,11 +1,11 @@
 Package: highriskzone
 Type: Package
 Title: Determining and Evaluating High-Risk Zones
-Version: 1.4.3
-Date: 2018-05-22
+Version: 1.4.4
+Date: 2018-06-04
 Author: Heidi Seibold <Heidi.Seibold@uzh.ch>, Monia Mahling
     <monia.mahling@stat.uni-muenchen.de>, Sebastian Linne
-    <Sebastian.Linne@campus.lmu.de>, Felix Guenther 
+    <Sebastian.Linne@campus.lmu.de>, Felix Guenther
     <felix.guenther@stat.uni-muenchen.de>
 Maintainer: Felix Guenther <felix.guenther@stat.uni-muenchen.de>
 Depends:
@@ -19,7 +19,8 @@ Imports:
     mvtnorm,
     ks,
     deldir,
-    Matrix
+    Matrix,
+    maps
 Suggests:
     INLA
 Additional_repositories: https://www.math.ntnu.no/inla/R/stable
