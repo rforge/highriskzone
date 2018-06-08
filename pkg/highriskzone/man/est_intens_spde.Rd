@@ -24,7 +24,7 @@ only used if argument mesh is NULL}
 
 \item{alpha}{(optional) alpha value for the spde model, only used if argument spde is NULL}
 
-\item{...}{additional arguments for the construction of the spde model (see \code{\link[INLA]{inla.spde2.matern}})}
+\item{...}{additional arguments for the construction of the spde model (see INLA/inla.spde2.matern documentation)}
 }
 \value{
 A list of
