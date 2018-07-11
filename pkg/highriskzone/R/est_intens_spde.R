@@ -32,10 +32,8 @@
 est_intens_spde <- function(coords, win=NULL, npixel=50, fine_mesh=FALSE, mesh=NULL, weights=NULL, alpha=2, ...){
   if(!requireNamespace("INLA")){
     warning("This function requires R-INLA, but the R-INLA package is not available on CRAN.\n
-         Trying to install it from source(\"https://www.math.ntnu.no/inla/givemeINLA.R\") \n 
-See www.r-inla.org for more information!
-")
-    source("https://www.math.ntnu.no/inla/givemeINLA.R")
+         Please try to install it by evaluating source(\"https://www.math.ntnu.no/inla/givemeINLA.R\") \n 
+See www.r-inla.org for more information!")
   }
   if(is.null(coords)){stop("argument coords is missing, with no default")}
   if(!is.ppp(coords)){

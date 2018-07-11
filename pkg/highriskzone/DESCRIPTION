@@ -1,8 +1,8 @@
 Package: highriskzone
 Type: Package
 Title: Determining and Evaluating High-Risk Zones
-Version: 1.4.4
-Date: 2018-06-04
+Version: 1.4.5
+Date: 2018-07-11
 Author: Heidi Seibold <Heidi.Seibold@uzh.ch>, Monia Mahling
     <monia.mahling@stat.uni-muenchen.de>, Sebastian Linne
     <Sebastian.Linne@campus.lmu.de>, Felix Guenther
@@ -23,7 +23,7 @@ Imports:
     maps
 Suggests:
     INLA
-Additional_repositories: https://www.math.ntnu.no/inla/R/stable
+Additional_repositories: https://inla.r-inla-download.org/R/stable/
 Description: Functions for determining and evaluating high-risk zones and
     simulating and thinning point process data, as described in 'Determining
     high risk zones using point process methodology - Realization by building
